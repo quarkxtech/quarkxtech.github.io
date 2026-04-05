@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <title>QuarkX — Autonomous Intelligence for the Physical World</title>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8f0e8"/>
+      <stop offset="100%" stop-color="#efe3d6"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#7a2f2d"/>
+      <stop offset="100%" stop-color="#b26c3d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="110" fill="#b26c3d" opacity="0.08"/>
+  <circle cx="1020" cy="160" r="185" fill="#7a2f2d" opacity="0.05"/>
+  <rect x="88" y="96" width="1024" height="438" fill="none" stroke="#1f1814" stroke-opacity="0.12"/>
+  <rect x="88" y="96" width="8" height="438" fill="#7a2f2d"/>
+  <text x="140" y="205" font-family="system-ui, -apple-system, sans-serif" font-size="20" letter-spacing="4" fill="#7a6a60">CAMBRIDGE SCIENCE · ENTERPRISE ENGINEERING</text>
+  <text x="140" y="310" font-family="Georgia, 'Times New Roman', serif" font-size="94" fill="#1f1814">QuarkX</text>
+  <text x="140" y="390" font-family="system-ui, -apple-system, sans-serif" font-size="34" fill="#5f5147">Autonomous intelligence</text>
+  <text x="140" y="433" font-family="system-ui, -apple-system, sans-serif" font-size="34" fill="#5f5147">for the physical world</text>
+  <line x1="140" y1="476" x2="300" y2="476" stroke="url(#rule)" stroke-width="4"/>
+  <text x="140" y="530" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#7a2f2d">Reliable agent systems for environments where precision matters.</text>
+</svg>
