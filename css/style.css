@@ -717,10 +717,10 @@ section::before {
 .cred-cambridge {
   color: var(--text);
 }
-.cred-a telecoms company {
+.cred-telecom-alt {
   color: var(--copper);
 }
-.cred-telco {
+.cred-telecom {
   color: var(--accent);
 }
 .cred-fintech {
