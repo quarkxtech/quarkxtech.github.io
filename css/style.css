@@ -717,13 +717,13 @@ section::before {
 .cred-cambridge {
   color: var(--text);
 }
-.cred-axiata {
+.cred-telecom-alt {
   color: var(--copper);
 }
-.cred-huawei {
+.cred-telecom {
   color: var(--accent);
 }
-.cred-ant {
+.cred-fintech {
   color: var(--text);
 }
 .cred-quarkx {
