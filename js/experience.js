@@ -1441,18 +1441,6 @@ async function enhanceWithModels(scene) {
   );
   place("wall-corner", 7.1, -5.6, 0, wallH, 2.1);
 
-  // coral fascia band along the tops of the two walls
-  const fasciaBack = shadowed(
-    new THREE.Mesh(new RoundedBoxGeometry(PLAZA.w + 0.4, 0.34, 0.5, 1, 0.06), clayMat(C.coral, 0.85))
-  );
-  fasciaBack.position.set(0, wallH + 0.3, -5.6);
-  plaza.add(fasciaBack);
-  const fasciaSide = shadowed(
-    new THREE.Mesh(new RoundedBoxGeometry(0.5, 0.34, PLAZA.d - 1.4, 1, 0.06), clayMat(C.coral, 0.85))
-  );
-  fasciaSide.position.set(7.1, wallH + 0.3, -0.2);
-  plaza.add(fasciaSide);
-
   // freezer wall along the back, like the reference room
   place("freezers-standing", 1.4, -4.7, 0, 1.3);
   place("freezers-standing", 3.6, -4.7, 0, 1.3);
