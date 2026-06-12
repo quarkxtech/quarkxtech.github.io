@@ -478,7 +478,7 @@ function buildSignal(scene, curve) {
   scene.add(halo);
 
   const core = new THREE.Mesh(
-    buildRibbonGeometry(curve, 0.8, 760, 0.07),
+    buildRibbonGeometry(curve, 1.05, 760, 0.07),
     new THREE.ShaderMaterial({
       transparent: true,
       depthWrite: false,
@@ -1111,29 +1111,6 @@ function buildStation(scene, rng) {
     group.add(grill);
   }
 
-  // antenna masts with warning tips
-  [
-    [CORE_POS.x - 9, CORE_POS.z + 6.4],
-    [CORE_POS.x + 9, CORE_POS.z + 6.4],
-  ].forEach(([x, z]) => {
-    const mast = shadowed(
-      new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.12, 5.4, 8), clayMat(C.slate))
-    );
-    mast.position.set(x, 2.7, z);
-    group.add(mast);
-    const tip = new THREE.Mesh(
-      new THREE.SphereGeometry(0.16, 10, 10),
-      new THREE.MeshStandardMaterial({
-        color: C.coral,
-        emissive: C.coral,
-        emissiveIntensity: 0.7,
-        roughness: 0.5,
-      })
-    );
-    tip.position.set(x, 5.5, z);
-    group.add(tip);
-  });
-
   // server halls, storage tank, parked van and the perimeter fence
   // land here once the Kenney kits load
   REGISTRY.stationSpots.push(
@@ -1415,12 +1392,15 @@ async function enhanceWithModels(scene) {
     scene.add(wrap);
   });
 
-  // mini-market kit: an open-roof market plaza in the district —
-  // the "mall internals" vignette
+  // mini-market kit: an open-concept mall in the district — a real
+  // building with walls, columns and an entrance canopy, roof left
+  // open so the camera sees the shop floor inside
   const marketNames = [
-    "shelf-boxes", "shelf-bags", "display-fruit", "display-bread",
-    "freezers-standing", "cash-register", "shopping-cart", "fence",
-    "character-employee",
+    "shelf-boxes", "shelf-bags", "shelf-end", "display-fruit",
+    "display-bread", "freezers-standing", "freezer", "cash-register",
+    "shopping-cart", "shopping-basket", "bottle-return", "fence",
+    "character-employee", "wall", "wall-window", "wall-corner",
+    "column",
   ];
   const market = {};
   await Promise.all(
@@ -1434,35 +1414,78 @@ async function enhanceWithModels(scene) {
   const slab = new THREE.Mesh(slabGeo, clayMat(C.ivory, 0.9));
   slab.receiveShadow = true;
   plaza.add(slab);
-  const place = (name, x, z, rot, h) => {
+  const place = (name, x, z, rot, h, foot = 3) => {
     const inst = market[name].clone(true);
-    fitToHeight(inst, h, 3);
+    fitToHeight(inst, h, foot);
     const wrap = new THREE.Group();
     wrap.add(inst);
     wrap.position.set(x, 0.18, z);
     wrap.rotation.y = rot;
     plaza.add(wrap);
+    return wrap;
   };
-  // shelf aisles
+
+  // shell: dollhouse cutaway — walls on the two back edges only,
+  // open front and side so the camera reads the whole shop floor
+  const wallH = 2.1;
+  const span = (count, from, to, fn) => {
+    for (let i = 0; i < count; i++) {
+      fn(from + ((to - from) * i) / (count - 1), i);
+    }
+  };
+  span(8, -6.1, 6.1, (x, i) =>
+    place(i % 3 === 1 ? "wall-window" : "wall", x, -5.6, 0, wallH, 2.1)
+  );
+  span(6, -4.4, 4.6, (z, i) =>
+    place(i % 3 === 2 ? "wall-window" : "wall", 7.1, z, -Math.PI / 2, wallH, 2.1)
+  );
+  place("wall-corner", 7.1, -5.6, 0, wallH, 2.1);
+
+  // coral fascia band along the tops of the two walls
+  const fasciaBack = shadowed(
+    new THREE.Mesh(new RoundedBoxGeometry(PLAZA.w + 0.4, 0.34, 0.5, 1, 0.06), clayMat(C.coral, 0.85))
+  );
+  fasciaBack.position.set(0, wallH + 0.3, -5.6);
+  plaza.add(fasciaBack);
+  const fasciaSide = shadowed(
+    new THREE.Mesh(new RoundedBoxGeometry(0.5, 0.34, PLAZA.d - 1.4, 1, 0.06), clayMat(C.coral, 0.85))
+  );
+  fasciaSide.position.set(7.1, wallH + 0.3, -0.2);
+  plaza.add(fasciaSide);
+
+  // freezer wall along the back, like the reference room
+  place("freezers-standing", 1.4, -4.7, 0, 1.3);
+  place("freezers-standing", 3.6, -4.7, 0, 1.3);
+  place("freezer", -0.8, -4.7, 0, 0.95);
+  place("bottle-return", -5.6, -4.5, 0.3, 1.2);
+
+  // shelf clusters with goods
   for (let r = 0; r < 3; r++) {
-    const z = -3.2 + r * 3.2;
-    place(r === 1 ? "shelf-bags" : "shelf-boxes", -4.5, z, 0, 1.15);
-    place("shelf-boxes", -1.5, z, 0, 1.15);
-    place(r === 2 ? "shelf-bags" : "shelf-boxes", 1.5, z, 0, 1.15);
+    const z = -2.6 + r * 2.2;
+    place(r === 1 ? "shelf-bags" : "shelf-boxes", 0.4, z, 0, 1.15);
+    place("shelf-boxes", 2.6, z, 0, 1.15);
+    place(r === 2 ? "shelf-bags" : "shelf-boxes", 4.8, z, 0, 1.15);
   }
-  // fresh corner + checkout
-  place("display-fruit", 4.8, -3.4, -0.3, 0.95);
-  place("display-bread", 4.8, -1.2, -0.2, 0.95);
-  place("freezers-standing", 4.9, 2.2, Math.PI / 2, 1.25);
-  place("cash-register", -5.6, 4.3, Math.PI / 2, 0.85);
-  place("shopping-cart", -3.4, 4.6, 0.7, 0.6);
-  place("shopping-cart", 3.6, 4.9, -1.2, 0.6);
-  place("character-employee", -5.0, 3.2, 1.2, 0.95);
-  place("character-employee", 0.6, -4.6, -2.0, 0.95);
-  // fences along the back edge
-  for (let f = 0; f < 5; f++) {
-    place("fence", -6 + f * 3, -5.6, 0, 0.8);
-  }
+  place("shelf-end", 5.9, -1.5, Math.PI / 2, 1.0);
+  place("display-fruit", 1.6, 4.0, 0.25, 0.95);
+  place("display-bread", 3.8, 4.2, -0.15, 0.95);
+
+  // checkout lane row, angled like the reference
+  place("cash-register", -4.6, 1.4, Math.PI / 2, 0.85);
+  place("cash-register", -2.8, 0.4, Math.PI / 2, 0.85);
+  place("cash-register", -1.0, -0.6, Math.PI / 2, 0.85);
+
+  // entry gates + baskets near the open corner
+  place("fence", -6.4, 3.4, Math.PI / 2, 0.8);
+  place("fence", -6.4, 1.6, Math.PI / 2, 0.8);
+  place("shopping-basket", -5.2, 4.6, 0.4, 0.4);
+  place("shopping-basket", -4.7, 4.3, 1.1, 0.4);
+  place("shopping-cart", -3.2, 4.8, 0.7, 0.6);
+  place("shopping-cart", 0.6, 5.2, -1.2, 0.6);
+  place("character-employee", -3.6, 1.5, 1.6, 0.95);
+  place("character-employee", 2.4, -3.6, -2.0, 0.95);
+  place("character-employee", -1.4, 4.4, 2.6, 0.95);
+
   plaza.position.set(PLAZA.x, 0, PLAZA.z);
   plaza.rotation.y = PLAZA.rot;
   scene.add(plaza);
@@ -1473,6 +1496,21 @@ async function enhanceWithModels(scene) {
     if (!byName[n]) byName[n] = towerModels[i];
   });
   byName["market-fence"] = market.fence;
+  byName["rack"] = market["freezers-standing"];
+
+  // server-rack aisles on the pad — standing cabinets in tight rows
+  for (let row = 0; row < 2; row++) {
+    for (let k = 0; k < 4; k++) {
+      REGISTRY.stationSpots.push({
+        name: "rack",
+        x: CORE_POS.x - 6.6 + k * 2.0,
+        z: CORE_POS.z + 3.4 - row * 1.9,
+        rot: Math.PI / 2,
+        h: 1.35,
+        foot: 1.9,
+      });
+    }
+  }
   REGISTRY.stationSpots.forEach(({ name, x, z, rot, h, foot }) => {
     const model = byName[name];
     if (!model) return;

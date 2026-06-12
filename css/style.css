@@ -557,11 +557,13 @@ body.menu-open {
   margin-bottom: var(--space-2xl);
 }
 
-/* split-text reveal targets */
+/* split-text reveal targets — bottom padding keeps descenders unclipped */
 .split-word {
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
 }
 
 .split-word > span {
@@ -635,8 +637,8 @@ html.js:not(.reduced-motion) [data-reveal] {
 .hl-line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.08em;
-  margin-bottom: -0.08em;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 
 .hl-line > span {
@@ -898,6 +900,24 @@ html.js:not(.reduced-motion) .hl-line > span {
   padding: var(--space-3xl) 0 calc(var(--space-3xl) * 1.2);
 }
 
+/* soft paper wash so the statement stays legible over the diorama */
+.statement .container {
+  position: relative;
+}
+
+.statement .container::before {
+  content: "";
+  position: absolute;
+  inset: -8% -12%;
+  z-index: -1;
+  background: radial-gradient(
+    75% 70% at 38% 45%,
+    rgba(240, 231, 218, 0.88) 35%,
+    rgba(240, 231, 218, 0) 75%
+  );
+  pointer-events: none;
+}
+
 .statement-text {
   font-family: var(--font-display);
   font-weight: 400;
@@ -982,6 +1002,19 @@ html.js:not(.reduced-motion) .hl-line > span {
 .deploy-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  counter-reset: deploy;
+}
+
+.deploy-card::before {
+  counter-increment: deploy;
+  content: "0" counter(deploy);
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  line-height: 1;
+  color: var(--accent-ink);
+  opacity: 0.45;
+  margin-bottom: var(--space-md);
 }
 
 .deploy-card {
@@ -1035,7 +1068,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 /* About */
 .about {
-  padding: var(--space-2xl) 0;
+  padding: var(--space-2xl) 0 var(--space-xl);
 }
 
 .about-grid {
@@ -1154,11 +1187,12 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 /* Research */
 .research {
-  padding: var(--space-2xl) 0 var(--space-3xl);
+  padding: var(--space-xl) 0 var(--space-3xl);
 }
 
 .paper-card {
   margin-top: var(--space-xl);
+  max-width: 880px;
   padding: clamp(1.6rem, 4vw, 3rem);
   background: rgba(255, 255, 255, 0.4);
   border: 1px solid var(--ink-line);
@@ -1268,7 +1302,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   z-index: 3;
   background: var(--bg-deep);
   color: var(--cream);
-  padding: var(--space-3xl) 0;
+  padding: var(--space-3xl) 0 var(--space-2xl);
 }
 
 .faq-list {
