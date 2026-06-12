@@ -6,7 +6,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
-import { createExperience } from "./experience.js";
+import { createExperience } from "./experience.js?v=2";
 
 document.documentElement.classList.add("js");
 document.documentElement.classList.remove("preload");
