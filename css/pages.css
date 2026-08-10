@@ -963,3 +963,11 @@ tbody th {
     14px 100%;
   background-attachment: local, local, scroll, scroll;
 }
+
+/* The record hub is the heart of the Records diagram: the one surface in the
+   drawing that is not just another box. */
+.loop-hub {
+  fill: var(--copper-50);
+  stroke: var(--copper-300);
+  stroke-width: 1.2;
+}
