@@ -251,16 +251,13 @@ p {
 /* ---------- 5. Prose sections ---------- */
 
 /*
- * Sections are separated tonally, not by rules: even-numbered blocks sit on a
- * slightly darker cream, the way Canva and Figma block their pages with
- * surface colour instead of borders.
+ * Sections are separated by whitespace alone, exactly as the homepage does
+ * it: one clean paper field, with the dark band as the page's single strong
+ * block. Alternating cream tints were tried and read as staining, because
+ * the steps between them were too small to look deliberate.
  */
 .section {
   padding-block: clamp(2.6rem, 6vw, var(--space-2xl));
-}
-
-main > .section:nth-child(even) {
-  background: var(--surface-sunken);
 }
 
 .section-heading {
@@ -430,11 +427,11 @@ main > .section:nth-child(even) {
   }
 }
 
-/* A card is a lighter tile on the cream, with no outline: the surface shift
-   is the boundary. */
+/* A card is a lighter tile on the cream, with no outline: the homepage's own
+   tile recipe, so the two worlds stay identical. */
 .card {
-  background: var(--surface-card);
-  border-radius: var(--radius-tile);
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 16px;
   padding: var(--space-lg) var(--space-lg) var(--space-xl);
 }
 
