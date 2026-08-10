@@ -914,3 +914,24 @@ tbody th {
 .form-outcome[hidden] {
   display: none;
 }
+
+/*
+ * Scroll affordance for wide tables. On narrow screens the comparison table
+ * clips with no visible hint that it moves; these edge shadows appear only
+ * while there is more table in that direction, using the classic
+ * background-attachment trick.
+ */
+.table-scroll {
+  background:
+    linear-gradient(to right, var(--paper) 30%, rgba(240, 231, 218, 0)),
+    linear-gradient(to left, var(--paper) 30%, rgba(240, 231, 218, 0)) 100% 0,
+    radial-gradient(farthest-side at 0 50%, rgba(34, 26, 19, 0.16), transparent),
+    radial-gradient(farthest-side at 100% 50%, rgba(34, 26, 19, 0.16), transparent) 100% 0;
+  background-repeat: no-repeat;
+  background-size:
+    40px 100%,
+    40px 100%,
+    14px 100%,
+    14px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
