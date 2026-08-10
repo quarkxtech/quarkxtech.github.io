@@ -28,8 +28,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/tokens.css?v=3" />
-    <link rel="stylesheet" href="../css/pages.css?v=5" />
-      <script defer src="../js/pages.js?v=1"></script>
+    <link rel="stylesheet" href="../css/pages.css?v=6" />
+      <script defer src="../js/pages.js?v=2"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -69,17 +69,27 @@
           <h2 data-reveal class="section-heading">Three required fields.</h2>
 
           <!--
-            ACTION REQUIRED BEFORE THIS PAGE GOES LIVE.
-            Replace YOUR_FORM_ID below with the endpoint from your Formspree account
-            (formspree.io, free tier covers 50 submissions per month). Until then the
-            form will not deliver anything.
+            Submissions relay through Formspree to contact@quarkx.tech. The form
+            posts natively, so it works without JavaScript; js/pages.js enhances
+            it to keep the visitor on this page and show the outcome inline.
           -->
           <form
             data-reveal
+            data-enhance
             class="form"
-            action="https://formspree.io/f/YOUR_FORM_ID"
+            action="https://formspree.io/f/mwlelyop"
             method="POST"
           >
+            <input type="hidden" name="_subject" value="Brochure request via quarkx.tech" />
+            <!-- Honeypot: hidden from people, filled in by naive bots. -->
+            <input
+              class="gotcha"
+              type="text"
+              name="_gotcha"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
             <div class="field">
               <label for="name">Your name</label>
               <input type="text" id="name" name="name" autocomplete="name" required />
@@ -130,6 +140,22 @@
 
             <button class="button button-ink" type="submit">Request the brochure</button>
           </form>
+
+          <div id="form-success" class="form-outcome" hidden>
+            <p>
+              <strong>Request received.</strong> A person, not an autoresponder,
+              will email the brochure to you shortly. If nothing arrives by
+              tomorrow, write to
+              <a href="mailto:contact@quarkx.tech">contact@quarkx.tech</a>.
+            </p>
+          </div>
+          <div id="form-failure" class="form-outcome form-outcome-error" hidden>
+            <p>
+              <strong>That did not send.</strong> Email
+              <a href="mailto:contact@quarkx.tech">contact@quarkx.tech</a>
+              instead and we will send the brochure by reply.
+            </p>
+          </div>
 
           <p class="note">
             We use your details to send the brochure and to follow up once. Nothing is sold

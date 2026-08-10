@@ -41,3 +41,51 @@
     observer.observe(el);
   });
 })();
+
+/**
+ * Brochure request form.
+ *
+ * The form posts natively to Formspree, so it delivers even without
+ * JavaScript; the visitor just lands on Formspree's confirmation page. With
+ * JavaScript, the submission goes over fetch and the visitor stays here, with
+ * the outcome shown inline in the page's own voice.
+ */
+(function () {
+  "use strict";
+
+  var form = document.querySelector("form[data-enhance]");
+  if (!form || !window.fetch) return;
+
+  var success = document.getElementById("form-success");
+  var failure = document.getElementById("form-failure");
+  var button = form.querySelector('button[type="submit"]');
+  var restingLabel = button ? button.textContent : "";
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    if (button) {
+      button.disabled = true;
+      button.textContent = "Sending";
+    }
+    if (failure) failure.hidden = true;
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" },
+    })
+      .then(function (response) {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        form.hidden = true;
+        if (success) success.hidden = false;
+      })
+      .catch(function () {
+        // Recoverable: the visitor keeps their filled-in form and a way out.
+        if (failure) failure.hidden = false;
+        if (button) {
+          button.disabled = false;
+          button.textContent = restingLabel;
+        }
+      });
+  });
+})();
