@@ -1,12 +1,27 @@
-/* ============================================================
-   QuarkX — app orchestrator
-   Lenis smooth scroll + GSAP ScrollTrigger + WebGL experience
-   ============================================================ */
+/* Copyright (c) 2026 QuarkX Sdn. Bhd. (202501056786 / 1658192-K). All rights reserved. */
+
+/*
+ * Page orchestrator.
+ *
+ * Wires the document to the three systems that animate it: Lenis for smooth
+ * scrolling, GSAP ScrollTrigger for scroll-linked timelines, and the WebGL
+ * experience in js/experience.js.
+ *
+ * Responsibilities:
+ *   - smooth scroll and anchor navigation
+ *   - boot loader and hero intro
+ *   - header, mobile menu and FAQ behaviour
+ *   - the journey scrub that drives the diorama and the step list
+ *   - text reveals, magnetic buttons and the copy-to-clipboard fallback
+ *
+ * Every animated path is gated on prefers-reduced-motion; in reduced mode the
+ * page falls back to native scrolling with content shown in its final state.
+ */
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
-import { createExperience } from "./experience.js?v=2";
+import { createExperience } from "./experience.js?v=3";
 
 document.documentElement.classList.add("js");
 document.documentElement.classList.remove("preload");
@@ -17,14 +32,24 @@ const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 if (reduced) document.documentElement.classList.add("reduced-motion");
 
 /* ---------- smooth scroll ---------- */
+
 let lenis = null;
 if (!reduced) {
   lenis = new Lenis({ lerp: 0.105, wheelMultiplier: 1 });
   lenis.on("scroll", ScrollTrigger.update);
+  // Lenis is driven off the GSAP ticker so scroll and tweens share one clock.
+  // Lag smoothing is disabled because a skipped frame would jump the scrub.
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
 }
 
+/**
+ * Scrolls to an element or absolute offset, through Lenis when it is running.
+ *
+ * @param {Element|number} target Element to scroll to, or a document offset in px.
+ * @param {number} [offset=0] Extra offset applied to the resolved position.
+ * @returns {void}
+ */
 function scrollToTarget(target, offset = 0) {
   if (lenis) {
     lenis.scrollTo(target, { offset, duration: 1.4 });
@@ -37,7 +62,6 @@ function scrollToTarget(target, offset = 0) {
   }
 }
 
-// anchor links
 document.querySelectorAll('a[href^="#"]').forEach((a) => {
   a.addEventListener("click", (e) => {
     const id = a.getAttribute("href");
@@ -46,11 +70,14 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
     if (!el) return;
     e.preventDefault();
     closeMenu();
+    // The journey pins at its own top, so it wants no header offset; every
+    // other section needs clearance for the fixed header.
     scrollToTarget(el, id === "#expertise" ? 1 : -70);
   });
 });
 
 /* ---------- WebGL ---------- */
+
 const canvas = document.getElementById("gl");
 let xp = null;
 try {
@@ -66,20 +93,32 @@ if (!xp) {
 }
 
 /* ---------- loader ---------- */
+
 const loader = document.getElementById("loader");
 const loaderFill = document.getElementById("loader-fill");
 let bootDone = false;
 
+/**
+ * Completes the loading bar, hides the loader and starts the hero intro.
+ *
+ * Safe to call more than once: the first call wins, so the timeout cap and the
+ * font promise can race freely.
+ *
+ * @returns {void}
+ */
 function finishBoot() {
   if (bootDone) return;
   bootDone = true;
   loaderFill.style.width = "100%";
+  // Let the bar visibly reach 100% before the loader fades out.
   setTimeout(() => {
     loader.classList.add("is-done");
     introTimeline();
   }, 380);
 }
 
+// Indeterminate progress: there is nothing meaningful to measure, so the bar
+// creeps to 92% and waits for the real signal to close it out.
 (function fakeProgress() {
   let p = 0;
   const tick = () => {
@@ -95,23 +134,30 @@ Promise.all([
   document.fonts ? document.fonts.ready : Promise.resolve(),
   new Promise((r) => setTimeout(r, 900)),
 ]).then(finishBoot);
-setTimeout(finishBoot, 4000); // hard cap
+setTimeout(finishBoot, 4000); // hard cap: never trap the visitor behind the loader
 
-/* ---------- hero intro ---------- */
+/**
+ * Plays the hero headline and supporting copy in.
+ *
+ * @returns {void}
+ */
 function introTimeline() {
   if (reduced) return;
   const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-  tl.to(".hl-line > span", { y: 0, duration: 1.3, stagger: 0.12 }, 0.1)
-    .to(
-      ".hero [data-reveal], .hero-foot [data-reveal]",
-      { opacity: 1, y: 0, duration: 1.1, stagger: 0.08 },
-      0.55
-    );
+  tl.to(".hl-line > span", { y: 0, duration: 1.3, stagger: 0.12 }, 0.1).to(
+    ".hero [data-reveal], .hero-foot [data-reveal]",
+    { opacity: 1, y: 0, duration: 1.1, stagger: 0.08 },
+    0.55
+  );
 }
 
 /* ---------- header ---------- */
+
 const header = document.getElementById("site-header");
 let lastY = 0;
+
+// Hide on the way down, reveal on the way up. The thresholds are asymmetric so
+// a small upward correction brings the header back but scroll jitter does not.
 function onScrollHeader() {
   const y = window.scrollY;
   header.classList.toggle("is-scrolled", y > 30);
@@ -122,9 +168,15 @@ function onScrollHeader() {
 window.addEventListener("scroll", onScrollHeader, { passive: true });
 
 /* ---------- mobile menu ---------- */
+
 const menuToggle = document.getElementById("menu-toggle");
 const mobileMenu = document.getElementById("mobile-menu");
 
+/**
+ * Closes the mobile menu and takes its links back out of the tab order.
+ *
+ * @returns {void}
+ */
 function closeMenu() {
   menuToggle.setAttribute("aria-expanded", "false");
   menuToggle.setAttribute("aria-label", "Open menu");
@@ -155,11 +207,19 @@ document.addEventListener("keydown", (e) => {
 });
 
 /* ---------- journey scrub ---------- */
+
 const steps = Array.from(document.querySelectorAll(".journey-step"));
 const stepHeads = Array.from(document.querySelectorAll(".step-head"));
 const journeyEl = document.querySelector(".journey");
+const journeyStage = document.getElementById("journey-stage");
 let activeStep = -1;
 
+/**
+ * Marks one journey step as active and collapses the rest.
+ *
+ * @param {number} idx Index of the step to activate.
+ * @returns {void}
+ */
 function setActiveStep(idx) {
   if (idx === activeStep) return;
   activeStep = idx;
@@ -172,16 +232,22 @@ function setActiveStep(idx) {
   });
 }
 
-// step boundaries matched to where the camera actually enters each zone
+// Step boundaries matched to where the camera actually enters each zone, not to
+// even quarters: the district and the plant take longer to cross than the rest.
 const STEP_BOUNDS = [0.36, 0.56, 0.84];
+
+/**
+ * Maps journey progress to the step that should be open.
+ *
+ * @param {number} p Journey progress, 0 to 1.
+ * @returns {number} Step index, 0 to 3.
+ */
 function stepForProgress(p) {
   if (p < STEP_BOUNDS[0]) return 0;
   if (p < STEP_BOUNDS[1]) return 1;
   if (p < STEP_BOUNDS[2]) return 2;
   return 3;
 }
-
-const journeyStage = document.getElementById("journey-stage");
 
 ScrollTrigger.create({
   trigger: journeyEl,
@@ -192,15 +258,16 @@ ScrollTrigger.create({
     const p = self.progress;
     if (xp) xp.setProgress(p);
     setActiveStep(stepForProgress(p));
-    // fade the stage UI out before the statement scrolls in,
-    // so the two sections never overlap
+    // Fade the stage UI out before the statement scrolls in, so the two
+    // sections never overlap.
     const fade = p > 0.92 ? Math.max(0, 1 - (p - 0.92) / 0.06) : 1;
     journeyStage.style.opacity = fade;
     journeyStage.style.pointerEvents = fade < 0.4 ? "none" : "";
   },
 });
 
-// gentle approach before the journey pins (camera already at path start)
+// Scrolling back out above the journey leaves the camera wherever it was, so
+// reset it to the path start explicitly.
 ScrollTrigger.create({
   trigger: journeyEl,
   start: "top bottom",
@@ -210,7 +277,7 @@ ScrollTrigger.create({
   },
 });
 
-// pause rendering when the GL stage is fully covered by opaque sections
+// Pause rendering once the GL stage is fully covered by opaque sections.
 const paperEl = document.querySelector(".paper");
 ScrollTrigger.create({
   trigger: paperEl,
@@ -221,7 +288,7 @@ ScrollTrigger.create({
   },
 });
 
-// clicking a step scrolls to the middle of its segment
+// Clicking a step scrolls to the middle of its segment.
 stepHeads.forEach((head, i) => {
   head.addEventListener("click", () => {
     const rect = journeyEl.getBoundingClientRect();
@@ -234,13 +301,13 @@ stepHeads.forEach((head, i) => {
 });
 
 /* ---------- split text ---------- */
+
+// Each word gets its own overflow-hidden box so it can slide up from behind the
+// line above it, which a single translate on the whole block cannot do.
 document.querySelectorAll("[data-split]").forEach((el) => {
   const words = el.textContent.trim().split(/\s+/);
   el.innerHTML = words
-    .map(
-      (w) =>
-        `<span class="split-word"><span>${w}</span></span>`
-    )
+    .map((w) => `<span class="split-word"><span>${w}</span></span>`)
     .join(" ");
 });
 
@@ -259,7 +326,8 @@ if (!reduced) {
     });
   });
 
-  // statement: words brighten one by one as you scroll (scrubbed)
+  // Statement: words brighten one by one as you scroll, scrubbed rather than
+  // timed, so reading pace and scroll pace stay together.
   const statementWords = document.querySelectorAll(
     ".statement-text .split-word > span"
   );
@@ -282,6 +350,8 @@ if (!reduced) {
   }
 
   /* ---------- generic reveals (outside hero) ---------- */
+
+  // The hero is excluded because its reveals belong to the intro timeline.
   const revealEls = Array.from(
     document.querySelectorAll("[data-reveal]")
   ).filter((el) => !el.closest(".hero"));
@@ -303,11 +373,12 @@ if (!reduced) {
 }
 
 /* ---------- FAQ ---------- */
+
 document.querySelectorAll(".faq-item").forEach((item) => {
   const summary = item.querySelector(".faq-question");
   const answer = item.querySelector(".faq-answer");
   summary.addEventListener("click", (e) => {
-    if (reduced) return; // native toggle
+    if (reduced) return; // let <details> toggle natively
     e.preventDefault();
     if (item.open) {
       gsap.to(answer, {
@@ -316,6 +387,8 @@ document.querySelectorAll(".faq-item").forEach((item) => {
         duration: 0.45,
         ease: "power3.inOut",
         onComplete() {
+          // Close only after the collapse has played, then hand the inline
+          // styles back so the answer can be measured again next time.
           item.open = false;
           answer.style.height = "";
           answer.style.opacity = "";
@@ -341,6 +414,7 @@ document.querySelectorAll(".faq-item").forEach((item) => {
 });
 
 /* ---------- magnetic buttons ---------- */
+
 if (!reduced && window.matchMedia("(pointer: fine)").matches) {
   document.querySelectorAll("[data-magnetic]").forEach((el) => {
     const strength = 0.32;
@@ -356,12 +430,14 @@ if (!reduced && window.matchMedia("(pointer: fine)").matches) {
       });
     });
     el.addEventListener("pointerleave", () => {
+      // Elastic return so the button overshoots home rather than easing to it.
       gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.45)" });
     });
   });
 }
 
-/* ---------- copy email fallback ---------- */
+/* ---------- copy email ---------- */
+
 document.querySelectorAll("[data-copy]").forEach((btn) => {
   const label = btn.textContent;
   let timer = null;
@@ -370,6 +446,8 @@ document.querySelectorAll("[data-copy]").forEach((btn) => {
     try {
       await navigator.clipboard.writeText(text);
     } catch {
+      // The async clipboard API needs a secure context and permission; fall
+      // back to a hidden textarea so the button still works everywhere.
       const ta = document.createElement("textarea");
       ta.value = text;
       ta.setAttribute("readonly", "");

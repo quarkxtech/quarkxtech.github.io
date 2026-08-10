@@ -1,7 +1,44 @@
+/* Copyright (c) 2026 QuarkX Sdn. Bhd. (202501056786 / 1658192-K). All rights reserved. */
+
 /* ============================================================
-   QuarkX — Signal Through the Machine
-   Dark Claude palette · scroll-driven WebGL experience
+   QuarkX: Signal Through the Machine
+   Warm Claude palette, scroll-driven WebGL experience.
+
+   The page runs two worlds. The upper half is transparent paper laid
+   over the WebGL diorama, so its sections carry no background and rely
+   on z-index to stack above the canvas. From ".paper" down the page
+   becomes opaque and the canvas stops rendering entirely.
+
+   Order matters: this file is read top to bottom by the cascade, so
+   sections run from the widest scope (reset, tokens, base elements) to
+   the narrowest (per-section rules), with responsive overrides and the
+   reduced-motion escape hatch last.
+
+   Contents
+     01  Reset and design tokens
+     02  Base elements
+     03  Utilities
+     04  Loader
+     05  WebGL stage
+     06  Header
+     07  Buttons
+     08  Menu toggle and mobile menu
+     09  Shared type
+     10  Hero
+     11  Journey
+     12  Statement
+     13  Paper (light world)
+           13a  Deployments
+           13b  About
+           13c  Research
+     14  FAQ (dark)
+     15  Contact
+     16  Footer
+     17  Responsive
+     18  Reduced motion
    ============================================================ */
+
+/* ============ 01  Reset and design tokens ============ */
 
 *,
 *::before,
@@ -76,6 +113,7 @@
   --header-h: 76px;
 }
 
+/* ============ 02  Base elements ============ */
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -107,6 +145,7 @@ a {
   color: inherit;
 }
 
+/* ============ 03  Utilities ============ */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -144,7 +183,7 @@ a {
   padding-inline: var(--gutter);
 }
 
-/* ============ Loader ============ */
+/* ============ 04  Loader ============ */
 .loader {
   position: fixed;
   inset: 0;
@@ -195,7 +234,30 @@ a {
   color: var(--ink-faint);
 }
 
-/* ============ WebGL stage ============ */
+/* Failsafe dismissal.
+
+   The loader is normally removed by js/app.js, which adds the "js" class on the
+   document element as its first statement. That module imports Three.js, GSAP
+   and Lenis from a CDN, so if the CDN is unreachable the module never executes
+   and no script of ours ever runs: a JavaScript timeout cannot help here. This
+   rule is the only thing that can, and it also covers scripting being disabled
+   outright. Without it the overlay would sit over readable content forever.
+
+   The delay is deliberately generous so it can never race a slow but working
+   load; as soon as app.js runs, the "js" class stops this selector matching and
+   the animation is dropped. */
+html:not(.js) .loader {
+  animation: loader-failsafe 700ms var(--ease) 6s forwards;
+}
+
+@keyframes loader-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ============ 05  WebGL stage ============ */
 .gl-stage {
   position: fixed;
   inset: 0;
@@ -220,8 +282,9 @@ a {
     );
 }
 
+/* Film grain: an animated noise tile, kept subtle so it reads as paper
+   texture rather than as video noise. */
 .gl-stage::after {
-  /* film grain */
   content: "";
   position: absolute;
   inset: -50%;
@@ -239,7 +302,7 @@ a {
   90% { transform: translate(-3%, 6%); }
 }
 
-/* ============ Header ============ */
+/* ============ 06  Header ============ */
 .site-header {
   position: fixed;
   top: 0;
@@ -333,7 +396,7 @@ a {
   gap: var(--space-md);
 }
 
-/* ============ Buttons ============ */
+/* ============ 07  Buttons ============ */
 .btn {
   position: relative;
   display: inline-flex;
@@ -410,7 +473,7 @@ a {
   font-family: var(--font-mono);
 }
 
-/* ============ Menu toggle / mobile menu ============ */
+/* ============ 08  Menu toggle and mobile menu ============ */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -508,7 +571,7 @@ body.menu-open {
   overflow: hidden;
 }
 
-/* ============ Shared type ============ */
+/* ============ 09  Shared type ============ */
 .kicker {
   display: flex;
   align-items: center;
@@ -557,7 +620,7 @@ body.menu-open {
   margin-bottom: var(--space-2xl);
 }
 
-/* split-text reveal targets — bottom padding keeps descenders unclipped */
+/* split-text reveal targets; bottom padding keeps descenders unclipped */
 .split-word {
   display: inline-block;
   overflow: hidden;
@@ -580,7 +643,7 @@ html.js:not(.reduced-motion) [data-reveal] {
   transform: translateY(36px);
 }
 
-/* ============ Hero ============ */
+/* ============ 10  Hero ============ */
 .hero {
   position: relative;
   z-index: 2;
@@ -726,7 +789,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   }
 }
 
-/* ============ Journey ============ */
+/* ============ 11  Journey ============ */
 .journey {
   position: relative;
   z-index: 2;
@@ -893,11 +956,19 @@ html.js:not(.reduced-motion) .hl-line > span {
   box-shadow: 0 0 10px rgba(184, 81, 46, 0.5);
 }
 
-/* ============ Statement ============ */
+/* ============ 12  Statement ============ */
 .statement {
   position: relative;
   z-index: 2;
   padding: var(--space-3xl) 0 calc(var(--space-3xl) * 1.2);
+  /* The paper wash below is inset by a negative percentage so it bleeds past
+     the container on both sides. On wide viewports the right-hand bleed lands
+     outside the viewport and widens the document, which lets the page scroll
+     sideways. Clip at the section edge: the bleed is off-screen and already
+     fully transparent there, so nothing visible is lost. "clip" rather than
+     "hidden" because "hidden" would make this a scroll container and break the
+     sticky journey stage's relationship with the page scroll. */
+  overflow-x: clip;
 }
 
 /* soft paper wash so the statement stays legible over the diorama */
@@ -928,7 +999,6 @@ html.js:not(.reduced-motion) .hl-line > span {
   margin-bottom: var(--space-2xl);
 }
 
-
 .statement-proof {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -956,7 +1026,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   max-width: 34ch;
 }
 
-/* ============ Paper (light world) ============ */
+/* ============ 13  Paper (light world) ============ */
 .paper {
   position: relative;
   z-index: 3;
@@ -994,7 +1064,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   color: var(--paper);
 }
 
-/* Deployments */
+/* ------------ 13a  Deployments ------------ */
 .deployments {
   padding: var(--space-3xl) 0 var(--space-2xl);
 }
@@ -1066,7 +1136,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   color: var(--ink-sec);
 }
 
-/* About */
+/* ------------ 13b  About ------------ */
 .about {
   padding: var(--space-2xl) 0 var(--space-xl);
 }
@@ -1185,7 +1255,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   color: var(--ink-sec);
 }
 
-/* Research */
+/* ------------ 13c  Research ------------ */
 .research {
   padding: var(--space-xl) 0 var(--space-3xl);
 }
@@ -1296,7 +1366,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   color: var(--accent-ink);
 }
 
-/* ============ FAQ (dark) ============ */
+/* ============ 14  FAQ (dark) ============ */
 .faq {
   position: relative;
   z-index: 3;
@@ -1387,7 +1457,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   color: var(--cream-dim);
 }
 
-/* ============ Contact ============ */
+/* ============ 15  Contact ============ */
 .contact {
   position: relative;
   z-index: 3;
@@ -1502,7 +1572,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   gap: var(--space-md);
 }
 
-/* ============ Footer ============ */
+/* ============ 16  Footer ============ */
 .site-footer {
   position: relative;
   z-index: 3;
@@ -1525,7 +1595,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   color: var(--muted);
 }
 
-/* ============ Responsive ============ */
+/* ============ 17  Responsive ============ */
 @media (max-width: 1080px) {
   .about-grid {
     grid-template-columns: 1fr;
@@ -1623,7 +1693,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   }
 }
 
-/* ============ Reduced motion ============ */
+/* ============ 18  Reduced motion ============ */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
