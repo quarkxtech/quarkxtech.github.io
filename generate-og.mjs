@@ -1,5 +1,5 @@
 // One-time: node generate-og.mjs  (deps: npm i opentype.js canvas)
-// Renders assets/og-image.png — 1200x630 social card matching the site look.
+// Renders assets/og-image.png, a 1200x630 social card matching the site look.
 import opentype from "opentype.js";
 import { createCanvas } from "canvas";
 import fs from "node:fs/promises";
@@ -100,7 +100,7 @@ ctx.arc(1140, 322, 90, 0, Math.PI * 2);
 ctx.fill();
 
 // copy
-draw(ctx, mono, "QUARKX — AUTONOMOUS INTELLIGENCE", 84, 130, 19, "#b8512e", 6);
+draw(ctx, mono, "QUARKX \u00b7 AUTONOMOUS INTELLIGENCE", 84, 130, 19, "#b8512e", 6);
 draw(ctx, serif, "Systems that observe,", 80, 240, 74, "#221a13");
 draw(ctx, serif, "reason, and intervene.", 80, 330, 74, "#221a13");
 draw(

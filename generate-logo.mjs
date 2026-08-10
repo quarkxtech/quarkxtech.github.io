@@ -31,7 +31,7 @@ function layout(font, text, x, y, size, ls = 0) {
   return p;
 }
 
-// Measure rightmost ink of a string (not advance) — needed because the 'k'
+// Measure rightmost ink of a string (not advance), needed because the 'k'
 // has an arm that extends past its advance width, and we want the italic X
 // to clear the actual glyph, not the metric box.
 function measureRightInk(font, text, x, size, ls = 0) {
@@ -45,7 +45,7 @@ function measureRightInk(font, text, x, size, ls = 0) {
   return right;
 }
 
-// Measure leftmost ink of a string (italic X has negative side bearing — its
+// Measure leftmost ink of a string (italic X has negative side bearing, its
 // top-left ink can sit left of the pen origin).
 function measureLeftInk(font, text, x, size, ls = 0) {
   let cx = x, left = Infinity;
@@ -66,7 +66,7 @@ function xOriginFor(size, ls, gap) {
   return quarkRight + gap - xLeftAtZero;
 }
 
-// Custom path serializer — opentype.js's toPathData has a NaN bug when
+// Custom path serializer, because opentype.js's toPathData has a NaN bug when
 // a coordinate's fractional part is sub-precision floating-point noise
 // (e.g. 2.77e-17), because it concatenates that into "Ne+3" before parsing.
 // We round ourselves, then format with toFixed, stripping trailing zeros.
@@ -107,7 +107,7 @@ function renderLockupPNG(scale, ink, accent, bg) {
     const p = g.getPath(cx, 60 * scale, fs); p.fill = ink; p.draw(ctx);
     cx += (g.advanceWidth * fs) / reg.unitsPerEm + ls;
   }
-  // X (italic, accent) — origin measured so its left ink clears 'k' by GAP
+  // X (italic, accent): origin measured so its left ink clears 'k' by GAP
   cx = xOriginFor(fs, ls, GAP * scale);
   for (const ch of 'X') {
     const g = ital.charToGlyph(ch);
@@ -149,7 +149,7 @@ function faviconSVG(accent) {
 // ── Write everything ────────────────────────────────────
 const INK = '#1a1410', ACCENT = '#a84432', PAPER = '#f4ece3', ACCENT_DARK = '#c47a4a';
 
-// SVGs (these are the canonical ones for the site — outlined, font-independent)
+// SVGs (these are the canonical ones for the site: outlined, font-independent)
 await fs.writeFile(path.join(OUT, 'quarkx-lockup-light.svg'), lockupSVG(INK, ACCENT));
 await fs.writeFile(path.join(OUT, 'quarkx-lockup-dark.svg'), lockupSVG(PAPER, ACCENT_DARK));
 await fs.writeFile(path.join(OUT, 'favicon-x.svg'), faviconSVG(ACCENT));

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request the Chiller Brochure | QuarkX</title>
+    <meta
+      name="description"
+      content="Request the Chiller product brochure: architecture, design principles, the performance-based commercial model, and how a pilot starts. Sent by a person, not an autoresponder."
+    />
+    <link rel="canonical" href="https://www.quarkx.tech/brochure/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.quarkx.tech/brochure/" />
+    <meta property="og:title" content="Request the Chiller Brochure" />
+    <meta
+      property="og:description"
+      content="Architecture, design principles, and how a pilot starts."
+    />
+    <meta property="og:image" content="https://www.quarkx.tech/assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon-x.svg" />
+    <link rel="apple-touch-icon" href="../assets/favicon-180.png" />
+    <meta name="theme-color" content="#f0e7da" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/tokens.css?v=1" />
+    <link rel="stylesheet" href="../css/pages.css?v=2" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="page-header">
+      <div class="container">
+        <a class="page-logo" href="/" aria-label="QuarkX home">
+          <img src="../assets/quarkx-lockup-light.svg" alt="QuarkX" width="120" height="30" />
+        </a>
+        <nav class="page-nav" aria-label="Primary">
+          <a href="/chiller/">Chiller</a>
+          <a href="/records/">Records</a>
+          <a href="/speaking/">Speaking</a>
+          <a href="/#about">About</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="container">
+          <p class="eyebrow">Brochure</p>
+          <h1>Ask, and a person sends it.</h1>
+          <p class="lede">
+            The Chiller brochure covers the closed-loop architecture, the four design
+            commitments, how the performance-based agreement works, and what a pilot
+            involves. It is not on a download link, because we would rather know who is
+            reading it.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="eyebrow">Request</p>
+          <h2 class="section-heading">Four fields.</h2>
+
+          <!--
+            ACTION REQUIRED BEFORE THIS PAGE GOES LIVE.
+            Replace YOUR_FORM_ID below with the endpoint from your Formspree account
+            (formspree.io, free tier covers 50 submissions per month). Until then the
+            form will not deliver anything.
+          -->
+          <form
+            class="form"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+          >
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required />
+            </div>
+
+            <div class="field">
+              <label for="company">Company</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                autocomplete="organization"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="role">Your role</label>
+              <input type="text" id="role" name="role" autocomplete="organization-title" />
+              <p class="field-hint">
+                Facility manager, engineering head, finance, or something else entirely.
+              </p>
+            </div>
+
+            <div class="field">
+              <label for="email">Work email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+              <p class="field-hint">This is where the brochure goes.</p>
+            </div>
+
+            <div class="field">
+              <label for="interest">What are you looking at?</label>
+              <select id="interest" name="interest">
+                <option value="chiller">Chiller, chiller-plant optimisation</option>
+                <option value="records">Records, paperwork automation</option>
+                <option value="both">Both</option>
+                <option value="unsure">Not sure yet</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="context">Anything useful to know?</label>
+              <textarea id="context" name="context" rows="4"></textarea>
+              <p class="field-hint">
+                Optional. Plant size, document volumes, or the problem that made you look.
+              </p>
+            </div>
+
+            <button class="button button-ink" type="submit">Request the brochure</button>
+          </form>
+
+          <p class="note">
+            We use your details to send the brochure and to follow up once. Nothing is sold
+            or passed on, and asking us to delete your details is a one line email.
+          </p>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="container">
+          <p class="eyebrow" style="color: var(--coral)">Or skip it</p>
+          <h2>If you would rather just talk.</h2>
+          <p>
+            Most engagements start with an exploratory call. No brief needed, and no
+            commitment.
+          </p>
+          <p style="margin-top: 2rem">
+            <a class="button" href="mailto:contact@quarkx.tech">contact@quarkx.tech</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <span class="footer-label">Company</span>
+            <span class="footer-value">QuarkX Sdn. Bhd.</span>
+          </div>
+          <div>
+            <span class="footer-label">Registration</span>
+            <span class="footer-value">202501056786 (1658192-K)</span>
+          </div>
+          <div>
+            <span class="footer-label">Location</span>
+            <span class="footer-value">Kuala Lumpur, Malaysia</span>
+          </div>
+          <div>
+            <span class="footer-label">Contact</span>
+            <span class="footer-value"
+              ><a href="mailto:contact@quarkx.tech">contact@quarkx.tech</a></span
+            >
+          </div>
+        </div>
+        <div class="footer-legal">
+          <span>&copy; 2026 QuarkX Sdn. Bhd. All rights reserved.</span>
+          <span><a href="/" style="color: inherit">quarkx.tech</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

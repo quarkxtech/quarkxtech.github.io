@@ -14,3 +14,12 @@ kenney/
 docs/superpowers/
 internal-specs/
 *-internal.md
+
+# Test output
+test-results/
+playwright-report/
+
+# Local screenshots from verification runs
+*-full.png
+*-mobile.png
+*-loop.png
