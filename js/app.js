@@ -98,6 +98,24 @@ const loader = document.getElementById("loader");
 const loaderFill = document.getElementById("loader-fill");
 let bootDone = false;
 
+// The loader is a first impression, not a toll gate. A visitor arriving at an
+// anchor (a nav tab from a sub-page) or one who has already seen the boot this
+// session goes straight to the page.
+const quickBoot =
+  window.location.hash !== "" ||
+  (() => {
+    try {
+      return sessionStorage.getItem("qx-visited") === "1";
+    } catch (e) {
+      return false;
+    }
+  })();
+try {
+  sessionStorage.setItem("qx-visited", "1");
+} catch (e) {
+  /* private mode: every visit boots like the first */
+}
+
 /**
  * Completes the loading bar, hides the loader and starts the hero intro.
  *
@@ -111,10 +129,13 @@ function finishBoot() {
   bootDone = true;
   loaderFill.style.width = "100%";
   // Let the bar visibly reach 100% before the loader fades out.
-  setTimeout(() => {
-    loader.classList.add("is-done");
-    introTimeline();
-  }, 380);
+  setTimeout(
+    () => {
+      loader.classList.add("is-done");
+      introTimeline();
+    },
+    quickBoot ? 0 : 200,
+  );
 }
 
 // Indeterminate progress: there is nothing meaningful to measure, so the bar
@@ -130,11 +151,15 @@ function finishBoot() {
   tick();
 })();
 
-Promise.all([
-  document.fonts ? document.fonts.ready : Promise.resolve(),
-  new Promise((r) => setTimeout(r, 900)),
-]).then(finishBoot);
-setTimeout(finishBoot, 4000); // hard cap: never trap the visitor behind the loader
+if (quickBoot) {
+  finishBoot();
+} else {
+  Promise.all([
+    document.fonts ? document.fonts.ready : Promise.resolve(),
+    new Promise((r) => setTimeout(r, 450)),
+  ]).then(finishBoot);
+  setTimeout(finishBoot, 2000); // hard cap: never trap the visitor behind the loader
+}
 
 /**
  * Plays the hero headline and supporting copy in.
