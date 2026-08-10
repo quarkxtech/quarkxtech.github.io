@@ -523,13 +523,26 @@ tbody th {
   color: var(--ink-sec);
 }
 
+/* The brochure's comparison marks, filled for present and hollow for absent,
+   centred under centred column heads so the eye reads columns, not words. */
 .yes {
   color: var(--coral-deep);
-  font-weight: 700;
+  font-size: 1.1em;
 }
 
 .no {
   color: var(--ink-faint);
+}
+
+.table-scroll thead th:not(:first-child),
+.table-scroll td:not(:first-child) {
+  text-align: center;
+}
+
+.table-legend {
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  margin-top: var(--space-sm);
 }
 
 /* ---------- 10. Form ---------- */
