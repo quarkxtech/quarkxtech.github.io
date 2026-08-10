@@ -89,3 +89,19 @@
       });
   });
 })();
+
+/**
+ * Preselect the enquiry subject from the URL, so a card that says "Become the
+ * founding partner" lands on a form already set to that conversation.
+ */
+(function () {
+  "use strict";
+
+  var select = document.getElementById("interest");
+  if (!select) return;
+
+  var wanted = new URLSearchParams(window.location.search).get("interest");
+  if (wanted && select.querySelector('option[value="' + wanted + '"]')) {
+    select.value = wanted;
+  }
+})();

@@ -41,7 +41,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
+  /* Content sits one step lighter than the header bar, so the chrome reads
+     as chrome and the page as paper. */
+  background: var(--paper-bright);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: var(--text-base);
@@ -137,13 +139,22 @@ p {
   border-bottom: 1px solid var(--ink-line);
 }
 
-/* The homepage header-inner, metric for metric. */
+/* The homepage header-inner, metric for metric. Its third flex slot (the
+   mobile menu button, zero-width on desktop) is what centres the nav, so a
+   zero-width pseudo-element stands in for it here: without one the nav sits
+   flush right and appears to jump ~300px when crossing between the homepage
+   and a sub-page. */
 .page-header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-lg);
   min-height: var(--header-h);
+}
+
+.page-header .container::after {
+  content: "";
+  width: 0;
 }
 
 .page-logo {
@@ -550,7 +561,7 @@ tbody th {
   font: inherit;
   font-size: var(--text-base);
   color: var(--ink);
-  background: var(--surface-card);
+  background: rgba(255, 255, 255, 0.55);
   border: 1px solid transparent;
   border-radius: 8px;
   padding: 0.7rem 0.85rem;
@@ -927,8 +938,8 @@ tbody th {
  */
 .table-scroll {
   background:
-    linear-gradient(to right, var(--paper) 30%, rgba(240, 231, 218, 0)),
-    linear-gradient(to left, var(--paper) 30%, rgba(240, 231, 218, 0)) 100% 0,
+    linear-gradient(to right, var(--paper-bright) 30%, rgba(248, 243, 235, 0)),
+    linear-gradient(to left, var(--paper-bright) 30%, rgba(248, 243, 235, 0)) 100% 0,
     radial-gradient(farthest-side at 0 50%, rgba(34, 26, 19, 0.16), transparent),
     radial-gradient(farthest-side at 100% 50%, rgba(34, 26, 19, 0.16), transparent) 100% 0;
   background-repeat: no-repeat;

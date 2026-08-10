@@ -6,7 +6,7 @@
     <title>Brochure | QuarkX</title>
     <meta
       name="description"
-      content="Request the QuarkX brochure for Chiller or Records: architecture, design principles, the commercial model, and how a pilot starts. Sent by a person, not a bot."
+      content="Request the Chiller or Records brochure, or propose yourself as founding partner for a QuarkX system in design. Answered by a person, not a bot."
     />
     <link rel="canonical" href="https://www.quarkx.tech/brochure/" />
     <meta property="og:type" content="website" />
@@ -27,9 +27,9 @@
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/tokens.css?v=5" />
-    <link rel="stylesheet" href="../css/pages.css?v=11" />
-      <script defer src="../js/pages.js?v=2"></script>
+    <link rel="stylesheet" href="../css/tokens.css?v=6" />
+    <link rel="stylesheet" href="../css/pages.css?v=12" />
+      <script defer src="../js/pages.js?v=3"></script>
     <!-- Privacy-first analytics: cookieless, so no consent banner is needed.
          Counts the visit and nothing else; fails silently if blocked. -->
     <script
@@ -47,10 +47,11 @@
           <img src="../assets/quarkx-lockup-light.svg" alt="QuarkX" width="132" height="33" />
         </a>
         <nav class="page-nav" aria-label="Primary">
-          <a href="/chiller/">Chiller</a>
-          <a href="/records/">Records</a>
-          <a href="/talks/">Talks</a>
+          <a href="/#products" aria-current="page">Products</a>
+          <a href="/#expertise">Expertise</a>
           <a href="/#about">About</a>
+          <a href="/talks/">Talks</a>
+          <a href="/#faq">FAQ</a>
           <a href="/#contact">Contact</a>
         </nav>
       </div>
@@ -60,11 +61,11 @@
       <section class="page-hero">
         <div class="container">
           <p class="kicker" data-reveal>Brochure</p>
-          <h1 data-reveal>Ask, and a person sends it.</h1>
+          <h1 data-reveal>Ask, and a person answers.</h1>
           <p class="lede" data-reveal>
-            The brochure covers the architecture, the design commitments, how the
-            commercial agreement works, and what a pilot involves. It is not on a
-            download link, because we would rather know who is reading it.
+            Request the Chiller or Records brochure, or put your hand up as the
+            founding partner for one of the systems in design. Either way it
+            lands with a person, not a queue.
           </p>
         </div>
       </section>
@@ -86,7 +87,7 @@
             action="https://formspree.io/f/mwlelyop"
             method="POST"
           >
-            <input type="hidden" name="_subject" value="Brochure request via quarkx.tech" />
+            <input type="hidden" name="_subject" value="Website enquiry via quarkx.tech" />
             <!-- Honeypot: hidden from people, filled in by naive bots. -->
             <input
               class="gotcha"
@@ -123,16 +124,19 @@
             <div class="field">
               <label for="email">Work email</label>
               <input type="email" id="email" name="email" autocomplete="email" required />
-              <p class="field-hint">This is where the brochure goes.</p>
+              <p class="field-hint">This is where the reply goes.</p>
             </div>
 
             <div class="field">
               <label for="interest">Which system are you interested in?</label>
               <select id="interest" name="interest">
-                <option value="chiller">Chiller, chiller-plant optimisation</option>
+                <option value="chiller">Chiller, chiller plant optimisation</option>
                 <option value="records">Records, paperwork automation</option>
-                <option value="both">Both</option>
-                <option value="unsure">Not sure yet</option>
+                <option value="clinical">Founding partner: clinical workflows</option>
+                <option value="agriculture">Founding partner: agriculture</option>
+                <option value="machinery">Founding partner: machinery governance</option>
+                <option value="fnb">Founding partner: F&amp;B demand intelligence</option>
+                <option value="other">Something else</option>
               </select>
             </div>
 
@@ -140,7 +144,8 @@
               <label for="context">Anything useful to know?</label>
               <textarea id="context" name="context" rows="4"></textarea>
               <p class="field-hint">
-                Optional. Plant size, document volumes, or the problem that made you look.
+                Optional. Plant size, document volumes, your farm, clinic or
+                factory, or the problem that made you look.
               </p>
             </div>
 
@@ -164,8 +169,9 @@
           </div>
 
           <p class="note">
-            We use your details to send the brochure and to follow up once. Nothing is sold
-            or passed on, and asking us to delete your details takes a one-line email.
+            We use your details to answer this enquiry and to follow up once.
+            Nothing is sold or passed on, and asking us to delete your details
+            takes a one-line email.
           </p>
         </div>
       </section>
