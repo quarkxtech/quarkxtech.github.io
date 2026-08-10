@@ -1102,20 +1102,23 @@ html.js:not(.reduced-motion) .hl-line > span {
   background: rgba(255, 255, 255, 0.62);
 }
 
-/* Four commitments cannot sit in a three-column grid without stranding one:
-   they get a symmetric two-by-two. */
-#how-we-work .deploy-grid {
+/* Four cards cannot sit in a three-column grid without stranding one: the
+   commitments and the products both get a symmetric two-by-two. */
+#how-we-work .deploy-grid,
+#products .deploy-grid {
   grid-template-columns: repeat(2, 1fr);
 }
 
-/* Product cards end in a link; pinning it to the tile's bottom edge keeps the
-   three buttons on one line no matter how the copy above them wraps. */
-#products .deploy-card {
+/* Cards that end in a link pin it to the tile's bottom edge, so the buttons
+   across a row share one line no matter how the copy above them wraps. */
+#products .deploy-card,
+#deployments .deploy-card {
   display: flex;
   flex-direction: column;
 }
 
-#products .deploy-card > p:last-child {
+#products .deploy-card > p:last-child,
+#deployments .deploy-card > p:last-child {
   margin-top: auto;
   margin-bottom: 0;
   padding-top: var(--space-sm);
@@ -1645,7 +1648,8 @@ html.js:not(.reduced-motion) .hl-line > span {
   }
 
   .deploy-grid,
-  #how-we-work .deploy-grid {
+  #how-we-work .deploy-grid,
+  #products .deploy-grid {
     grid-template-columns: 1fr;
   }
 
