@@ -398,11 +398,36 @@ main > .section:nth-child(even) {
  * came from a different site.
  */
 
+/*
+ * Card grids declare their count. Auto-fit wrapped a four-card set as three
+ * plus a stranded one at laptop widths; explicit counts keep the arrangement
+ * symmetric at every size: four across, then two by two, then a column.
+ */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
   gap: 1rem;
   margin-top: var(--space-lg);
+}
+
+.cards-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cards-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1100px) {
+  .cards-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .cards-3,
+  .cards-4 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* A card is a lighter tile on the cream, with no outline: the surface shift
@@ -420,6 +445,16 @@ main > .section:nth-child(even) {
   line-height: 1.15;
   margin-bottom: var(--space-sm);
   max-width: 16ch;
+}
+
+/* Two reserved heading lines keep every card body in a row starting level,
+   whether its heading wraps or not. Single-column layouts skip this: with
+   nothing beside a card the reservation only leaves a hole. */
+@media (min-width: 721px) {
+  .cards-3 .card h3,
+  .cards-4 .card h3 {
+    min-height: 2.3em;
+  }
 }
 
 .card p {
