@@ -1143,15 +1143,17 @@ html.js:not(.reduced-motion) .hl-line > span {
   color: var(--paper);
 }
 
-/* Inline links inside card copy stay quiet: same ink, a thin underline. */
-.deploy-card p a {
+/* Inline links inside card copy stay quiet: same ink, a thin underline. The
+   :not() guard keeps this off the pill links, whose own styles it was
+   accidentally overriding by specificity. */
+.deploy-card p a:not(.paper-link) {
   color: inherit;
   text-decoration: underline;
   text-decoration-color: var(--coral-bdr);
   text-underline-offset: 3px;
 }
 
-.deploy-card p a:hover {
+.deploy-card p a:not(.paper-link):hover {
   text-decoration-color: var(--coral-deep);
 }
 
