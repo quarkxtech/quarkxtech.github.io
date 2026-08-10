@@ -19,7 +19,5 @@ internal-specs/
 test-results/
 playwright-report/
 
-# Local screenshots from verification runs
-*-full.png
-*-mobile.png
-*-loop.png
+# Local screenshots from verification runs (assets/ is tracked separately)
+/*.png
