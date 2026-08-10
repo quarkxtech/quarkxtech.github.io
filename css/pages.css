@@ -143,25 +143,40 @@ p {
 /*
  * Navigation.
  *
- * A bare colour change gives the pointer nothing to land on, so each item has a
- * padded hit area with a tinted hover. The current page keeps a copper underline
- * rather than a filled pill: it marks position without competing with the
- * primary action further down the page.
+ * The homepage marks links with a hairline underline, so these do the same:
+ * an underline that grows in from the left on hover, solid on the current
+ * page. A tinted pill would read as application chrome on an editorial page.
+ * Padding keeps the touch target generous even though the mark is a line.
  */
 .page-nav a {
   font-size: var(--text-sm);
   font-weight: 500;
   text-decoration: none;
   color: var(--ink-sec);
-  padding: 0.4rem 0.65rem;
-  border-radius: 4px;
+  padding: 0.45rem 0.1rem;
   position: relative;
-  transition: color var(--ease) 180ms, background var(--ease) 180ms;
+  transition: color var(--ease) 180ms;
+}
+
+.page-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.18rem;
+  height: 1.5px;
+  background: var(--copper-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--ease) 220ms;
 }
 
 .page-nav a:hover {
   color: var(--ink);
-  background: var(--copper-50);
+}
+
+.page-nav a:hover::after {
+  transform: scaleX(1);
 }
 
 .page-nav a[aria-current="page"] {
@@ -170,14 +185,8 @@ p {
 }
 
 .page-nav a[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  left: 0.65rem;
-  right: 0.65rem;
-  bottom: 0.05rem;
   height: 2px;
-  border-radius: 1px;
-  background: var(--copper-500);
+  transform: scaleX(1);
 }
 
 /* ---------- 4. Page hero ---------- */
@@ -342,6 +351,11 @@ p {
   .loop-return {
     animation: none;
   }
+  .page-nav a::after,
+  .button,
+  .button::after {
+    transition: none;
+  }
   html {
     scroll-behavior: auto;
   }
@@ -467,7 +481,7 @@ tbody th {
   color: var(--ink);
   background: var(--paper-raised);
   border: 1px solid var(--copper-200);
-  border-radius: 4px;
+  border-radius: 2px;
   padding: 0.7rem 0.85rem;
   transition: border-color var(--ease) 180ms, box-shadow var(--ease) 180ms;
 }
@@ -519,89 +533,82 @@ tbody th {
 /*
  * Buttons.
  *
- * Filled rather than outlined, because an outlined control on a dark ground
- * reads as secondary and these are the primary action on their page. Sentence
- * case rather than uppercase: a button is an instruction, and uppercase costs
- * legibility at this size for no gain.
- *
- * The radius is deliberately small. The rest of the page is square, so anything
- * rounder would read as pasted in from another design.
+ * Flat, like the rest of the page. The homepage's action idiom is the arrow
+ * link ("Read Paper →"), so buttons here are that idiom given a plate: solid
+ * ink on paper, solid cream on the dark band, with a copper arrow that leads.
+ * No shadows: nothing else on this paper casts one, and a shadowed control
+ * reads as pasted in from an application toolkit. Copper appears as accent and
+ * hover wash, never as the slab itself, which kept turning muddy.
  */
 .button {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   font-family: var(--font-body);
   font-size: var(--text-base);
   font-weight: 600;
-  letter-spacing: 0.005em;
+  letter-spacing: 0.01em;
   text-decoration: none;
-  padding: 0.72rem 1.35rem;
-  border: 1px solid transparent;
-  border-radius: 4px;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 2px;
   cursor: pointer;
   transition:
     background var(--ease) 180ms,
-    border-color var(--ease) 180ms,
-    box-shadow var(--ease) 180ms,
+    color var(--ease) 180ms,
     transform var(--ease) 120ms;
 }
 
-/* On the dark band: the lighter coppers hold contrast against near-black. */
-.button {
-  background: var(--copper-400);
-  border-color: var(--copper-400);
-  color: #17110c;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+.button::after {
+  content: "→";
+  font-weight: 400;
+  transition: transform var(--ease) 180ms;
 }
 
-.button:hover {
-  background: var(--copper-300);
-  border-color: var(--copper-300);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+.button:hover::after {
+  transform: translateX(4px);
 }
 
 /* A pressed control should move, or the click feels unacknowledged. */
 .button:active {
   transform: translateY(1px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* On the dark band: a cream plate, warming slightly under the pointer. */
+.button {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.button::after {
+  color: var(--copper-600);
+}
+
+.button:hover {
+  background: var(--copper-100);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--copper-200);
-  outline-offset: 2px;
+  outline: 2px solid var(--copper-300);
+  outline-offset: 3px;
 }
 
-/* On the paper ground the ramp inverts: darker copper for contrast on cream. */
+/* On the paper ground: an ink plate, shifting to maroon under the pointer. */
 .button-ink {
-  background: var(--copper-600);
-  border-color: var(--copper-600);
-  color: var(--paper);
-  box-shadow: 0 1px 2px rgba(34, 26, 19, 0.15);
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.button-ink::after {
+  color: var(--copper-300);
 }
 
 .button-ink:hover {
-  background: var(--copper-700);
-  border-color: var(--copper-700);
-  box-shadow: 0 3px 10px rgba(34, 26, 19, 0.18);
+  background: var(--maroon);
 }
 
 .button-ink:focus-visible {
   outline-color: var(--copper-500);
-}
-
-/* Quiet alternative for a second action beside a primary one. */
-.button-ghost {
-  background: transparent;
-  border-color: var(--copper-200);
-  color: var(--copper-700);
-  box-shadow: none;
-}
-
-.button-ghost:hover {
-  background: var(--copper-50);
-  border-color: var(--copper-300);
-  box-shadow: none;
 }
 
 /* ---------- 12. Footer ---------- */
@@ -726,10 +733,14 @@ tbody th {
  * Cards in a row share a height, but their bodies started at different
  * baselines whenever one heading wrapped to a second line. Reserving two lines
  * of heading puts every body on the same line, which is what the eye reads as
- * aligned. TWO_LINE_HEADING is 2 x the h3 line-height of 1.35.
+ * aligned. 2.7em is 2 lines at the h3 line-height of 1.35. Single-column
+ * layouts skip the reservation: with nothing beside a card, it only leaves a
+ * hole under short headings.
  */
-.card-step h3 {
-  min-height: 2.7em;
+@media (min-width: 720px) {
+  .card-step h3 {
+    min-height: 2.7em;
+  }
 }
 
 /* The step number needs air beneath it, or it reads as part of the heading. */
