@@ -1072,6 +1072,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 .deploy-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
   counter-reset: deploy;
 }
 
@@ -1087,25 +1088,18 @@ html.js:not(.reduced-motion) .hl-line > span {
   margin-bottom: var(--space-md);
 }
 
+/* Cards are lighter tiles on the cream, with no outline: separation is done
+   by the surface shift, not by drawn rules. */
 .deploy-card {
   position: relative;
   padding: var(--space-lg) var(--space-lg) var(--space-xl);
-  border-left: 1px solid var(--ink-line);
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 16px;
   transition: background 400ms ease;
 }
 
-.deploy-card:last-child {
-  border-right: 1px solid var(--ink-line);
-}
-
-/* The products band holds two systems, so it gets two columns; the default
-   three would leave a dangling empty third. */
-#products .deploy-grid {
-  grid-template-columns: repeat(2, 1fr);
-}
-
 .deploy-card:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.62);
 }
 
 .deploy-icon {

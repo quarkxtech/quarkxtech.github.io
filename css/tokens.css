@@ -47,6 +47,16 @@
    * 300 to 400 are the light coppers: accents, hovers, dark-ground text.
    * 500 is the base mark. 600 to 700 carry text contrast on light surfaces.
    */
+  /*
+   * Tonal surfaces. Separation between blocks is done Canva-style, with a
+   * lighter and a darker cream sharing the page, instead of drawn rules.
+   * card sits lighter than the ground; sunken sits darker; both stay within
+   * a few percent of the paper so the page still reads as one sheet.
+   */
+  --surface-card: #f9f3e9;
+  --surface-sunken: #e9decc;
+  --radius-tile: 14px;
+
   --copper-50: #faf1e9;
   --copper-100: #f2ddcc;
   --copper-200: #e6c3a7;

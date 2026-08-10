@@ -216,7 +216,6 @@ p {
 
 .page-hero {
   padding-block: clamp(3rem, 8vw, var(--space-2xl)) var(--space-xl);
-  border-bottom: 1px solid var(--ink-line);
 }
 
 .page-hero h1 {
@@ -251,13 +250,17 @@ p {
 
 /* ---------- 5. Prose sections ---------- */
 
+/*
+ * Sections are separated tonally, not by rules: even-numbered blocks sit on a
+ * slightly darker cream, the way Canva and Figma block their pages with
+ * surface colour instead of borders.
+ */
 .section {
   padding-block: clamp(2.6rem, 6vw, var(--space-2xl));
-  border-bottom: 1px solid var(--ink-line);
 }
 
-.section:last-of-type {
-  border-bottom: 0;
+main > .section:nth-child(even) {
+  background: var(--surface-sunken);
 }
 
 .section-heading {
@@ -398,22 +401,16 @@ p {
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-  gap: 0;
+  gap: 1rem;
   margin-top: var(--space-lg);
 }
 
+/* A card is a lighter tile on the cream, with no outline: the surface shift
+   is the boundary. */
 .card {
-  border-left: 1px solid var(--ink-line);
+  background: var(--surface-card);
+  border-radius: var(--radius-tile);
   padding: var(--space-lg) var(--space-lg) var(--space-xl);
-  transition: background 400ms ease;
-}
-
-.card:last-child {
-  border-right: 1px solid var(--ink-line);
-}
-
-.card:hover {
-  background: rgba(255, 255, 255, 0.35);
 }
 
 .card h3 {
@@ -512,6 +509,8 @@ tbody th {
 
 /* Inputs draw their borders and focus rings from the copper ramp, so the form
    reads as one set of controls in the same family as the buttons beside it. */
+/* Filled fields, no resting outline: the border is reserved for focus, when
+   it carries information. */
 .field input,
 .field select,
 .field textarea {
@@ -519,9 +518,9 @@ tbody th {
   font: inherit;
   font-size: var(--text-base);
   color: var(--ink);
-  background: var(--paper-raised);
-  border: 1px solid var(--copper-200);
-  border-radius: 2px;
+  background: var(--surface-card);
+  border: 1px solid transparent;
+  border-radius: 8px;
   padding: 0.7rem 0.85rem;
   transition: border-color var(--ease) 180ms, box-shadow var(--ease) 180ms;
 }
@@ -529,7 +528,7 @@ tbody th {
 .field input:hover,
 .field select:hover,
 .field textarea:hover {
-  border-color: var(--copper-300);
+  border-color: var(--copper-200);
 }
 
 .field input:focus,
@@ -894,8 +893,8 @@ tbody th {
   max-width: 34rem;
   margin-top: var(--space-lg);
   padding: var(--space-md);
-  border: 1px solid var(--copper-200);
-  background: var(--copper-50);
+  border-radius: var(--radius-tile);
+  background: var(--copper-100);
 }
 
 .form-outcome p {
@@ -907,8 +906,8 @@ tbody th {
 }
 
 .form-outcome-error {
-  border-color: var(--maroon);
   background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--maroon);
 }
 
 .form-outcome[hidden] {
