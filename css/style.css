@@ -1426,6 +1426,34 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .contact-cta {
   margin-bottom: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.copy-email {
+  background: none;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  color: var(--cream-dim);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.3em;
+  transition: color var(--dur-fast) ease;
+}
+
+.copy-email:hover {
+  color: var(--cream);
+}
+
+.copy-email.copied {
+  color: var(--coral-bright);
+  text-decoration: none;
 }
 
 .footer-contact {

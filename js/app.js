@@ -361,4 +361,33 @@ if (!reduced && window.matchMedia("(pointer: fine)").matches) {
   });
 }
 
+/* ---------- copy email fallback ---------- */
+document.querySelectorAll("[data-copy]").forEach((btn) => {
+  const label = btn.textContent;
+  let timer = null;
+  btn.addEventListener("click", async () => {
+    const text = btn.dataset.copy;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      ta.remove();
+    }
+    btn.textContent = "Copied ✓";
+    btn.classList.add("copied");
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      btn.textContent = label;
+      btn.classList.remove("copied");
+    }, 2000);
+  });
+});
+
 ScrollTrigger.refresh();

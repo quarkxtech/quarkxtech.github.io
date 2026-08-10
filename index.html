@@ -14,11 +14,11 @@
       content="Intelligence that intervenes. Engineered at the intersection of Cambridge science and industrial enterprise scale."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://quarkxtech.github.io" />
-    <link rel="canonical" href="https://quarkxtech.github.io/" />
+    <meta property="og:url" content="https://www.quarkx.tech" />
+    <link rel="canonical" href="https://www.quarkx.tech/" />
     <meta
       property="og:image"
-      content="https://quarkxtech.github.io/assets/og-image.png"
+      content="https://www.quarkx.tech/assets/og-image.png"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -34,7 +34,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://quarkxtech.github.io/assets/og-image.png"
+      content="https://www.quarkx.tech/assets/og-image.png"
     />
     <link rel="icon" type="image/svg+xml" href="assets/favicon-x.svg" />
     <link rel="apple-touch-icon" href="assets/favicon-180.png" />
@@ -45,7 +45,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css?v=2" />
+    <link rel="stylesheet" href="css/style.css?v=3" />
     <script type="importmap">
       {
         "imports": {
@@ -57,7 +57,62 @@
         }
       }
     </script>
-    <script type="module" src="js/app.js?v=2"></script>
+    <script type="module" src="js/app.js?v=3"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.quarkx.tech/#organization",
+            "name": "QuarkX",
+            "legalName": "QuarkX Sdn. Bhd.",
+            "alternateName": "QuarkX Technologies",
+            "url": "https://www.quarkx.tech/",
+            "logo": "https://www.quarkx.tech/assets/og-image.png",
+            "email": "contact@quarkx.tech",
+            "description": "QuarkX is an AI systems engineering and consulting firm building autonomous agent systems for physical infrastructure \u2014 industrial optimisation, predictive diagnostics, agentic workflows, and edge-native on-premise deployment.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Kuala Lumpur",
+              "addressCountry": "MY"
+            },
+            "founder": { "@id": "https://www.quarkx.tech/#founder" },
+            "knowsAbout": [
+              "Agentic AI systems",
+              "Industrial automation",
+              "HVAC and chiller plant optimisation",
+              "Predictive maintenance",
+              "On-premise LLM deployment",
+              "Computer vision",
+              "Enterprise workflow automation"
+            ]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://www.quarkx.tech/#founder",
+            "name": "Koay Xian Jing",
+            "jobTitle": "Founder & Principal AI Architect",
+            "worksFor": { "@id": "https://www.quarkx.tech/#organization" },
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "University of Cambridge"
+            },
+            "url": "https://www.quarkx.tech/#about",
+            "sameAs": [
+              "https://www.linkedin.com/in/koay-xian-jing-118200155/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.quarkx.tech/#website",
+            "url": "https://www.quarkx.tech/",
+            "name": "QuarkX",
+            "publisher": { "@id": "https://www.quarkx.tech/#organization" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <!-- Skip link -->
@@ -685,6 +740,9 @@
               data-magnetic
               >contact@quarkx.tech</a
             >
+            <button type="button" class="copy-email" data-copy="contact@quarkx.tech">
+              Copy address
+            </button>
           </div>
         </div>
       </section>
@@ -695,10 +753,8 @@
       <div class="container footer-contact">
         <div class="contact-grid" data-reveal>
           <div class="contact-entry">
-            <span class="contact-label">Phone</span>
-            <span class="contact-value"
-              ><a href="mailto:contact@quarkx.tech">contact@quarkx.tech</a></span
-            >
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Kuala Lumpur, Malaysia</span>
           </div>
           <div class="contact-entry">
             <span class="contact-label">Company</span>
