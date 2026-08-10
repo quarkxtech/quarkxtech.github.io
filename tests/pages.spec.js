@@ -35,9 +35,11 @@ const KNOWN_OVERFLOW = {
 /** Console noise that is expected and not a defect. */
 const IGNORED_CONSOLE = [
   /favicon/i,
-  // The homepage loads Three.js, GSAP and Lenis from a CDN. A blocked CDN is an
-  // environment problem, not a regression in this repository.
+  // The homepage loads Three.js, GSAP and Lenis from a CDN, and every page
+  // loads the analytics beacon. A blocked external host is an environment
+  // problem, not a regression in this repository.
   /cdn\.jsdelivr\.net/i,
+  /gc\.zgo\.at|goatcounter\.com/i,
 ];
 
 for (const route of ROUTES) {
