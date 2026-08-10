@@ -690,33 +690,6 @@ tbody th {
   font-size: var(--text-sm);
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
-  gap: var(--space-lg);
-  padding-bottom: var(--space-lg);
-  border-bottom: 1px solid var(--line);
-}
-
-.footer-label {
-  display: block;
-  font-size: var(--text-xs);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.4rem;
-}
-
-.footer-value a {
-  color: var(--cream);
-  text-decoration: none;
-  border-bottom: 1px solid var(--coral-bdr);
-}
-
-.footer-value a:hover {
-  border-bottom-color: var(--coral);
-}
-
 .footer-legal {
   padding-top: var(--space-md);
   font-size: var(--text-xs);
