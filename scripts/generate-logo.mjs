@@ -3,8 +3,12 @@ import opentype from 'opentype.js';
 import { createCanvas } from 'canvas';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const OUT = 'assets';
+/* Output is resolved against the repository root, not the working directory, so
+   the script produces the same files wherever it is invoked from. */
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const OUT = path.join(REPO_ROOT, 'assets');
 await fs.mkdir(OUT, { recursive: true });
 
 // Fetch Fraunces TTFs (regular 400 + italic 500) from fontsource

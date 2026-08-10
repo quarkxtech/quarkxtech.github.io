@@ -37,6 +37,25 @@
   --copper: #b26c3d;
   --maroon: #7a2f2d;
 
+  /*
+   * Copper ramp. The palette previously held three unrelated warm values, which
+   * left nothing to reach for when a surface needed to be a shade lighter. This
+   * is one hue sampled at even steps, so tints, borders, fills and hovers all
+   * come from the same family.
+   *
+   * 50 to 200 are surfaces and borders on the paper ground.
+   * 300 to 400 are the light coppers: accents, hovers, dark-ground text.
+   * 500 is the base mark. 600 to 700 carry text contrast on light surfaces.
+   */
+  --copper-50: #faf1e9;
+  --copper-100: #f2ddcc;
+  --copper-200: #e6c3a7;
+  --copper-300: #d9a57f;
+  --copper-400: #c68a58;
+  --copper-500: #b26c3d;
+  --copper-600: #99562d;
+  --copper-700: #7c4324;
+
   --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
   --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
 

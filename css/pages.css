@@ -140,19 +140,44 @@ p {
   justify-content: flex-end;
 }
 
+/*
+ * Navigation.
+ *
+ * A bare colour change gives the pointer nothing to land on, so each item has a
+ * padded hit area with a tinted hover. The current page keeps a copper underline
+ * rather than a filled pill: it marks position without competing with the
+ * primary action further down the page.
+ */
 .page-nav a {
   font-size: var(--text-sm);
+  font-weight: 500;
   text-decoration: none;
   color: var(--ink-sec);
-  padding-block: 0.35rem;
-  border-bottom: 1px solid transparent;
-  transition: color var(--ease) 200ms, border-color var(--ease) 200ms;
+  padding: 0.4rem 0.65rem;
+  border-radius: 4px;
+  position: relative;
+  transition: color var(--ease) 180ms, background var(--ease) 180ms;
 }
 
-.page-nav a:hover,
+.page-nav a:hover {
+  color: var(--ink);
+  background: var(--copper-50);
+}
+
 .page-nav a[aria-current="page"] {
   color: var(--ink);
-  border-bottom-color: var(--coral);
+  font-weight: 600;
+}
+
+.page-nav a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0.65rem;
+  right: 0.65rem;
+  bottom: 0.05rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--copper-500);
 }
 
 /* ---------- 4. Page hero ---------- */
@@ -431,6 +456,8 @@ tbody th {
   margin-bottom: 0.35rem;
 }
 
+/* Inputs share the button's radius and the copper ramp, so a form reads as one
+   set of controls rather than a square field beside a rounded button. */
 .field input,
 .field select,
 .field textarea {
@@ -439,17 +466,29 @@ tbody th {
   font-size: var(--text-base);
   color: var(--ink);
   background: var(--paper-raised);
-  border: 1px solid var(--ink-line-strong);
-  border-radius: 0;
+  border: 1px solid var(--copper-200);
+  border-radius: 4px;
   padding: 0.7rem 0.85rem;
+  transition: border-color var(--ease) 180ms, box-shadow var(--ease) 180ms;
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: var(--copper-300);
 }
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: var(--coral-deep);
-  outline: 2px solid var(--coral-soft);
-  outline-offset: 0;
+  outline: none;
+  border-color: var(--copper-500);
+  box-shadow: 0 0 0 3px var(--copper-100);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 6rem;
 }
 
 .field-hint {
@@ -477,35 +516,92 @@ tbody th {
   font-size: var(--text-lg);
 }
 
+/*
+ * Buttons.
+ *
+ * Filled rather than outlined, because an outlined control on a dark ground
+ * reads as secondary and these are the primary action on their page. Sentence
+ * case rather than uppercase: a button is an instruction, and uppercase costs
+ * legibility at this size for no gain.
+ *
+ * The radius is deliberately small. The rest of the page is square, so anything
+ * rounder would read as pasted in from another design.
+ */
 .button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-body);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  letter-spacing: 0.005em;
   text-decoration: none;
-  padding: 0.85rem 1.6rem;
-  border: 1px solid var(--coral);
-  color: var(--cream);
-  background: transparent;
+  padding: 0.72rem 1.35rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background var(--ease) 220ms, color var(--ease) 220ms;
+  transition:
+    background var(--ease) 180ms,
+    border-color var(--ease) 180ms,
+    box-shadow var(--ease) 180ms,
+    transform var(--ease) 120ms;
+}
+
+/* On the dark band: the lighter coppers hold contrast against near-black. */
+.button {
+  background: var(--copper-400);
+  border-color: var(--copper-400);
+  color: #17110c;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 .button:hover {
-  background: var(--coral);
-  color: var(--bg-deep);
+  background: var(--copper-300);
+  border-color: var(--copper-300);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* A pressed control should move, or the click feels unacknowledged. */
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--copper-200);
+  outline-offset: 2px;
+}
+
+/* On the paper ground the ramp inverts: darker copper for contrast on cream. */
 .button-ink {
-  color: var(--ink);
-  border-color: var(--coral-deep);
+  background: var(--copper-600);
+  border-color: var(--copper-600);
+  color: var(--paper);
+  box-shadow: 0 1px 2px rgba(34, 26, 19, 0.15);
 }
 
 .button-ink:hover {
-  background: var(--coral-deep);
-  color: var(--paper);
+  background: var(--copper-700);
+  border-color: var(--copper-700);
+  box-shadow: 0 3px 10px rgba(34, 26, 19, 0.18);
+}
+
+.button-ink:focus-visible {
+  outline-color: var(--copper-500);
+}
+
+/* Quiet alternative for a second action beside a primary one. */
+.button-ghost {
+  background: transparent;
+  border-color: var(--copper-200);
+  color: var(--copper-700);
+  box-shadow: none;
+}
+
+.button-ghost:hover {
+  background: var(--copper-50);
+  border-color: var(--copper-300);
+  box-shadow: none;
 }
 
 /* ---------- 12. Footer ---------- */
@@ -622,4 +718,81 @@ tbody th {
 
 .loop svg {
   min-width: var(--loop-min-width);
+}
+
+/* ---------- 15. Alignment corrections ---------- */
+
+/*
+ * Cards in a row share a height, but their bodies started at different
+ * baselines whenever one heading wrapped to a second line. Reserving two lines
+ * of heading puts every body on the same line, which is what the eye reads as
+ * aligned. TWO_LINE_HEADING is 2 x the h3 line-height of 1.35.
+ */
+.card-step h3 {
+  min-height: 2.7em;
+}
+
+/* The step number needs air beneath it, or it reads as part of the heading. */
+.card-step {
+  padding-top: calc(var(--space-md) + 1.4rem);
+}
+
+/*
+ * The section already draws a rule beneath itself, so the final spec row's
+ * border doubled it with a gap between the two lines.
+ */
+.spec-row:last-child {
+  border-bottom: 0;
+}
+
+/*
+ * Left-aligned values in quarter-width columns left rivers of space between the
+ * attribute and its answers. Narrowing the value columns pulls each answer back
+ * towards the attribute it belongs to.
+ */
+.table-scroll table {
+  max-width: 58rem;
+}
+
+.table-scroll th:not(:first-child),
+.table-scroll td:not(:first-child) {
+  width: 11rem;
+}
+
+/* Spacing that belongs to a call to action, not to a paragraph. */
+.cta-actions {
+  margin-top: var(--space-lg);
+  margin-bottom: 0;
+}
+
+/* The eyebrow sits on the dark ground in a CTA band and needs the lighter tone. */
+.band .eyebrow {
+  color: var(--coral);
+}
+
+/* The footer wordmark is a quiet link, not an emphasised one. */
+.footer-legal a {
+  color: inherit;
+}
+
+/*
+ * A secondary line beneath a call to action. It exists because mailto: does
+ * nothing at all for a visitor with no mail client configured, which is most
+ * people on webmail: the address has to be readable as text, not only clickable.
+ */
+.cta-fallback {
+  margin-top: var(--space-md);
+  margin-bottom: 0;
+  font-size: var(--text-sm);
+  color: var(--cream-dim);
+}
+
+.cta-fallback a {
+  color: var(--cream);
+  border-bottom: 1px solid var(--coral-bdr);
+  text-decoration: none;
+}
+
+.cta-fallback a:hover {
+  border-bottom-color: var(--coral);
 }

@@ -1,8 +1,15 @@
-// One-time: node generate-og.mjs  (deps: npm i opentype.js canvas)
+// One-time: npm run build:og  (deps: npm i opentype.js canvas)
 // Renders assets/og-image.png, a 1200x630 social card matching the site look.
 import opentype from "opentype.js";
 import { createCanvas } from "canvas";
 import fs from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+/* Output is resolved against the repository root, not the working directory, so
+   the script produces the same file wherever it is invoked from. */
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const OG_IMAGE = path.join(REPO_ROOT, "assets", "og-image.png");
 
 const W = 1200;
 const H = 630;
@@ -115,5 +122,5 @@ draw(
 );
 draw(ctx, mono, "QUARKXTECH.GITHUB.IO", 84, 566, 15, "rgba(147,131,111,0.95)", 4);
 
-await fs.writeFile("assets/og-image.png", canvas.toBuffer("image/png"));
-console.log("wrote assets/og-image.png");
+await fs.writeFile(OG_IMAGE, canvas.toBuffer("image/png"));
+console.log(`wrote ${path.relative(REPO_ROOT, OG_IMAGE)}`);
