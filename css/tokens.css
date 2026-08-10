@@ -75,7 +75,8 @@
   --space-xl: 3.5rem;
   --space-2xl: 6rem;
 
-  --max-width: 1180px;
+  --max-width: 1320px;
   --gutter: clamp(1.4rem, 1rem + 3vw, 4.5rem);
+  --header-h: 76px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
