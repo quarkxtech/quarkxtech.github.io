@@ -66,6 +66,7 @@
   --text-xl: clamp(1.35rem, 1.12rem + 0.95vw, 1.8rem);
   --text-2xl: clamp(1.8rem, 1.35rem + 1.9vw, 2.9rem);
   --text-3xl: clamp(2.4rem, 1.7rem + 3.2vw, 4.4rem);
+  --text-4xl: clamp(3rem, 1.9rem + 5.4vw, 6.6rem);
 
   --space-xs: 0.5rem;
   --space-sm: 0.85rem;

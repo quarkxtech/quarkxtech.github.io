@@ -1098,6 +1098,12 @@ html.js:not(.reduced-motion) .hl-line > span {
   border-right: 1px solid var(--ink-line);
 }
 
+/* The products band holds two systems, so it gets two columns; the default
+   three would leave a dangling empty third. */
+#products .deploy-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .deploy-card:hover {
   background: rgba(255, 255, 255, 0.35);
 }

@@ -100,13 +100,31 @@ p {
   outline-offset: 3px;
 }
 
-.eyebrow {
+/*
+ * Kicker: the homepage recipe verbatim, including the short rule before the
+ * text. The rule is what makes it read as a printed section mark rather than a
+ * floating label. The rule inherits currentColor so the same class works on
+ * the dark band, where the kicker brightens to coral.
+ */
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
   font-size: var(--text-xs);
-  letter-spacing: 0.16em;
+  font-weight: 500;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--coral-deep);
-  font-weight: 600;
-  margin: 0 0 var(--space-sm);
+  margin: 0 0 var(--space-lg);
+}
+
+.kicker::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+  flex-shrink: 0;
 }
 
 /* ---------- 3. Header ---------- */
@@ -164,11 +182,11 @@ p {
   left: 0;
   right: 0;
   bottom: 0.18rem;
-  height: 1.5px;
-  background: var(--copper-500);
+  height: 1px;
+  background: var(--coral-deep);
   transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--ease) 220ms;
+  transform-origin: right;
+  transition: transform 350ms var(--ease);
 }
 
 .page-nav a:hover {
@@ -177,6 +195,7 @@ p {
 
 .page-nav a:hover::after {
   transform: scaleX(1);
+  transform-origin: left;
 }
 
 .page-nav a[aria-current="page"] {
@@ -185,7 +204,6 @@ p {
 }
 
 .page-nav a[aria-current="page"]::after {
-  height: 2px;
   transform: scaleX(1);
 }
 
@@ -197,8 +215,10 @@ p {
 }
 
 .page-hero h1 {
-  font-size: var(--text-3xl);
-  max-width: 16ch;
+  font-size: var(--text-4xl);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  max-width: 14ch;
   margin-bottom: var(--space-md);
 }
 
@@ -236,9 +256,10 @@ p {
 }
 
 .section-heading {
-  font-size: var(--text-2xl);
+  font-size: var(--text-3xl);
+  line-height: 1.06;
   margin-bottom: var(--space-md);
-  max-width: 20ch;
+  max-width: 18ch;
 }
 
 .section-lede {
@@ -362,26 +383,41 @@ p {
 }
 
 /* ---------- 8. Cards ---------- */
+/*
+ * The homepage separates its cards with hairline left borders and lets serif
+ * headings carry the weight: columns on paper, not boxes on a screen. Boxed
+ * cards with filled backgrounds were the single loudest tell that these pages
+ * came from a different site.
+ */
 
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-  gap: var(--space-md);
+  gap: 0;
   margin-top: var(--space-lg);
 }
 
 .card {
-  border: 1px solid var(--ink-line);
-  background: var(--paper-raised);
-  padding: var(--space-md);
+  border-left: 1px solid var(--ink-line);
+  padding: var(--space-lg) var(--space-lg) var(--space-xl);
+  transition: background 400ms ease;
+}
+
+.card:last-child {
+  border-right: 1px solid var(--ink-line);
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.35);
 }
 
 .card h3 {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  font-weight: 700;
-  margin-bottom: var(--space-xs);
-  line-height: 1.35;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-xl);
+  line-height: 1.15;
+  margin-bottom: var(--space-sm);
+  max-width: 16ch;
 }
 
 .card p {
@@ -390,21 +426,20 @@ p {
   margin-bottom: 0;
 }
 
-/* Numbered only where the content genuinely is a sequence. */
-.card-step {
-  position: relative;
-  padding-top: calc(var(--space-md) + 0.9rem);
-}
-
+/*
+ * Step numbers use the homepage's numeral treatment: a large translucent serif
+ * figure above the heading. Numbered only where the content genuinely is a
+ * sequence.
+ */
 .card-step::before {
   content: attr(data-step);
-  position: absolute;
-  top: var(--space-md);
-  left: var(--space-md);
-  font-size: var(--text-xs);
-  letter-spacing: 0.14em;
-  color: var(--coral-deep);
-  font-weight: 700;
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  line-height: 1;
+  color: var(--maroon);
+  opacity: 0.45;
+  margin-bottom: var(--space-md);
 }
 
 /* ---------- 9. Comparison table ---------- */
@@ -520,9 +555,10 @@ tbody th {
 }
 
 .band h2 {
-  font-size: var(--text-2xl);
+  font-size: var(--text-3xl);
+  line-height: 1.06;
   margin-bottom: var(--space-md);
-  max-width: 22ch;
+  max-width: 18ch;
 }
 
 .band p {
@@ -531,27 +567,22 @@ tbody th {
 }
 
 /*
- * Buttons.
- *
- * Flat, like the rest of the page. The homepage's action idiom is the arrow
- * link ("Read Paper →"), so buttons here are that idiom given a plate: solid
- * ink on paper, solid cream on the dark band, with a copper arrow that leads.
- * No shadows: nothing else on this paper casts one, and a shadowed control
- * reads as pasted in from an application toolkit. Copper appears as accent and
- * hover wash, never as the slab itself, which kept turning muddy.
+ * Buttons: the homepage's paper-link pill, kept verbatim so an action looks
+ * the same wherever it appears. Ink pill on paper hovering to the accent ink;
+ * inverted to a cream pill on the dark band, hovering to coral. The copper
+ * arrow leads the label and moves on hover.
  */
 .button {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.55rem;
   font-family: var(--font-body);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   font-weight: 600;
-  letter-spacing: 0.01em;
   text-decoration: none;
-  padding: 0.8rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 2px;
+  border-radius: 999px;
   cursor: pointer;
   transition:
     background var(--ease) 180ms,
@@ -574,7 +605,7 @@ tbody th {
   transform: translateY(1px);
 }
 
-/* On the dark band: a cream plate, warming slightly under the pointer. */
+/* Dark band: cream pill, coral under the pointer. */
 .button {
   background: var(--cream);
   color: var(--ink);
@@ -585,18 +616,18 @@ tbody th {
 }
 
 .button:hover {
-  background: var(--copper-100);
+  background: var(--coral);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--copper-300);
+  outline: 2px solid var(--coral);
   outline-offset: 3px;
 }
 
-/* On the paper ground: an ink plate, shifting to maroon under the pointer. */
+/* Paper ground: ink pill, accent ink under the pointer, as on the homepage. */
 .button-ink {
   background: var(--ink);
-  color: var(--cream);
+  color: var(--paper);
 }
 
 .button-ink::after {
@@ -608,7 +639,7 @@ tbody th {
 }
 
 .button-ink:focus-visible {
-  outline-color: var(--copper-500);
+  outline-color: var(--coral-deep);
 }
 
 /* ---------- 12. Footer ---------- */
@@ -709,7 +740,7 @@ tbody th {
 
 /* Long talk and paper titles need more measure than a section label does. */
 .section-heading-wide {
-  max-width: 30ch;
+  max-width: 26ch;
 }
 
 /*
@@ -728,25 +759,6 @@ tbody th {
 }
 
 /* ---------- 15. Alignment corrections ---------- */
-
-/*
- * Cards in a row share a height, but their bodies started at different
- * baselines whenever one heading wrapped to a second line. Reserving two lines
- * of heading puts every body on the same line, which is what the eye reads as
- * aligned. 2.7em is 2 lines at the h3 line-height of 1.35. Single-column
- * layouts skip the reservation: with nothing beside a card, it only leaves a
- * hole under short headings.
- */
-@media (min-width: 720px) {
-  .card-step h3 {
-    min-height: 2.7em;
-  }
-}
-
-/* The step number needs air beneath it, or it reads as part of the heading. */
-.card-step {
-  padding-top: calc(var(--space-md) + 1.4rem);
-}
 
 /*
  * The section already draws a rule beneath itself, so the final spec row's
@@ -776,8 +788,8 @@ tbody th {
   margin-bottom: 0;
 }
 
-/* The eyebrow sits on the dark ground in a CTA band and needs the lighter tone. */
-.band .eyebrow {
+/* On the dark ground the kicker brightens; its rule follows via currentColor. */
+.band .kicker {
   color: var(--coral);
 }
 
@@ -806,4 +818,40 @@ tbody th {
 
 .cta-fallback a:hover {
   border-bottom-color: var(--coral);
+}
+
+/* ---------- 16. Reveal motion ---------- */
+/*
+ * The homepage reveals content as it enters the viewport; these pages do the
+ * same with a small IntersectionObserver in js/pages.js. The script adds
+ * reveal-pending only when it runs and motion is allowed, so without
+ * JavaScript everything is simply visible.
+ */
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 900ms var(--ease),
+    transform 900ms var(--ease);
+}
+
+.reveal-pending.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Siblings arrive as a cascade, not a block. */
+.cards .card:nth-child(2),
+.page-hero [data-reveal]:nth-child(2) {
+  transition-delay: 90ms;
+}
+
+.cards .card:nth-child(3),
+.page-hero [data-reveal]:nth-child(3) {
+  transition-delay: 180ms;
+}
+
+.cards .card:nth-child(4),
+.page-hero [data-reveal]:nth-child(4) {
+  transition-delay: 270ms;
 }

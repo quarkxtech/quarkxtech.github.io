@@ -45,7 +45,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css?v=3" />
+    <link rel="stylesheet" href="css/style.css?v=4" />
     <script type="importmap">
       {
         "imports": {
@@ -150,8 +150,7 @@
           />
         </a>
         <nav class="header-nav" aria-label="Primary navigation">
-          <a href="/chiller/">Chiller</a>
-          <a href="/records/">Records</a>
+          <a href="#products">Products</a>
           <a href="#expertise">Expertise</a>
           <a href="#about">About</a>
           <a href="/talks/">Talks</a>
@@ -182,8 +181,7 @@
     >
       <h2 id="menu-title" class="sr-only">Site navigation</h2>
       <nav class="mobile-menu-nav">
-        <a href="/chiller/" class="mobile-link" tabindex="-1">Chiller</a>
-        <a href="/records/" class="mobile-link" tabindex="-1">Records</a>
+        <a href="#products" class="mobile-link" tabindex="-1">Products</a>
         <a href="#expertise" class="mobile-link" tabindex="-1">Expertise</a>
         <a href="#deployments" class="mobile-link" tabindex="-1">Deployments</a>
         <a href="#about" class="mobile-link" tabindex="-1">About</a>
@@ -348,6 +346,50 @@
 
       <!-- ========== Paper (light) ========== -->
       <div class="paper">
+        <!-- ========== The two systems ========== -->
+        <section class="deployments" id="products" aria-label="Products">
+          <div class="container">
+            <p class="kicker" data-reveal>Products</p>
+            <h2 class="section-heading" data-split>
+              The plant, and the paperwork.
+            </h2>
+            <p class="section-intro" data-reveal>
+              Both are the unglamorous work that keeps an operation running. Both
+              run inside your own walls. Each one started as a build for a single
+              operator and is adapted for the next with the same problem.
+            </p>
+
+            <div class="deploy-grid">
+              <article class="deploy-card" data-reveal>
+                <h3>Chiller</h3>
+                <p>
+                  Autonomous chiller-plant optimisation. Reads your existing
+                  building automation historian, reasons over the data, and
+                  executes supervised control actions back into the plant. No
+                  capital outlay, and revenue starts only against verified
+                  savings. Live on a Malaysian shopping mall.
+                </p>
+                <p>
+                  <a class="paper-link" href="/chiller/">How Chiller works</a>
+                </p>
+              </article>
+              <article class="deploy-card" data-reveal>
+                <h3>Records</h3>
+                <p>
+                  Paperwork automation for factories and SMEs. Reads the
+                  documents that arrive, checks them against what you already
+                  know, and files the result into SAP, your ERP or Excel.
+                  Anything the checks cannot confirm goes to a person rather
+                  than into your records.
+                </p>
+                <p>
+                  <a class="paper-link" href="/records/">How Records works</a>
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <!-- Deployments -->
         <section class="deployments" id="deployments">
           <div class="container">
@@ -619,49 +661,7 @@
           </div>
         </section>
 
-        <!-- ========== The two systems ========== -->
-        <section class="deployments" id="systems" aria-label="Our systems">
-          <div class="container">
-            <p class="kicker" data-reveal>The two systems</p>
-            <h2 class="section-heading" data-split>
-              The plant, and the paperwork.
-            </h2>
-            <p class="section-intro" data-reveal>
-              Both are the unglamorous work that keeps an operation running. Both
-              run inside your own walls. Each one started as a build for a single
-              operator and is adapted for the next with the same problem.
-            </p>
 
-            <div class="deploy-grid">
-              <article class="deploy-card" data-reveal>
-                <h3>Chiller</h3>
-                <p>
-                  Autonomous chiller-plant optimisation. Reads your existing
-                  building automation historian, reasons over the data, and
-                  executes supervised control actions back into the plant. No
-                  capital outlay, and revenue starts only against verified
-                  savings. Live on a Malaysian shopping mall.
-                </p>
-                <p>
-                  <a class="paper-link" href="/chiller/">How Chiller works</a>
-                </p>
-              </article>
-              <article class="deploy-card" data-reveal>
-                <h3>Records</h3>
-                <p>
-                  Paperwork automation for factories and SMEs. Reads the
-                  documents that arrive, checks them against what you already
-                  know, and files the result into SAP, your ERP or Excel.
-                  Anything the checks cannot confirm goes to a person rather
-                  than into your records.
-                </p>
-                <p>
-                  <a class="paper-link" href="/records/">How Records works</a>
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
 
         <!-- ========== How we work ========== -->
         <section class="deployments" id="how-we-work" aria-label="How we work">
