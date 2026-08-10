@@ -1745,3 +1745,49 @@ html.js:not(.reduced-motion) .hl-line > span {
     transition-duration: 0.001s !important;
   }
 }
+
+/* ---------- back to top ---------- */
+/* Mirrors the sub-page control exactly; nobody needs a rocket on the pad. */
+.to-top {
+  position: fixed;
+  right: 1.3rem;
+  bottom: 1.3rem;
+  z-index: 90;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity 220ms var(--ease),
+    transform 220ms var(--ease),
+    background 180ms ease;
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.to-top:hover {
+  background: var(--maroon);
+}
+
+.to-top:focus-visible {
+  outline: 2px solid var(--coral-deep);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .to-top {
+    transition: none;
+  }
+}

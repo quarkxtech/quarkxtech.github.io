@@ -494,3 +494,31 @@ document.querySelectorAll("[data-copy]").forEach((btn) => {
 });
 
 ScrollTrigger.refresh();
+
+/* ---------- back to top ---------- */
+
+// The journey is sixteen screens deep; the way back up should be one press.
+(function backToTop() {
+  const button = document.createElement("button");
+  button.className = "to-top";
+  button.type = "button";
+  button.setAttribute("aria-label", "Back to top");
+  button.textContent = "\u2191";
+  document.body.appendChild(button);
+
+  button.addEventListener("click", () => scrollToTarget(0));
+
+  let ticking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        button.classList.toggle("is-visible", window.scrollY > window.innerHeight);
+        ticking = false;
+      });
+    },
+    { passive: true },
+  );
+})();

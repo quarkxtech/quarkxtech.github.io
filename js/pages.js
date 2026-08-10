@@ -105,3 +105,41 @@
     select.value = wanted;
   }
 })();
+
+/**
+ * Back to top.
+ *
+ * Injected only when the page is long enough to need it, so short pages never
+ * carry a stray control. Without JavaScript the button simply does not exist.
+ */
+(function () {
+  "use strict";
+
+  if (document.documentElement.scrollHeight < window.innerHeight * 1.8) return;
+
+  var button = document.createElement("button");
+  button.className = "to-top";
+  button.type = "button";
+  button.setAttribute("aria-label", "Back to top");
+  button.textContent = "↑";
+  document.body.appendChild(button);
+
+  button.addEventListener("click", function () {
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+  });
+
+  var ticking = false;
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        button.classList.toggle("is-visible", window.scrollY > window.innerHeight);
+        ticking = false;
+      });
+    },
+    { passive: true },
+  );
+})();
