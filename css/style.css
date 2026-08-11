@@ -1873,3 +1873,71 @@ html.js:not(.reduced-motion) .hl-line > span {
     border-bottom-color: var(--ink-line-strong);
   }
 }
+
+/* Eight industry cards read as two rows of four; below the wide breakpoint,
+   two by four; stacked on phones with the existing rule. */
+#products .deploy-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1100px) {
+  #products .deploy-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* The seven flows, set as the datasheet list the deck drew. */
+.flows {
+  list-style: none;
+  margin: var(--space-lg) 0 0;
+  padding: 0;
+  counter-reset: flow;
+  border-top: 1px solid var(--ink-line-strong);
+  max-width: 56rem;
+}
+
+.flows li {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr auto;
+  align-items: baseline;
+  gap: var(--space-md);
+  padding-block: 0.85rem;
+  border-bottom: 1px solid var(--ink-line);
+}
+
+.flows li::before {
+  counter-increment: flow;
+  content: counter(flow);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--accent-ink);
+  opacity: 0.5;
+}
+
+.flow-name {
+  font-weight: 600;
+}
+
+.flow-sub {
+  font-size: var(--text-sm);
+  color: var(--ink-faint);
+  text-align: right;
+}
+
+.section-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--coral-bdr);
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .flows li {
+    grid-template-columns: 2rem 1fr;
+  }
+
+  .flow-sub {
+    grid-column: 2;
+    text-align: left;
+  }
+}

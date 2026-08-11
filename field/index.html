@@ -28,9 +28,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/tokens.css?v=6" />
-    <link rel="stylesheet" href="../css/pages.css?v=19" />
+    <link rel="stylesheet" href="../css/pages.css?v=21" />
     
-      <script defer src="../js/pages.js?v=5"></script>
+      <script defer src="../js/pages.js?v=6"></script>
     <!-- Privacy-first analytics: cookieless, so no consent banner is needed.
          Counts the visit and nothing else; fails silently if blocked. -->
     <script
@@ -55,8 +55,35 @@
           <a href="/#faq">FAQ</a>
           <a href="/contact/">Contact</a>
         </nav>
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span></span><span></span>
+        </button>
       </div>
     </header>
+    <div
+      class="mobile-menu"
+      id="mobile-menu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site navigation"
+      aria-hidden="true"
+    >
+      <nav class="mobile-menu-nav">
+        <a href="/#products" class="mobile-link">Products</a>
+        <a href="/#expertise" class="mobile-link">Expertise</a>
+        <a href="/#about" class="mobile-link">About</a>
+        <a href="/talks/" class="mobile-link">Talks</a>
+        <a href="/#faq" class="mobile-link">FAQ</a>
+        <a href="/contact/" class="mobile-link">Contact</a>
+      </nav>
+    </div>
+
 
     <nav class="product-rail" aria-label="Products">
       <span class="product-rail-label">Systems</span>
@@ -65,6 +92,9 @@
       <a href="/machinery/">Machinery</a>
       <a href="/clinical/">Clinical</a>
       <a href="/field/" aria-current="page">Field</a>
+      <a href="/fnb/">F&amp;B</a>
+      <a href="/logistics/">Logistics</a>
+      <a href="/retail/">Retail</a>
     </nav>
 
     <main id="main">
@@ -87,18 +117,22 @@
         <div class="container">
           <p class="kicker" data-reveal>The problem</p>
           <h2 data-reveal class="section-heading">Where the yield leaks.</h2>
-          <div class="cards cards-3">
+          <div class="cards cards-4">
             <div class="card" data-reveal>
-              <h3>The field is bigger than the team</h3>
-              <p>Settings that decide yield are checked on a rotation, which means most of the estate is unwatched most of the time.</p>
+              <h3>Disease, from a leaf photo</h3>
+              <p>Spotted before it crosses the field, from the phone your foreman already carries.</p>
             </div>
             <div class="card" data-reveal>
-              <h3>The calendar is not the crop</h3>
-              <p>Irrigation and fertiliser follow the schedule that was set, not the weather that came or the soil as it is today.</p>
+              <h3>Yield, predicted</h3>
+              <p>Early enough to sell forward, instead of explaining afterwards.</p>
             </div>
             <div class="card" data-reveal>
-              <h3>The signs arrive late</h3>
-              <p>Stress shows to the eye only after yield is already lost. From above and from the ground, it shows earlier.</p>
+              <h3>Irrigation on soil and forecast</h3>
+              <p>Water decided by the ground and the sky, not by a timer.</p>
+            </div>
+            <div class="card" data-reveal>
+              <h3>Grading by camera</h3>
+              <p>Consistent all day, with no arguments at the weighbridge.</p>
             </div>
           </div>
         </div>

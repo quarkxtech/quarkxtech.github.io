@@ -1132,3 +1132,90 @@ tbody th {
     border-bottom: 1px solid var(--ink-line-strong);
   }
 }
+
+/* The staircase's top step is the only filled box in that drawing: the point
+   of the whole climb. */
+.stair-ai {
+  fill: var(--coral-deep);
+}
+
+.stair-ai-label {
+  fill: var(--paper);
+}
+
+/* ---------- 20. Mobile menu ---------- */
+/* The homepage collapses its nav behind a button on phones; the sub-pages now
+   do the same instead of wrapping six items across the chrome. */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform var(--ease) 220ms, opacity var(--ease) 180ms;
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(3.75px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  transform: translateY(-3.75px) rotate(-45deg);
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  background: var(--paper-bright);
+  padding: calc(var(--header-h) + var(--space-lg)) var(--gutter) var(--space-lg);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--ease) 240ms, visibility 0s 240ms;
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--ease) 240ms;
+}
+
+.mobile-link {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--ink);
+  text-decoration: none;
+  padding-block: 0.8rem;
+  border-bottom: 1px solid var(--ink-line);
+}
+
+@media (max-width: 720px) {
+  .page-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu,
+  .menu-toggle span {
+    transition: none;
+  }
+}

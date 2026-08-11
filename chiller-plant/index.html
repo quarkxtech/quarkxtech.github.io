@@ -28,7 +28,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/tokens.css?v=6" />
-    <link rel="stylesheet" href="../css/pages.css?v=19" />
+    <link rel="stylesheet" href="../css/pages.css?v=21" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -45,7 +45,7 @@
         }
       }
     </script>
-      <script defer src="../js/pages.js?v=5"></script>
+      <script defer src="../js/pages.js?v=6"></script>
     <!-- Privacy-first analytics: cookieless, so no consent banner is needed.
          Counts the visit and nothing else; fails silently if blocked. -->
     <script
@@ -70,8 +70,35 @@
           <a href="/#faq">FAQ</a>
           <a href="/#contact">Contact</a>
         </nav>
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span></span><span></span>
+        </button>
       </div>
     </header>
+    <div
+      class="mobile-menu"
+      id="mobile-menu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site navigation"
+      aria-hidden="true"
+    >
+      <nav class="mobile-menu-nav">
+        <a href="/#products" class="mobile-link">Products</a>
+        <a href="/#expertise" class="mobile-link">Expertise</a>
+        <a href="/#about" class="mobile-link">About</a>
+        <a href="/talks/" class="mobile-link">Talks</a>
+        <a href="/#faq" class="mobile-link">FAQ</a>
+        <a href="/contact/" class="mobile-link">Contact</a>
+      </nav>
+    </div>
+
 
 
     <nav class="product-rail" aria-label="Products">
@@ -81,6 +108,9 @@
       <a href="/machinery/">Machinery</a>
       <a href="/clinical/">Clinical</a>
       <a href="/field/">Field</a>
+      <a href="/fnb/">F&amp;B</a>
+      <a href="/logistics/">Logistics</a>
+      <a href="/retail/">Retail</a>
     </nav>
 
     <main id="main">

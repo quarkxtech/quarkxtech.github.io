@@ -28,7 +28,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/tokens.css?v=6" />
-    <link rel="stylesheet" href="../css/pages.css?v=19" />
+    <link rel="stylesheet" href="../css/pages.css?v=21" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -45,7 +45,7 @@
         }
       }
     </script>
-      <script defer src="../js/pages.js?v=5"></script>
+      <script defer src="../js/pages.js?v=6"></script>
     <!-- Privacy-first analytics: cookieless, so no consent banner is needed.
          Counts the visit and nothing else; fails silently if blocked. -->
     <script
@@ -70,8 +70,35 @@
           <a href="/#faq">FAQ</a>
           <a href="/#contact">Contact</a>
         </nav>
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span></span><span></span>
+        </button>
       </div>
     </header>
+    <div
+      class="mobile-menu"
+      id="mobile-menu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site navigation"
+      aria-hidden="true"
+    >
+      <nav class="mobile-menu-nav">
+        <a href="/#products" class="mobile-link">Products</a>
+        <a href="/#expertise" class="mobile-link">Expertise</a>
+        <a href="/#about" class="mobile-link">About</a>
+        <a href="/talks/" class="mobile-link">Talks</a>
+        <a href="/#faq" class="mobile-link">FAQ</a>
+        <a href="/contact/" class="mobile-link">Contact</a>
+      </nav>
+    </div>
+
 
 
     <nav class="product-rail" aria-label="Products">
@@ -81,6 +108,9 @@
       <a href="/machinery/">Machinery</a>
       <a href="/clinical/">Clinical</a>
       <a href="/field/">Field</a>
+      <a href="/fnb/">F&amp;B</a>
+      <a href="/logistics/">Logistics</a>
+      <a href="/retail/">Retail</a>
     </nav>
 
     <main id="main">
@@ -396,6 +426,41 @@
               <div class="spec-val">The documents accumulate into a record that can be asked questions: which supplier slips, which customer pays late, which product moves. Analysis on your data, inside your walls.</div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="kicker" data-reveal>The staircase</p>
+          <h2 data-reveal class="section-heading">You cannot put AI on paper.</h2>
+          <div class="loop" data-reveal>
+            <svg viewBox="0 0 720 300" role="img" aria-label="The staircase from paper to AI">
+              <rect class="loop-node" x="10" y="216" width="120" height="40" />
+              <text class="loop-label" x="70" y="240" text-anchor="middle">Paper</text>
+              <text class="loop-sub" x="70" y="272" text-anchor="middle">in a drawer</text>
+              <rect class="loop-node" x="150" y="166" width="120" height="40" />
+              <text class="loop-label" x="210" y="190" text-anchor="middle">Digital</text>
+              <text class="loop-sub" x="210" y="222" text-anchor="middle">a scan is still paper</text>
+              <rect class="loop-node" x="290" y="116" width="120" height="40" />
+              <text class="loop-label" x="350" y="140" text-anchor="middle">Collected</text>
+              <text class="loop-sub" x="350" y="172" text-anchor="middle">in one place</text>
+              <rect class="loop-node" x="430" y="66" width="120" height="40" />
+              <text class="loop-label" x="490" y="90" text-anchor="middle">Connected</text>
+              <text class="loop-sub" x="490" y="122" text-anchor="middle">talks to itself</text>
+              <rect class="stair-ai" x="570" y="16" width="130" height="40" rx="4" />
+              <text class="loop-label stair-ai-label" x="635" y="40" text-anchor="middle">Then AI</text>
+              <text class="loop-sub" x="635" y="72" text-anchor="middle">now it can think</text>
+              <path class="loop-edge" d="M 130 226 L 150 196" />
+              <path class="loop-edge" d="M 270 176 L 290 146" />
+              <path class="loop-edge" d="M 410 126 L 430 96" />
+              <path class="loop-edge" d="M 550 76 L 570 46" />
+            </svg>
+          </div>
+          <p class="note">
+            You cannot skip a step. And AI cannot read a logbook in a drawer.
+            Wherever your operation stands on the staircase, the pipeline
+            starts there.
+          </p>
         </div>
       </section>
 

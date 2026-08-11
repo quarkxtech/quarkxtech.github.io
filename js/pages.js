@@ -181,3 +181,32 @@
     { passive: true },
   );
 })();
+
+/**
+ * Mobile menu, mirroring the homepage: the button swaps to a cross, the menu
+ * covers the page, and any link, the button or Escape closes it.
+ */
+(function () {
+  "use strict";
+
+  var toggle = document.getElementById("menu-toggle");
+  var menu = document.getElementById("mobile-menu");
+  if (!toggle || !menu) return;
+
+  function setOpen(open) {
+    toggle.setAttribute("aria-expanded", String(open));
+    menu.setAttribute("aria-hidden", String(!open));
+    menu.classList.toggle("is-open", open);
+    document.documentElement.style.overflow = open ? "hidden" : "";
+  }
+
+  toggle.addEventListener("click", function () {
+    setOpen(toggle.getAttribute("aria-expanded") !== "true");
+  });
+  menu.addEventListener("click", function (event) {
+    if (event.target.closest("a")) setOpen(false);
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") setOpen(false);
+  });
+})();
