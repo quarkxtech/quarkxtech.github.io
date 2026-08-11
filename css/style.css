@@ -1803,3 +1803,18 @@ html.js:not(.reduced-motion) .hl-line > span {
     max-width: none;
   }
 }
+
+/* Quiet email fallback beside the contact button: mailto cannot be the only
+   door, but it should not be the loudest either. */
+.contact-mail {
+  font-size: var(--text-sm);
+  color: var(--cream-dim);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.3em;
+  align-self: center;
+}
+
+.contact-mail:hover {
+  color: var(--cream);
+}
