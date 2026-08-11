@@ -120,7 +120,7 @@ draw(
   "rgba(95,81,71,0.95)",
   4
 );
-draw(ctx, mono, "QUARKXTECH.GITHUB.IO", 84, 566, 15, "rgba(147,131,111,0.95)", 4);
+draw(ctx, mono, "QUARKX.TECH", 84, 566, 15, "rgba(147,131,111,0.95)", 4);
 
 await fs.writeFile(OG_IMAGE, canvas.toBuffer("image/png"));
 console.log(`wrote ${path.relative(REPO_ROOT, OG_IMAGE)}`);

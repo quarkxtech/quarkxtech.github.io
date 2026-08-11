@@ -765,17 +765,6 @@ tbody th {
     grid-template-columns: 1fr;
     gap: 0.3rem;
   }
-
-  /* Stacked columns are no longer columns. The homepage swaps its hairlines
-     from left edges to top rules when its grids stack; these cards follow,
-     which also removes the 2rem indent against the rest of the page. */
-  .card,
-  .card:last-child {
-    border-left: 0;
-    border-right: 0;
-    border-top: 1px solid var(--ink-line);
-    padding: var(--space-lg) 0;
-  }
 }
 
 /* ---------- 14. Utilities ---------- */
