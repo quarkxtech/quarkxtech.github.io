@@ -91,19 +91,21 @@
 })();
 
 /**
- * Preselect the enquiry subject from the URL, so a card that says "Become the
- * founding partner" lands on a form already set to that conversation.
+ * Preselect the enquiry form from the URL: the door the visitor came through
+ * already said what they want and which world it concerns, so the form
+ * arrives filled in rather than asking again.
  */
 (function () {
   "use strict";
 
-  var select = document.getElementById("interest");
-  if (!select) return;
-
-  var wanted = new URLSearchParams(window.location.search).get("interest");
-  if (wanted && select.querySelector('option[value="' + wanted + '"]')) {
-    select.value = wanted;
-  }
+  var params = new URLSearchParams(window.location.search);
+  ["interest", "request"].forEach(function (id) {
+    var select = document.getElementById(id);
+    var wanted = params.get(id);
+    if (select && wanted && select.querySelector('option[value="' + wanted + '"]')) {
+      select.value = wanted;
+    }
+  });
 })();
 
 /**
