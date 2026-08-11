@@ -119,9 +119,9 @@
           <p class="kicker" data-reveal>Chiller plant optimisation</p>
           <h1 data-reveal>The plant runs itself.</h1>
           <p class="lede" data-reveal>
-            The system reads your existing building automation historian, reasons over the
-            data, and executes supervised control actions back into the plant.
-            Continuously, on-premise, around the clock.
+            It reads your existing building automation historian and executes
+            supervised control actions back into the plant. Continuously,
+            on-premise, around the clock.
           </p>
           <div class="hero-meta" data-reveal>
             <span><strong>Software only.</strong> No equipment replacement</span>
@@ -136,39 +136,39 @@
           <p class="kicker" data-reveal>The problem</p>
           <h2 data-reveal class="section-heading">Your biggest electrical load is tuned by hand, once.</h2>
           <p class="section-lede" data-reveal>
-            In most malls, hotels, hospitals, offices and data centres, the chiller
-            plant is the single largest consumer of electricity in the building. Very
-            few of them are running anywhere near their best operating point.
+            In most malls, hotels, hospitals and data centres, the chiller plant
+            is the building's single largest electrical load. Very few run
+            anywhere near their best operating point.
           </p>
           <div class="cards cards-4">
             <div class="card" data-reveal>
               <h3>Too many variables, too few operators</h3>
               <p>
-                Chiller staging, condenser water setpoint, pump speed, cooling-tower fan
-                logic. The best combination changes with load and weather, several times an
-                hour. No team can retune that continuously.
+                Staging, setpoints, pump speed, fan logic: the best combination
+                changes with load and weather several times an hour. No team can
+                retune that continuously.
               </p>
             </div>
             <div class="card" data-reveal>
               <h3>Automation schedules are frozen at commissioning</h3>
               <p>
-                Building automation systems run sequences written years ago. They cannot
-                learn from the historian, and they do not adapt to load drift, ageing
-                equipment or seasonal change.
+                Automation systems run sequences written years ago. They do not
+                adapt to load drift, ageing equipment or seasonal change.
               </p>
             </div>
             <div class="card" data-reveal>
               <h3>The data is already there, unread</h3>
               <p>
-                Plants log thousands of points per minute into a historian. The optimisation
-                signal is sitting in that database. The control system never sees it.
+                Plants log thousands of points a minute into a historian. The
+                optimisation signal is in that database; the control system
+                never sees it.
               </p>
             </div>
             <div class="card" data-reveal>
               <h3>Retrofit cannot be justified</h3>
               <p>
-                Replacing chillers or upgrading the automation platform is a capital project
-                with months of disruption. For most owners the payback never clears the bar.
+                Replacing chillers is a capital project with months of
+                disruption. For most owners the payback never clears the bar.
               </p>
             </div>
           </div>
@@ -180,8 +180,9 @@
           <p class="kicker" data-reveal>What it does</p>
           <h2 data-reveal class="section-heading">It closes the loop.</h2>
           <p class="section-lede" data-reveal>
-            Most building analytics products stop at a recommendation on a dashboard, and
-            leave the acting to a person who is busy. This system completes the circuit.
+            Most analytics products stop at a dashboard recommendation and
+            leave the acting to a busy person. This system completes the
+            circuit.
           </p>
 
           <!--
@@ -192,66 +193,82 @@
             so 45 is the vertical centre used by the connecting arrows.
           -->
           <div class="loop" data-reveal>
-            <svg viewBox="0 0 720 168" role="img" aria-labelledby="loop-title loop-desc">
-              <title id="loop-title">The the system control loop</title>
-              <desc id="loop-desc">
-                Sensors in the building automation system feed a historian database. The system
-                reads the historian, computes an optimisation, and passes it to a supervised
-                control layer, which executes approved actions back into the building
-                automation system, closing the loop.
-              </desc>
+            <svg viewBox="0 0 760 470" role="img" aria-label="The plant system architecture">
               <defs>
-                <marker
-                  id="arrow"
-                  viewBox="0 0 10 10"
-                  refX="9"
-                  refY="5"
-                  markerWidth="6"
-                  markerHeight="6"
-                  orient="auto-start-reverse"
-                >
+                <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                   <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(34,26,19,0.45)" />
                 </marker>
-                <marker
-                  id="arrow-coral"
-                  viewBox="0 0 10 10"
-                  refX="9"
-                  refY="5"
-                  markerWidth="6"
-                  markerHeight="6"
-                  orient="auto-start-reverse"
-                >
+                <marker id="arc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                   <path d="M 0 0 L 10 5 L 0 10 z" fill="#b8512e" />
                 </marker>
               </defs>
 
-              <rect class="loop-node" x="10" y="18" width="160" height="54" />
-              <text class="loop-label" x="90" y="42" text-anchor="middle">Automation system</text>
-              <text class="loop-sub" x="90" y="58" text-anchor="middle">sensors and controllers</text>
+              <rect class="loop-node" x="40" y="14" width="140" height="44" />
+              <text class="loop-label" x="110" y="32" text-anchor="middle">The historian</text>
+              <text class="loop-sub" x="110" y="46" text-anchor="middle">temps, flows, power</text>
 
-              <rect class="loop-node" x="190" y="18" width="160" height="54" />
-              <text class="loop-label" x="270" y="42" text-anchor="middle">Historian</text>
-              <text class="loop-sub" x="270" y="58" text-anchor="middle">time-series database</text>
+              <rect class="loop-node" x="40" y="70" width="140" height="44" />
+              <text class="loop-label" x="110" y="88" text-anchor="middle">The building</text>
+              <text class="loop-sub" x="110" y="102" text-anchor="middle">complaints, tickets</text>
 
-              <rect class="loop-node" x="370" y="18" width="160" height="54" />
-              <text class="loop-label" x="450" y="42" text-anchor="middle">The optimiser</text>
-              <text class="loop-sub" x="450" y="58" text-anchor="middle">optimisation engine</text>
+              <rect class="loop-node" x="40" y="126" width="140" height="44" />
+              <text class="loop-label" x="110" y="144" text-anchor="middle">The weather</text>
+              <text class="loop-sub" x="110" y="158" text-anchor="middle">load, before it arrives</text>
 
-              <rect class="loop-node" x="550" y="18" width="160" height="54" />
-              <text class="loop-label" x="630" y="42" text-anchor="middle">Supervised control</text>
-              <text class="loop-sub" x="630" y="58" text-anchor="middle">checked, logged, reversible</text>
+              <rect class="loop-node" x="220" y="70" width="140" height="44" />
+              <text class="loop-label" x="290" y="88" text-anchor="middle">The optimiser</text>
+              <text class="loop-sub" x="290" y="102" text-anchor="middle">ML plus plant physics</text>
 
-              <path class="loop-edge" d="M 170 45 H 186" marker-end="url(#arrow)" />
-              <path class="loop-edge" d="M 350 45 H 366" marker-end="url(#arrow)" />
-              <path class="loop-edge" d="M 530 45 H 546" marker-end="url(#arrow)" />
+              <rect class="loop-node" x="400" y="70" width="140" height="44" />
+              <text class="loop-label" x="470" y="88" text-anchor="middle">Validation</text>
+              <text class="loop-sub" x="470" y="102" text-anchor="middle">mechanically checked</text>
 
-              <path
-                class="loop-return"
-                d="M 630 72 V 122 H 90 V 76"
-                marker-end="url(#arrow-coral)"
-              />
-              <text class="loop-return-label" x="360" y="142" text-anchor="middle">
-                APPROVED ACTIONS EXECUTED BACK INTO THE PLANT
+              <rect class="loop-node loop-node-review" x="580" y="70" width="170" height="44" />
+              <text class="loop-label" x="665" y="88" text-anchor="middle">Your engineers gate it</text>
+              <text class="loop-sub" x="665" y="102" text-anchor="middle">documented bands, reversible</text>
+
+              <path class="loop-edge" d="M 180 36 H 200 V 84 H 216" marker-end="url(#ar)" />
+              <path class="loop-edge" d="M 180 92 H 216" marker-end="url(#ar)" />
+              <path class="loop-edge" d="M 180 148 H 200 V 100 H 216" marker-end="url(#ar)" />
+              <path class="loop-edge" d="M 360 92 H 396" marker-end="url(#ar)" />
+              <path class="loop-return" d="M 540 92 H 576" marker-end="url(#arc)" />
+
+              <rect class="loop-hub" x="40" y="186" width="710" height="60" />
+              <text class="loop-label" x="395" y="212" text-anchor="middle">The plant record</text>
+              <text class="loop-sub" x="395" y="228" text-anchor="middle">every reading, action and outcome, in your plant room</text>
+
+              <path class="loop-edge" d="M 470 114 V 182" marker-end="url(#ar)" />
+              <path class="loop-return" d="M 665 114 V 182" marker-end="url(#arc)" />
+
+              <rect class="loop-node" x="40" y="300" width="130" height="54" />
+              <text class="loop-label" x="105" y="322" text-anchor="middle">Setpoints</text>
+              <text class="loop-sub" x="105" y="338" text-anchor="middle">tuned every few minutes</text>
+
+              <rect class="loop-node" x="185" y="300" width="130" height="54" />
+              <text class="loop-label" x="250" y="322" text-anchor="middle">Monitoring</text>
+              <text class="loop-sub" x="250" y="338" text-anchor="middle">drift and anomalies</text>
+
+              <rect class="loop-node" x="330" y="300" width="130" height="54" />
+              <text class="loop-label" x="395" y="322" text-anchor="middle">Work orders</text>
+              <text class="loop-sub" x="395" y="338" text-anchor="middle">drafted for approval</text>
+
+              <rect class="loop-node" x="475" y="300" width="130" height="54" />
+              <text class="loop-label" x="540" y="322" text-anchor="middle">Complaints</text>
+              <text class="loop-sub" x="540" y="338" text-anchor="middle">ticket to action</text>
+
+              <rect class="loop-node" x="620" y="300" width="130" height="54" />
+              <text class="loop-label" x="685" y="322" text-anchor="middle">Verified savings</text>
+              <text class="loop-sub" x="685" y="338" text-anchor="middle">independent settlement</text>
+
+              <path class="loop-edge" d="M 105 246 V 296" marker-end="url(#ar)" />
+              <path class="loop-edge" d="M 250 246 V 296" marker-end="url(#ar)" />
+              <path class="loop-edge" d="M 395 246 V 296" marker-end="url(#ar)" />
+              <path class="loop-edge" d="M 540 246 V 296" marker-end="url(#ar)" />
+              <path class="loop-edge" d="M 685 246 V 296" marker-end="url(#ar)" />
+
+              <path class="loop-return" d="M 685 354 V 402 H 14 V 216 H 34" marker-end="url(#arc)" />
+              <text class="loop-return-label" x="395" y="432" text-anchor="middle">
+                OUTCOMES RETURN TO THE RECORD: THE PLANT TEACHES ITS OPTIMISER
               </text>
             </svg>
           </div>
@@ -281,11 +298,11 @@
             </div>
             <div class="spec-row">
               <div class="spec-key">Optimisation</div>
-              <div class="spec-val">Machine learning combined with physics-grounded models, covering chiller sequencing, condenser water setpoint, pump control, storage charge and discharge, and cooling-tower fan logic.</div>
+              <div class="spec-val">Machine learning with physics-grounded models: chiller sequencing, condenser setpoints, pumps, storage, cooling-tower fans.</div>
             </div>
             <div class="spec-row">
               <div class="spec-key">Independent check</div>
-              <div class="spec-val">Every decision is evaluated separately before it is permitted to act. Nothing reviews its own output.</div>
+              <div class="spec-val">Every decision is evaluated separately before it may act. Nothing reviews its own output.</div>
             </div>
             <div class="spec-row">
               <div class="spec-key">Control layer</div>
@@ -303,32 +320,31 @@
             <div class="card card-step" data-reveal data-step="01">
               <h3>Data sovereignty by default</h3>
               <p>
-                Operational data stays on your infrastructure. the system runs fully
-                on-premise, and engineer access is via encrypted link under named accounts.
+                Operational data stays on your infrastructure. Fully on-premise,
+                with engineer access over an encrypted link under named
+                accounts.
               </p>
             </div>
             <div class="card card-step" data-reveal data-step="02">
               <h3>Mechanically validated control</h3>
               <p>
-                Every control action is checked against the working rules of the mechanical
-                engineering practice we partner with, built on more than 25 years of
-                hands-on chiller plant work. Nothing ships without a sound mechanical
-                reason.
+                Every action is checked against the working rules of our partner
+                mechanical practice, built on more than 25 years of hands-on
+                chiller work. Nothing ships without a sound mechanical reason.
               </p>
             </div>
             <div class="card card-step" data-reveal data-step="03">
               <h3>Supervised and reversible</h3>
               <p>
-                The loop runs under named supervision with documented intervention bands.
-                Every action is logged, and your team can pause or reverse any of them at
-                any time.
+                Every action is logged and stays inside documented intervention
+                bands. Your team can pause or reverse any of them at any time.
               </p>
             </div>
             <div class="card card-step" data-reveal data-step="04">
               <h3>Measurement before action</h3>
               <p>
-                Instrumentation goes in before anything is changed. The baseline is agreed
-                with you in writing and benchmarked by an independent reviewer at
+                Instrumentation goes in before anything changes. The baseline is
+                agreed in writing and verified by an independent reviewer at
                 settlement.
               </p>
             </div>
@@ -341,9 +357,8 @@
           <p class="kicker" data-reveal>Commercials</p>
           <h2 data-reveal class="section-heading">If we save nothing, you pay nothing.</h2>
           <p class="section-lede" data-reveal>
-            It is deployed under a performance-based agreement. There is no capital
-            outlay, and you are only ever invoiced against savings that an independent
-            reviewer has verified.
+            No capital outlay. You are only ever invoiced against savings an
+            independent reviewer has verified.
           </p>
           <div class="table-scroll" data-reveal>
             <table>
@@ -406,11 +421,11 @@
           </div>
           <p class="note table-legend" aria-hidden="true">● included &nbsp; ❍ absent</p>
           <p class="note">
-            Published industry studies place the realisable saving from optimised
-            chiller-plant control at 10 to 25 percent of plant electricity, with no hardware
-            change. That is an industry figure, not a QuarkX result. What your plant can
-            actually achieve is established by baseline measurement before any commitment is
-            made.
+            Published industry studies place the saving from optimised
+            chiller-plant control at 10 to 25 percent of plant electricity, with
+            no hardware change. That is an industry figure, not a QuarkX result.
+            Your plant's number is established by baseline measurement before
+            any commitment.
           </p>
         </div>
       </section>
@@ -420,9 +435,9 @@
           <p class="kicker" data-reveal>Next step</p>
           <h2 data-reveal>Send us a month of historian data.</h2>
           <p>
-            That is usually enough to tell you whether your plant has room worth
-            chasing, and enough for a free first-pass proposal. If there is no
-            room, we will say that instead.
+            Usually enough to tell whether your plant has room worth chasing,
+            and enough for a free first-pass proposal. If there is no room, we
+            will say so.
           </p>
           <p class="cta-actions" data-reveal>
             <a
