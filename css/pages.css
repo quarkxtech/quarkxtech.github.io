@@ -1342,3 +1342,15 @@ tbody th {
   border-bottom: 1.5px solid var(--copper-500);
   width: fit-content;
 }
+
+/* The one photograph on the site: real proof, in the tile language. */
+.talk-photo {
+  margin: var(--space-lg) 0 0;
+}
+
+.talk-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-tile);
+  display: block;
+}
