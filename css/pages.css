@@ -137,7 +137,9 @@ p {
 .page-header {
   position: sticky;
   top: 0;
-  z-index: 20;
+  /* Above the mobile menu overlay (z 90), as on the homepage: the toggle is
+     the close button, so the header must ride over the menu it opens. */
+  z-index: 100;
   background: transparent;
   border-bottom: 1px solid transparent;
   transition:
