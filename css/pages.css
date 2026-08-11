@@ -147,8 +147,12 @@ p {
 }
 
 .page-header.is-solid {
-  background: var(--paper);
-  border-bottom-color: var(--ink-line);
+  /* A floating material rather than an opaque bar; the soft shadow is the
+     scroll edge, not a drawn divider. */
+  background: rgba(240, 231, 218, 0.72);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 1px 0 rgba(34, 26, 19, 0.06), 0 8px 24px rgba(34, 26, 19, 0.05);
 }
 
 .page-header.is-hidden {
@@ -1096,5 +1100,35 @@ tbody th {
 
   .card h3 {
     max-width: none;
+  }
+}
+
+/* Press feedback on the press itself, instant and physical. */
+.button:active {
+  transform: translateY(1px) scale(0.98);
+  transition-duration: 100ms;
+}
+
+.paper-link:active,
+.to-top:active {
+  transform: scale(0.97);
+  transition-duration: 100ms;
+}
+
+/* Users who ask for less transparency or more contrast get exactly that. */
+@media (prefers-reduced-transparency: reduce) {
+  .page-header.is-solid {
+    background: var(--paper);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .page-header.is-solid {
+    background: var(--paper);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom: 1px solid var(--ink-line-strong);
   }
 }

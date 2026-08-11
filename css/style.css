@@ -317,10 +317,13 @@ html:not(.js) .loader {
 }
 
 .site-header.is-scrolled {
-  background: rgba(240, 231, 218, 0.86);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  border-bottom-color: var(--ink-line);
+  /* A floating material, not an opaque bar: content slides underneath, and a
+     soft scroll-edge shadow replaces a hard divider. */
+  background: rgba(240, 231, 218, 0.72);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  border-bottom-color: transparent;
+  box-shadow: 0 1px 0 rgba(34, 26, 19, 0.06), 0 8px 24px rgba(34, 26, 19, 0.05);
 }
 
 .site-header.is-hidden {
@@ -1843,4 +1846,30 @@ html.js:not(.reduced-motion) .hl-line > span {
   font-size: var(--text-sm);
   color: var(--ink-faint);
   max-width: 62ch;
+}
+
+/* Press feedback lives on the press itself: instant, and released with ease. */
+.paper-link:active,
+.btn:active,
+.to-top:active {
+  transform: scale(0.97);
+  transition-duration: 100ms;
+}
+
+/* Translucency and contrast are user signals, not aesthetics to insist on. */
+@media (prefers-reduced-transparency: reduce) {
+  .site-header.is-scrolled {
+    background: var(--paper);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .site-header.is-scrolled {
+    background: var(--paper);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom-color: var(--ink-line-strong);
+  }
 }
