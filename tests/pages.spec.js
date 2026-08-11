@@ -11,7 +11,7 @@
 const { test, expect } = require("@playwright/test");
 
 /** Every indexable route, kept in step with sitemap.xml. */
-const ROUTES = ["/", "/chiller-plant/", "/paperwork/", "/talks/", "/contact/"];
+const ROUTES = ["/", "/chiller-plant/", "/paperwork/", "/clinical/", "/field/", "/machinery/", "/talks/", "/contact/"];
 
 /**
  * Viewports chosen to bracket the layout: the narrowest phone we support, the
