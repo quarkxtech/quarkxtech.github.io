@@ -1104,8 +1104,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 /* Four cards cannot sit in a three-column grid without stranding one: the
    commitments and the products both get a symmetric two-by-two. */
-#how-we-work .deploy-grid,
-#products .deploy-grid {
+#how-we-work .deploy-grid {
   grid-template-columns: repeat(2, 1fr);
 }
 
@@ -1662,8 +1661,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   }
 
   .deploy-grid,
-  #how-we-work .deploy-grid,
-  #products .deploy-grid {
+  #how-we-work .deploy-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1817,4 +1815,32 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .contact-mail:hover {
   color: var(--cream);
+}
+
+/* A card is one target: the cover link makes the whole tile navigate, while
+   the pill keeps its own destination by sitting above the cover. */
+.deploy-card .card-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 16px;
+}
+
+.deploy-card .paper-link {
+  position: relative;
+  z-index: 2;
+}
+
+/* Anchored cards land clear of the fixed header. */
+#clinical,
+#field {
+  scroll-margin-top: calc(var(--header-h) + 2rem);
+}
+
+/* The provenance note under the products grid. */
+.section-note {
+  margin-top: var(--space-lg);
+  font-size: var(--text-sm);
+  color: var(--ink-faint);
+  max-width: 62ch;
 }

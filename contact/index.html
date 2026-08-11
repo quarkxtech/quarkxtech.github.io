@@ -132,11 +132,26 @@
             </div>
 
             <div class="field">
-              <label for="interest">Which system are you interested in?</label>
+              <label for="request">What are you asking for?</label>
+              <select id="request" name="request">
+                <option value="brochure">The product brochure</option>
+                <option value="proposal">A free first-pass proposal</option>
+              </select>
+              <p class="field-hint">
+                Proposals need your volumes or plant size in the message below.
+              </p>
+            </div>
+
+            <div class="field">
+              <label for="interest">Which area is this about?</label>
               <select id="interest" name="interest">
-                <option value="plant">Chiller plant optimisation</option>
-                <option value="paperwork">Paperwork automation</option>
-                <option value="other">Something else entirely</option>
+                <option value="cre">Commercial real estate and hotels</option>
+                <option value="trading">Trading and distribution</option>
+                <option value="factories">Factories and heavy industry</option>
+                <option value="clinical">Healthcare and clinics</option>
+                <option value="agriculture">Agriculture and palm oil</option>
+                <option value="fnb">Food and beverage</option>
+                <option value="other">Others</option>
               </select>
             </div>
 

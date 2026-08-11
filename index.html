@@ -45,7 +45,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css?v=12" />
+    <link rel="stylesheet" href="css/style.css?v=14" />
     <script type="importmap">
       {
         "imports": {
@@ -191,7 +191,6 @@
       <nav class="mobile-menu-nav">
         <a href="#products" class="mobile-link" tabindex="-1">Products</a>
         <a href="#expertise" class="mobile-link" tabindex="-1">Expertise</a>
-        <a href="#deployments" class="mobile-link" tabindex="-1">Deployments</a>
         <a href="#about" class="mobile-link" tabindex="-1">About</a>
         <a href="/talks/" class="mobile-link" tabindex="-1">Talks</a>
         <a href="#faq" class="mobile-link" tabindex="-1">FAQ</a>
@@ -356,67 +355,26 @@
 
       <!-- ========== Paper (light) ========== -->
       <div class="paper">
-        <!-- ========== The two systems ========== -->
-        <section class="deployments" id="products" aria-label="Products">
-          <div class="container">
-            <p class="kicker" data-reveal>Products</p>
-            <h2 class="section-heading" data-split>
-              The plant, and the paperwork.
-            </h2>
-            <p class="section-intro" data-reveal>
-              The first is live in production; the second is being scoped with its
-              first operator. Each is built for a single operator and adapted
-              for the next with the same problem. Have a bottleneck that is
-              neither? That is usually where the next system comes from: we
-              design against your brief, and the brief stays yours.
-            </p>
 
-            <div class="deploy-grid">
-              <article class="deploy-card" data-reveal>
-                <h3>The plant system</h3>
-                <p>
-                  Autonomous chiller-plant optimisation. Reads your existing
-                  building automation historian, reasons over the data, and
-                  executes supervised control actions back into the plant. No
-                  capital outlay, and you pay only from independently verified
-                  savings. Live at a Malaysian shopping mall.
-                </p>
-                <p>
-                  <a class="paper-link" href="/chiller-plant/">Inside the system</a>
-                </p>
-              </article>
-              <article class="deploy-card" data-reveal>
-                <h3>The paperwork system</h3>
-                <p>
-                  Paperwork automation for factories and SMEs. Reads the
-                  documents that arrive, checks them against what you already
-                  know, and files the result into SAP, your ERP, or Excel.
-                  Anything the checks cannot confirm goes to a person rather
-                  than into your records.
-                </p>
-                <p>
-                  <a class="paper-link" href="/paperwork/">Inside the system</a>
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
 
         <!-- Deployments -->
-        <section class="deployments" id="deployments">
+        <section class="deployments" id="products">
           <div class="container">
-            <p class="kicker" data-reveal>Where this applies</p>
+            <p class="kicker" data-reveal>Products</p>
             <h2 class="section-heading" data-split>
               Built for the places where downtime actually costs something.
             </h2>
             <p class="section-intro" data-reveal>
               We build bespoke agentic systems that directly control and
-              optimise physical infrastructure. These are the environments the
-              same architecture is built for.
+              optimise physical infrastructure. Two are running or in scoping,
+              two are designs of ours published ahead of any client, and the
+              door is open for the problem that is none of these: we design
+              against your brief, and the brief stays yours.
             </p>
 
             <div class="deploy-grid">
               <article class="deploy-card" data-reveal>
+                <a class="card-cover" href="/chiller-plant/" aria-label="See the plant system"></a>
                 <div class="deploy-icon" aria-hidden="true">
                   <svg
                     width="28"
@@ -447,10 +405,15 @@
                   review as the only manual step, in malls and premium hotels.
                 </p>
                 <p>
-                  <a class="paper-link" href="/chiller-plant/">See the plant system</a>
+                  <a class="paper-link" href="/contact/">Bring us the problem</a>
                 </p>
               </article>
-              <article class="deploy-card" data-reveal>
+              <article class="deploy-card" data-reveal id="field">
+                <a
+                  class="card-cover"
+                  href="/contact/?interest=agriculture"
+                  aria-label="Bring us a farm or estate problem"
+                ></a>
                 <div class="deploy-icon" aria-hidden="true">
                   <svg
                     width="28"
@@ -468,13 +431,20 @@
                     <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
                   </svg>
                 </div>
+            <p class="section-note" data-reveal>
+              What a client brings us is never published: your brief stays
+              yours. The designs above are our own, dated here before any
+              engagement.
+            </p>
                 <h3>Agriculture and palm oil</h3>
                 <p>
-                  Remote terrain is where cloud AI gives up. The same
-                  on-premise architecture applies to ground-sensor monitoring,
-                  palm oil operations, and livestock environments such as
-                  commercial dairy, where yield is won or lost in the daily
-                  settings.
+                  An estate's yield is decided by daily settings nobody can
+                  watch everywhere: water, soil, weather, plant health. In
+                  design, ahead of any client: ground sensors and imagery
+                  feeding one picture, with irrigation, fertiliser and
+                  treatment responding to the field instead of the calendar.
+                  Born from research mapping 100,000 forest canopies from the
+                  air.
                 </p>
                 <p>
                   <a
@@ -485,6 +455,7 @@
                 </p>
               </article>
               <article class="deploy-card" data-reveal>
+                <a class="card-cover" href="/paperwork/" aria-label="See the paperwork system"></a>
                 <div class="deploy-icon" aria-hidden="true">
                   <svg
                     width="28"
@@ -520,6 +491,7 @@
                 </p>
               </article>
               <article class="deploy-card" data-reveal>
+                <a class="card-cover" href="/paperwork/" aria-label="See the paperwork system"></a>
                 <div class="deploy-icon" aria-hidden="true">
                   <svg
                     width="28"
@@ -538,17 +510,22 @@
                 </div>
                 <h3>Trading and distribution</h3>
                 <p>
-                  shipping documents, delivery orders, customs forms: the trade
+                  Invoices, delivery orders, customs forms: the trade
                   runs on paper that someone retypes into the system of record.
                   The first the paperwork system deployment is being scoped here, with a
                   Malaysian trading company that keys exactly this paper by
                   hand today.
                 </p>
                 <p>
-                  <a class="paper-link" href="/paperwork/">See the paperwork system</a>
+                  <a class="paper-link" href="/contact/">Bring us the problem</a>
                 </p>
               </article>
-              <article class="deploy-card" data-reveal>
+              <article class="deploy-card" data-reveal id="clinical">
+                <a
+                  class="card-cover"
+                  href="/contact/?interest=clinical"
+                  aria-label="Bring us a clinical workflow problem"
+                ></a>
                 <div class="deploy-icon" aria-hidden="true">
                   <svg
                     width="28"
@@ -565,10 +542,12 @@
                 </div>
                 <h3>Healthcare and clinics</h3>
                 <p>
-                  Consult notes, referrals, case conferences: medicine runs on
-                  documentation that steals clinical time from patients. The
-                  same on-premise discipline applies: records that never leave
-                  the building, and a person gating every action.
+                  A doctor loses the first minutes of every consult to the
+                  file and the evening to writing it up. In design, ahead of
+                  any client: a brief from internal records before the patient
+                  sits down, the conversation transcribed into a structured
+                  summary, and several specialists' findings aggregated into
+                  one conclusion. Records never leave the hospital.
                 </p>
                 <p>
                   <a
@@ -579,6 +558,7 @@
                 </p>
               </article>
               <article class="deploy-card" data-reveal>
+                <a class="card-cover" href="/chiller-plant/" aria-label="See the plant system"></a>
                 <div class="deploy-icon" aria-hidden="true">
                   <svg
                     width="28"

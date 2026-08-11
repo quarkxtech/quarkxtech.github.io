@@ -157,12 +157,13 @@
           </p>
 
           <!--
-            Diagram geometry. viewBox is 760 wide. Top row: three intake
-            sources (h 44, x 10) feed Understanding (x 190) then Validation
-            (x 370), whose uncertain items rise to the review node (x 570).
-            The record hub spans the full width at y 186. Five outcome lanes
-            (w 136, pitch 151, y 300) draw from the hub, and the coral return
-            path carries outcomes back into the record at the left edge.
+            Diagram geometry. viewBox is 760 wide with x 0 to 28 reserved as
+            the return channel, so the outcome path has air on both sides
+            instead of hugging the edge or crossing a box. Boxes start at
+            x 40. Intake column w 140; process row w 140 at y 70; the record
+            hub spans 40 to 750 at y 186; five lanes w 130 on a 145 pitch at
+            y 300. The return leaves the last lane, travels the channel, and
+            enters the record's left edge at its vertical centre, y 216.
           -->
           <div class="loop" data-reveal>
             <svg viewBox="0 0 760 470" role="img" aria-labelledby="sloop-title sloop-desc">
@@ -174,8 +175,8 @@
                 client's walls. From that record flow five lanes: filing into
                 the system of record, replies drafted and sent only after
                 approval, purchasing signals, supplier comparison, and
-                forecasts. Outcomes return to the record, so the system learns
-                the operation it serves.
+                forecasts. Outcomes travel a reserved channel back into the
+                record, so the system learns the operation it serves.
               </desc>
               <defs>
                 <marker
@@ -202,75 +203,75 @@
                 </marker>
               </defs>
 
-              <rect class="loop-node" x="10" y="14" width="150" height="44" />
-              <text class="loop-label" x="85" y="32" text-anchor="middle">Paper and photos</text>
-              <text class="loop-sub" x="85" y="46" text-anchor="middle">scans, faxes, the floor</text>
+              <rect class="loop-node" x="40" y="14" width="140" height="44" />
+              <text class="loop-label" x="110" y="32" text-anchor="middle">Paper and photos</text>
+              <text class="loop-sub" x="110" y="46" text-anchor="middle">scans, faxes, the floor</text>
 
-              <rect class="loop-node" x="10" y="70" width="150" height="44" />
-              <text class="loop-label" x="85" y="88" text-anchor="middle">Email</text>
-              <text class="loop-sub" x="85" y="102" text-anchor="middle">attachments, threads</text>
+              <rect class="loop-node" x="40" y="70" width="140" height="44" />
+              <text class="loop-label" x="110" y="88" text-anchor="middle">Email</text>
+              <text class="loop-sub" x="110" y="102" text-anchor="middle">attachments, threads</text>
 
-              <rect class="loop-node" x="10" y="126" width="150" height="44" />
-              <text class="loop-label" x="85" y="144" text-anchor="middle">System events</text>
-              <text class="loop-sub" x="85" y="158" text-anchor="middle">orders, deliveries, sales</text>
+              <rect class="loop-node" x="40" y="126" width="140" height="44" />
+              <text class="loop-label" x="110" y="144" text-anchor="middle">System events</text>
+              <text class="loop-sub" x="110" y="158" text-anchor="middle">orders, deliveries, sales</text>
 
-              <rect class="loop-node" x="200" y="70" width="150" height="44" />
-              <text class="loop-label" x="275" y="88" text-anchor="middle">Understanding</text>
-              <text class="loop-sub" x="275" y="102" text-anchor="middle">fields, tables, intent</text>
+              <rect class="loop-node" x="220" y="70" width="140" height="44" />
+              <text class="loop-label" x="290" y="88" text-anchor="middle">Understanding</text>
+              <text class="loop-sub" x="290" y="102" text-anchor="middle">fields, tables, intent</text>
 
-              <rect class="loop-node" x="390" y="70" width="150" height="44" />
-              <text class="loop-label" x="465" y="88" text-anchor="middle">Validation</text>
-              <text class="loop-sub" x="465" y="102" text-anchor="middle">against your records</text>
+              <rect class="loop-node" x="400" y="70" width="140" height="44" />
+              <text class="loop-label" x="470" y="88" text-anchor="middle">Validation</text>
+              <text class="loop-sub" x="470" y="102" text-anchor="middle">against your records</text>
 
               <rect class="loop-node loop-node-review" x="580" y="70" width="170" height="44" />
               <text class="loop-label" x="665" y="88" text-anchor="middle">A person decides</text>
               <text class="loop-sub" x="665" y="102" text-anchor="middle">whenever it is unsure</text>
 
-              <path class="loop-edge" d="M 160 36 H 180 V 84 H 196" marker-end="url(#arrow2)" />
-              <path class="loop-edge" d="M 160 92 H 196" marker-end="url(#arrow2)" />
-              <path class="loop-edge" d="M 160 148 H 180 V 100 H 196" marker-end="url(#arrow2)" />
-              <path class="loop-edge" d="M 350 92 H 386" marker-end="url(#arrow2)" />
+              <path class="loop-edge" d="M 180 36 H 200 V 84 H 216" marker-end="url(#arrow2)" />
+              <path class="loop-edge" d="M 180 92 H 216" marker-end="url(#arrow2)" />
+              <path class="loop-edge" d="M 180 148 H 200 V 100 H 216" marker-end="url(#arrow2)" />
+              <path class="loop-edge" d="M 360 92 H 396" marker-end="url(#arrow2)" />
               <path class="loop-return" d="M 540 92 H 576" marker-end="url(#arrow2-coral)" />
 
-              <rect class="loop-hub" x="10" y="186" width="740" height="60" />
-              <text class="loop-label" x="380" y="212" text-anchor="middle">The operational record</text>
-              <text class="loop-sub" x="380" y="228" text-anchor="middle">every document, decision and outcome, inside your walls</text>
+              <rect class="loop-hub" x="40" y="186" width="710" height="60" />
+              <text class="loop-label" x="395" y="212" text-anchor="middle">The operational record</text>
+              <text class="loop-sub" x="395" y="228" text-anchor="middle">every document, decision and outcome, inside your walls</text>
 
-              <path class="loop-edge" d="M 465 114 V 182" marker-end="url(#arrow2)" />
+              <path class="loop-edge" d="M 470 114 V 182" marker-end="url(#arrow2)" />
               <path class="loop-return" d="M 665 114 V 182" marker-end="url(#arrow2-coral)" />
 
-              <rect class="loop-node" x="10" y="300" width="136" height="54" />
-              <text class="loop-label" x="78" y="322" text-anchor="middle">System of record</text>
-              <text class="loop-sub" x="78" y="338" text-anchor="middle">SAP, ERP, Excel</text>
+              <rect class="loop-node" x="40" y="300" width="130" height="54" />
+              <text class="loop-label" x="105" y="322" text-anchor="middle">System of record</text>
+              <text class="loop-sub" x="105" y="338" text-anchor="middle">SAP, ERP, Excel</text>
 
-              <rect class="loop-node" x="161" y="300" width="136" height="54" />
-              <text class="loop-label" x="229" y="322" text-anchor="middle">Drafted replies</text>
-              <text class="loop-sub" x="229" y="338" text-anchor="middle">sent after approval</text>
+              <rect class="loop-node" x="185" y="300" width="130" height="54" />
+              <text class="loop-label" x="250" y="322" text-anchor="middle">Drafted replies</text>
+              <text class="loop-sub" x="250" y="338" text-anchor="middle">sent after approval</text>
 
-              <rect class="loop-node" x="312" y="300" width="136" height="54" />
-              <text class="loop-label" x="380" y="322" text-anchor="middle">Purchasing</text>
-              <text class="loop-sub" x="380" y="338" text-anchor="middle">stock before it runs out</text>
+              <rect class="loop-node" x="330" y="300" width="130" height="54" />
+              <text class="loop-label" x="395" y="322" text-anchor="middle">Purchasing</text>
+              <text class="loop-sub" x="395" y="338" text-anchor="middle">stock before it runs out</text>
 
-              <rect class="loop-node" x="463" y="300" width="136" height="54" />
-              <text class="loop-label" x="531" y="322" text-anchor="middle">Suppliers</text>
-              <text class="loop-sub" x="531" y="338" text-anchor="middle">quotes on like terms</text>
+              <rect class="loop-node" x="475" y="300" width="130" height="54" />
+              <text class="loop-label" x="540" y="322" text-anchor="middle">Suppliers</text>
+              <text class="loop-sub" x="540" y="338" text-anchor="middle">quotes on like terms</text>
 
-              <rect class="loop-node" x="614" y="300" width="136" height="54" />
-              <text class="loop-label" x="682" y="322" text-anchor="middle">Forecasts</text>
-              <text class="loop-sub" x="682" y="338" text-anchor="middle">patterns, questions</text>
+              <rect class="loop-node" x="620" y="300" width="130" height="54" />
+              <text class="loop-label" x="685" y="322" text-anchor="middle">Forecasts</text>
+              <text class="loop-sub" x="685" y="338" text-anchor="middle">patterns, questions</text>
 
-              <path class="loop-edge" d="M 78 246 V 296" marker-end="url(#arrow2)" />
-              <path class="loop-edge" d="M 229 246 V 296" marker-end="url(#arrow2)" />
-              <path class="loop-edge" d="M 380 246 V 296" marker-end="url(#arrow2)" />
-              <path class="loop-edge" d="M 531 246 V 296" marker-end="url(#arrow2)" />
-              <path class="loop-edge" d="M 682 246 V 296" marker-end="url(#arrow2)" />
+              <path class="loop-edge" d="M 105 246 V 296" marker-end="url(#arrow2)" />
+              <path class="loop-edge" d="M 250 246 V 296" marker-end="url(#arrow2)" />
+              <path class="loop-edge" d="M 395 246 V 296" marker-end="url(#arrow2)" />
+              <path class="loop-edge" d="M 540 246 V 296" marker-end="url(#arrow2)" />
+              <path class="loop-edge" d="M 685 246 V 296" marker-end="url(#arrow2)" />
 
               <path
                 class="loop-return"
-                d="M 682 354 V 410 H 2 V 208 H 5"
+                d="M 685 354 V 402 H 14 V 216 H 34"
                 marker-end="url(#arrow2-coral)"
               />
-              <text class="loop-return-label" x="380" y="430" text-anchor="middle">
+              <text class="loop-return-label" x="395" y="432" text-anchor="middle">
                 OUTCOMES RETURN TO THE RECORD: THE SYSTEM LEARNS YOUR OPERATION
               </text>
             </svg>
@@ -354,7 +355,7 @@
           </div>
           <p class="note">
             The first deployment, being scoped with a Malaysian trading company, starts
-            with shipping documents.
+            with a single high-volume document type.
             What we build and harden for one operator is adapted for the next with the
             same problem. The second deployment is not an experiment: it arrives
             proven, and it arrives fast.
