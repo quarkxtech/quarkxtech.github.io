@@ -1940,3 +1940,11 @@ html.js:not(.reduced-motion) .hl-line > span {
   transform: scale(0.99);
   transition: transform 100ms ease-out;
 }
+
+/* On phones the products grid is a single column: the id-scoped two-column
+   override outranked the generic stacking rule. */
+@media (max-width: 900px) {
+  #products .deploy-grid {
+    grid-template-columns: 1fr;
+  }
+}
