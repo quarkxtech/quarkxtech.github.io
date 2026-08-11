@@ -319,9 +319,9 @@ html:not(.js) .loader {
 .site-header.is-scrolled {
   /* A floating material, not an opaque bar: content slides underneath, and a
      soft scroll-edge shadow replaces a hard divider. */
-  background: rgba(240, 231, 218, 0.72);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  backdrop-filter: blur(18px) saturate(160%);
+  background: rgba(240, 231, 218, 0.55);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
   border-bottom-color: transparent;
   box-shadow: 0 1px 0 rgba(34, 26, 19, 0.06), 0 8px 24px rgba(34, 26, 19, 0.05);
 }
@@ -1105,12 +1105,6 @@ html.js:not(.reduced-motion) .hl-line > span {
   background: rgba(255, 255, 255, 0.62);
 }
 
-/* Four cards cannot sit in a three-column grid without stranding one: the
-   commitments and the products both get a symmetric two-by-two. */
-#how-we-work .deploy-grid {
-  grid-template-columns: repeat(2, 1fr);
-}
-
 /* Cards that end in a link pin it to the tile's bottom edge, so the buttons
    across a row share one line no matter how the copy above them wraps. */
 #products .deploy-card,
@@ -1663,8 +1657,7 @@ html.js:not(.reduced-motion) .hl-line > span {
     display: flex;
   }
 
-  .deploy-grid,
-  #how-we-work .deploy-grid {
+  .deploy-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1940,4 +1933,10 @@ html.js:not(.reduced-motion) .hl-line > span {
     grid-column: 2;
     text-align: left;
   }
+}
+
+/* Cards with a destination depress like any pressable thing. */
+.deploy-card:has(.card-cover):active {
+  transform: scale(0.99);
+  transition: transform 100ms ease-out;
 }
