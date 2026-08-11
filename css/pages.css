@@ -1219,3 +1219,27 @@ tbody th {
     transition: none;
   }
 }
+
+/* When a dark band or the footer slides behind the rail, its inks invert so
+   the words stay readable; js/pages.js watches the overlap. */
+.product-rail a,
+.product-rail-label {
+  transition: color var(--ease) 200ms, border-color var(--ease) 200ms;
+}
+
+.product-rail.on-dark .product-rail-label {
+  color: var(--muted);
+}
+
+.product-rail.on-dark a {
+  color: var(--cream-dim);
+}
+
+.product-rail.on-dark a:hover {
+  color: var(--cream);
+}
+
+.product-rail.on-dark a[aria-current="page"] {
+  color: var(--cream);
+  border-left-color: var(--copper-300);
+}

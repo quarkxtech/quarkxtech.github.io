@@ -212,3 +212,42 @@
     if (event.key === "Escape") setOpen(false);
   });
 })();
+
+/**
+ * The rail sits over whatever scrolls past. When a dark band or the footer
+ * is behind it, its inks invert so the words stay readable.
+ */
+(function () {
+  "use strict";
+
+  var rail = document.querySelector(".product-rail");
+  if (!rail) return;
+  var darks = Array.prototype.slice.call(
+    document.querySelectorAll(".band, .page-footer"),
+  );
+  if (!darks.length) return;
+
+  var ticking = false;
+  function update() {
+    var r = rail.getBoundingClientRect();
+    var mid = (r.top + r.bottom) / 2;
+    var onDark = darks.some(function (el) {
+      var b = el.getBoundingClientRect();
+      return b.top < mid && b.bottom > mid;
+    });
+    rail.classList.toggle("on-dark", onDark);
+    ticking = false;
+  }
+
+  update();
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    },
+    { passive: true },
+  );
+  window.addEventListener("resize", update);
+})();
