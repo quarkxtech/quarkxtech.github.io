@@ -1791,3 +1791,15 @@ html.js:not(.reduced-motion) .hl-line > span {
     transition: none;
   }
 }
+
+/* Mobile cards: full-width tiles drop the desktop heading measure and the
+   deep bottom padding, both of which only make sense beside neighbours. */
+@media (max-width: 900px) {
+  .deploy-card {
+    padding: 1.35rem 1.25rem 1.5rem;
+  }
+
+  .deploy-card h3 {
+    max-width: none;
+  }
+}

@@ -1085,3 +1085,16 @@ tbody th {
     transition: none;
   }
 }
+
+/* On a phone the card owns the full width: the desktop heading measure would
+   strangle titles into three-word lines, and the desktop bottom padding turns
+   every tile bottom-heavy. */
+@media (max-width: 720px) {
+  .card {
+    padding: 1.35rem 1.25rem 1.5rem;
+  }
+
+  .card h3 {
+    max-width: none;
+  }
+}
