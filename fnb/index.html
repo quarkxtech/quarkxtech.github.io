@@ -142,7 +142,7 @@
           <p class="kicker" data-reveal>The design</p>
           <h2 data-reveal class="section-heading">The counter, forecast, plan.</h2>
           <div class="loop" data-reveal>
-            <svg viewBox="0 0 720 168" role="img" aria-label="The counter, forecast, plan.">
+            <svg viewBox="0 0 760 470" role="img" aria-label="The fnb system architecture">
               <defs>
                 <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                   <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(34,26,19,0.45)" />
@@ -151,23 +151,56 @@
                   <path d="M 0 0 L 10 5 L 0 10 z" fill="#b8512e" />
                 </marker>
               </defs>
-              <rect class="loop-node" x="10" y="18" width="160" height="54" />
-              <text class="loop-label" x="90" y="42" text-anchor="middle">The counter</text>
-              <text class="loop-sub" x="90" y="58" text-anchor="middle">POS, weather, events</text>
-              <rect class="loop-node" x="190" y="18" width="160" height="54" />
-              <text class="loop-label" x="270" y="42" text-anchor="middle">One forecast</text>
-              <text class="loop-sub" x="270" y="58" text-anchor="middle">stock, prep, rostering</text>
-              <rect class="loop-node" x="370" y="18" width="160" height="54" />
-              <text class="loop-label" x="450" y="42" text-anchor="middle">The plan</text>
-              <text class="loop-sub" x="450" y="58" text-anchor="middle">buy, prep, price</text>
-              <rect class="loop-node" x="550" y="18" width="160" height="54" />
-              <text class="loop-label" x="630" y="42" text-anchor="middle">Approved actions</text>
-              <text class="loop-sub" x="630" y="58" text-anchor="middle">the owner gates it</text>
-              <path class="loop-edge" d="M 170 45 H 186" marker-end="url(#ar)" />
-              <path class="loop-edge" d="M 350 45 H 366" marker-end="url(#ar)" />
-              <path class="loop-edge" d="M 530 45 H 546" marker-end="url(#ar)" />
-              <path class="loop-return" d="M 630 72 V 122 H 90 V 76" marker-end="url(#arc)" />
-              <text class="loop-return-label" x="360" y="142" text-anchor="middle">
+              <rect class="loop-node" x="40" y="14" width="140" height="44" />
+              <text class="loop-label" x="110" y="32" text-anchor="middle">The till</text>
+              <text class="loop-sub" x="110" y="46" text-anchor="middle">orders, hour by hour</text>
+              <rect class="loop-node" x="40" y="70" width="140" height="44" />
+              <text class="loop-label" x="110" y="88" text-anchor="middle">Weather and calendar</text>
+              <text class="loop-sub" x="110" y="102" text-anchor="middle">rain, holidays, events</text>
+              <rect class="loop-node" x="40" y="126" width="140" height="44" />
+              <text class="loop-label" x="110" y="144" text-anchor="middle">The suppliers</text>
+              <text class="loop-sub" x="110" y="158" text-anchor="middle">prices, invoices, deliveries</text>
+              <rect class="loop-node" x="220" y="70" width="140" height="44" />
+              <text class="loop-label" x="290" y="88" text-anchor="middle">One forecast</text>
+              <text class="loop-sub" x="290" y="102" text-anchor="middle">covers, stock, prep</text>
+              <rect class="loop-node" x="400" y="70" width="140" height="44" />
+              <text class="loop-label" x="470" y="88" text-anchor="middle">Validation</text>
+              <text class="loop-sub" x="470" y="102" text-anchor="middle">against sellouts and waste</text>
+              <rect class="loop-node loop-node-review" x="580" y="70" width="170" height="44" />
+              <text class="loop-label" x="665" y="88" text-anchor="middle">The owner decides</text>
+              <text class="loop-sub" x="665" y="102" text-anchor="middle">whenever it is unsure</text>
+              <path class="loop-edge" d="M 180 36 H 200 V 84 H 216" marker-end="url(#ar)" />
+              <path class="loop-edge" d="M 180 92 H 216" marker-end="url(#ar)" />
+              <path class="loop-edge" d="M 180 148 H 200 V 100 H 216" marker-end="url(#ar)" />
+              <path class="loop-edge" d="M 360 92 H 396" marker-end="url(#ar)" />
+              <path class="loop-return" d="M 540 92 H 576" marker-end="url(#arc)" />
+              <rect class="loop-hub" x="40" y="186" width="710" height="60" />
+              <text class="loop-label" x="395" y="212" text-anchor="middle">The counter record</text>
+              <text class="loop-sub" x="395" y="228" text-anchor="middle">every plate, price and bin, in the shop</text>
+              <path class="loop-edge" d="M 470 114 V 182" marker-end="url(#ar)" />
+              <path class="loop-return" d="M 665 114 V 182" marker-end="url(#arc)" />
+              <rect class="loop-node" x="40" y="300" width="130" height="54" />
+              <text class="loop-label" x="105" y="322" text-anchor="middle">Ordering</text>
+              <text class="loop-sub" x="105" y="338" text-anchor="middle">stock from the weather</text>
+              <path class="loop-edge" d="M 105 246 V 296" marker-end="url(#ar)" />
+              <rect class="loop-node" x="185" y="300" width="130" height="54" />
+              <text class="loop-label" x="250" y="322" text-anchor="middle">Prep and rota</text>
+              <text class="loop-sub" x="250" y="338" text-anchor="middle">matched to the day</text>
+              <path class="loop-edge" d="M 250 246 V 296" marker-end="url(#ar)" />
+              <rect class="loop-node" x="330" y="300" width="130" height="54" />
+              <text class="loop-label" x="395" y="322" text-anchor="middle">Menu costing</text>
+              <text class="loop-sub" x="395" y="338" text-anchor="middle">live as prices move</text>
+              <path class="loop-edge" d="M 395 246 V 296" marker-end="url(#ar)" />
+              <rect class="loop-node" x="475" y="300" width="130" height="54" />
+              <text class="loop-label" x="540" y="322" text-anchor="middle">Waste report</text>
+              <text class="loop-sub" x="540" y="338" text-anchor="middle">named and priced</text>
+              <path class="loop-edge" d="M 540 246 V 296" marker-end="url(#ar)" />
+              <rect class="loop-node" x="620" y="300" width="130" height="54" />
+              <text class="loop-label" x="685" y="322" text-anchor="middle">Reviews</text>
+              <text class="loop-sub" x="685" y="338" text-anchor="middle">drafted in your voice</text>
+              <path class="loop-edge" d="M 685 246 V 296" marker-end="url(#ar)" />
+              <path class="loop-return" d="M 685 354 V 402 H 14 V 216 H 34" marker-end="url(#arc)" />
+              <text class="loop-return-label" x="395" y="432" text-anchor="middle">
                 WASTE AND SELLOUTS FEED THE NEXT FORECAST
               </text>
             </svg>
