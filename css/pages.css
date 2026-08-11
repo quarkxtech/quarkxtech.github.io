@@ -1292,3 +1292,28 @@ tbody th {
     justify-content: center;
   }
 }
+
+/* The architecture has two drawings: landscape for wide screens, a portrait
+   twin at full width on phones. Sideways scrolling was mobile-tolerated, not
+   mobile-friendly. */
+.loop svg.loop-mobile {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .loop svg.loop-desktop {
+    display: none;
+  }
+
+  .loop svg.loop-mobile {
+    display: block;
+  }
+
+  .loop {
+    overflow: visible;
+  }
+
+  .loop svg {
+    min-width: 0;
+  }
+}

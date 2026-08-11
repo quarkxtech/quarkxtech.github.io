@@ -28,7 +28,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/tokens.css?v=6" />
-    <link rel="stylesheet" href="../css/pages.css?v=25" />
+    <link rel="stylesheet" href="../css/pages.css?v=27" />
     
       <script defer src="../js/pages.js?v=8"></script>
     <!-- Privacy-first analytics: cookieless, so no consent banner is needed.
@@ -141,7 +141,7 @@
           <p class="kicker" data-reveal>The design</p>
           <h2 data-reveal class="section-heading">One record, working for the doctor.</h2>
           <div class="loop" data-reveal>
-            <svg viewBox="0 0 760 470" role="img" aria-label="The clinical system architecture">
+            <svg class="loop-desktop" viewBox="0 0 760 470" role="img" aria-label="The clinical system architecture">
               <defs>
                 <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                   <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(34,26,19,0.45)" />
@@ -202,6 +202,66 @@
               <text class="loop-return-label" x="395" y="432" text-anchor="middle">
                 OUTCOMES RETURN TO THE RECORD: THE NEXT CONSULT STARTS BETTER
               </text>
+            </svg>
+            <svg class="loop-mobile" viewBox="0 0 340 824" role="img" aria-hidden="true">
+              <defs>
+                <marker id="arm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(34,26,19,0.45)" />
+                </marker>
+                <marker id="arcm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#b8512e" />
+                </marker>
+              </defs>
+              <rect class="loop-node" x="16" y="10" width="280" height="48" />
+              <text class="loop-label" x="156" y="30" text-anchor="middle">The file</text>
+              <text class="loop-sub" x="156" y="45" text-anchor="middle">history, results, letters</text>
+              <rect class="loop-node" x="16" y="74" width="280" height="48" />
+              <text class="loop-label" x="156" y="94" text-anchor="middle">The consult</text>
+              <text class="loop-sub" x="156" y="109" text-anchor="middle">recorded live</text>
+              <rect class="loop-node" x="16" y="138" width="280" height="48" />
+              <text class="loop-label" x="156" y="158" text-anchor="middle">The specialists</text>
+              <text class="loop-sub" x="156" y="173" text-anchor="middle">findings, entered once</text>
+              <rect class="loop-node" x="16" y="202" width="280" height="48" />
+              <text class="loop-label" x="156" y="222" text-anchor="middle">Understanding</text>
+              <text class="loop-sub" x="156" y="237" text-anchor="middle">speech and records structured</text>
+              <rect class="loop-node" x="16" y="266" width="280" height="48" />
+              <text class="loop-label" x="156" y="286" text-anchor="middle">Validation</text>
+              <text class="loop-sub" x="156" y="301" text-anchor="middle">against the patient record</text>
+              <rect class="loop-node loop-node-review" x="16" y="330" width="280" height="48" />
+              <text class="loop-label" x="156" y="350" text-anchor="middle">The clinician decides</text>
+              <text class="loop-sub" x="156" y="365" text-anchor="middle">whenever it is unsure</text>
+              <rect class="loop-hub" x="16" y="394" width="280" height="60" />
+              <text class="loop-label" x="156" y="420" text-anchor="middle">The case record</text>
+              <text class="loop-sub" x="156" y="436" text-anchor="middle">every consult, finding and decision</text>
+              <rect class="loop-node" x="16" y="470" width="280" height="48" />
+              <text class="loop-label" x="156" y="490" text-anchor="middle">Pre-consult brief</text>
+              <text class="loop-sub" x="156" y="505" text-anchor="middle">one page, before they sit</text>
+              <rect class="loop-node" x="16" y="534" width="280" height="48" />
+              <text class="loop-label" x="156" y="554" text-anchor="middle">Structured notes</text>
+              <text class="loop-sub" x="156" y="569" text-anchor="middle">done by the time they leave</text>
+              <rect class="loop-node" x="16" y="598" width="280" height="48" />
+              <text class="loop-label" x="156" y="618" text-anchor="middle">Diagnostics</text>
+              <text class="loop-sub" x="156" y="633" text-anchor="middle">suggested, doctor orders</text>
+              <rect class="loop-node" x="16" y="662" width="280" height="48" />
+              <text class="loop-label" x="156" y="682" text-anchor="middle">Case conference</text>
+              <text class="loop-sub" x="156" y="697" text-anchor="middle">findings aggregated</text>
+              <rect class="loop-node" x="16" y="726" width="280" height="48" />
+              <text class="loop-label" x="156" y="746" text-anchor="middle">One conclusion</text>
+              <text class="loop-sub" x="156" y="761" text-anchor="middle">filed and shared</text>
+              <path class="loop-edge" d="M 156 60 V 71" marker-end="url(#arm)" />
+              <path class="loop-edge" d="M 156 124 V 135" marker-end="url(#arm)" />
+              <path class="loop-edge" d="M 156 188 V 199" marker-end="url(#arm)" />
+              <path class="loop-edge" d="M 156 252 V 263" marker-end="url(#arm)" />
+              <path class="loop-return" d="M 156 316 V 327" marker-end="url(#arcm)" />
+              <path class="loop-return" d="M 156 380 V 391" marker-end="url(#arcm)" />
+              <path class="loop-edge" d="M 156 456 V 467" marker-end="url(#arm)" />
+              <path class="loop-edge" d="M 156 520 V 531" marker-end="url(#arm)" />
+              <path class="loop-edge" d="M 156 584 V 595" marker-end="url(#arm)" />
+              <path class="loop-edge" d="M 156 648 V 659" marker-end="url(#arm)" />
+              <path class="loop-edge" d="M 156 712 V 723" marker-end="url(#arm)" />
+              <path class="loop-return" d="M 296 750 H 322 V 424 H 300" marker-end="url(#arcm)" />
+              <text class="loop-return-label" x="170" y="796" text-anchor="middle">OUTCOMES RETURN TO THE RECORD:</text>
+              <text class="loop-return-label" x="170" y="812" text-anchor="middle">THE NEXT CONSULT STARTS BETTER</text>
             </svg>
           </div>
           <p class="note">
