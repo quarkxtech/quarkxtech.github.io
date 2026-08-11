@@ -143,3 +143,41 @@
     { passive: true },
   );
 })();
+
+/**
+ * Header behaviour, mirroring the homepage: transparent at the top of the
+ * page, solid once scrolling, hidden while moving down and back the moment
+ * the visitor moves up.
+ */
+(function () {
+  "use strict";
+
+  var header = document.querySelector(".page-header");
+  if (!header) return;
+
+  var lastY = window.scrollY;
+  var ticking = false;
+
+  function update() {
+    var y = window.scrollY;
+    header.classList.toggle("is-solid", y > 8);
+    if (y > lastY + 6 && y > 180) {
+      header.classList.add("is-hidden");
+    } else if (y < lastY - 6) {
+      header.classList.remove("is-hidden");
+    }
+    lastY = y;
+    ticking = false;
+  }
+
+  update();
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    },
+    { passive: true },
+  );
+})();

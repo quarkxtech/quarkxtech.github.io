@@ -131,12 +131,28 @@ p {
 
 /* ---------- 3. Header ---------- */
 
+/* Transparent over the page top, gaining its paper ground on scroll and
+   stepping out of the way on the way down, exactly as the homepage header
+   behaves. js/pages.js drives the two classes. */
 .page-header {
   position: sticky;
   top: 0;
   z-index: 20;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background 300ms ease,
+    border-color 300ms ease,
+    transform 420ms var(--ease);
+}
+
+.page-header.is-solid {
   background: var(--paper);
-  border-bottom: 1px solid var(--ink-line);
+  border-bottom-color: var(--ink-line);
+}
+
+.page-header.is-hidden {
+  transform: translateY(-110%);
 }
 
 /* The homepage header-inner, metric for metric. Its third flex slot (the
@@ -390,7 +406,8 @@ p {
   }
   .page-nav a::after,
   .button,
-  .button::after {
+  .button::after,
+  .page-header {
     transition: none;
   }
   html {
@@ -972,51 +989,54 @@ tbody th {
   stroke-width: 1.2;
 }
 
-/* ---------- 18. Product switcher ---------- */
+/* ---------- 18. Product rail ---------- */
 /*
- * A slim strip under the header on product pages: the other systems, one
- * click away while reading. A true side rail only fits viewports wider than
- * the 1320px content frame, so a bar serves every screen instead.
+ * A quiet vertical rail on the left, fixed while the page scrolls, no ground
+ * of its own. It only exists on viewports wide enough that it cannot touch
+ * the 1320px content frame.
  */
-.product-switch {
-  background: var(--paper);
-  border-bottom: 1px solid var(--ink-line);
+.product-rail {
+  display: none;
 }
 
-.product-switch .container {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.35rem 1.1rem;
-  padding-block: 0.55rem;
-}
+@media (min-width: 1480px) {
+  .product-rail {
+    position: fixed;
+    left: 1.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
 
-.product-switch-label {
-  font-size: var(--text-xs);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
+  .product-rail-label {
+    font-size: var(--text-xs);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.2rem;
+  }
 
-.product-switch-more {
-  margin-left: 0.6rem;
-}
+  .product-rail a {
+    font-size: var(--text-sm);
+    text-decoration: none;
+    color: var(--ink-sec);
+    padding-left: 0.7rem;
+    border-left: 2px solid transparent;
+    transition: color var(--ease) 150ms, border-color var(--ease) 150ms;
+  }
 
-.product-switch a {
-  font-size: var(--text-sm);
-  text-decoration: none;
-  color: var(--ink-sec);
-  transition: color var(--ease) 150ms;
-}
+  .product-rail a:hover {
+    color: var(--ink);
+  }
 
-.product-switch a:hover {
-  color: var(--ink);
-}
-
-.product-switch a[aria-current="page"] {
-  color: var(--ink);
-  font-weight: 600;
-  border-bottom: 1.5px solid var(--copper-500);
+  .product-rail a[aria-current="page"] {
+    color: var(--ink);
+    font-weight: 600;
+    border-left-color: var(--copper-500);
+  }
 }
 
 /* ---------- 19. Back to top ---------- */
