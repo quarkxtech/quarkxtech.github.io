@@ -2029,4 +2029,12 @@ html.js:not(.reduced-motion) .hl-line > span {
       rgba(240, 231, 218, 0) 60%
     );
   }
+
+  /* The stage is centred with a max-width; its scrim must still bleed to the
+     viewport edge or it draws a seam where the box ends. */
+  .journey-stage::before {
+    left: calc(50% - 50vw);
+    width: 100vw;
+    right: auto;
+  }
 }
