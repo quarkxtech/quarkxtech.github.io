@@ -1668,15 +1668,6 @@ html.js:not(.reduced-motion) .hl-line > span {
     width: 100%;
   }
 
-  .journey-step.is-active {
-    background: rgba(240, 231, 218, 0.72);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding-inline: 0.9rem;
-    margin-inline: -0.9rem;
-  }
-
   .step-body > p {
     max-width: 56ch;
   }
@@ -2021,5 +2012,25 @@ html.js:not(.reduced-motion) .hl-line > span {
     left: calc(50% - 50vw);
     width: 100vw;
     right: auto;
+  }
+}
+
+/* Mobile text protection: shield the steps column from below, so no single
+   row ever needs to become a card of its own. */
+@media (max-width: 900px) {
+  .journey-stage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: calc(50% - 50vw);
+    width: 100vw;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+      0deg,
+      rgba(240, 231, 218, 0.94) 0%,
+      rgba(240, 231, 218, 0.85) 45%,
+      rgba(240, 231, 218, 0) 75%
+    );
   }
 }
