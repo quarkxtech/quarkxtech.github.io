@@ -14,7 +14,7 @@
     <meta property="og:title" content="Clinical workflows | QuarkX" />
     <meta
       property="og:description"
-      content="Stop keying documents into your ERP by hand. On-premise, checked, and exported to formats you keep."
+      content="The consult given back to the doctor. A brief from internal records before the patient sits down, the conversation transcribed, specialists' findings aggregated into one conclusion. Records never leave the hospital."
     />
     <meta property="og:image" content="https://www.quarkx.tech/assets/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,11 +24,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/tokens.css?v=6" />
-    <link rel="stylesheet" href="../css/pages.css?v=37" />
+    <link rel="stylesheet" href="../css/pages.css?v=38" />
     
       <script defer src="../js/pages.js?v=9"></script>
     <!-- Privacy-first analytics: cookieless, so no consent banner is needed.
@@ -143,7 +143,8 @@
             A doctor loses the first minutes of every consult to the file and the evening to writing it up. This design returns both, without a single record leaving the hospital.
           </p>
           <div class="hero-meta" data-reveal>
-            <span><strong>On-premise.</strong> records stay in the hospital</span>
+            <span><strong>On-premise.</strong> Records stay in the hospital</span>
+            <span><strong>Gated.</strong> Nothing filed or sent without a doctor's approval</span>
           </div>
         </div>
       </section>
@@ -173,8 +174,8 @@
         <div class="container">
           <p class="kicker" data-reveal>The design</p>
           <h2 data-reveal class="section-heading">One record, working for the doctor.</h2>
-          <div class="loop" data-reveal>
-            <svg class="loop-desktop" viewBox="0 0 760 470" role="img" aria-label="The clinical system architecture">
+          <div class="loop" data-reveal role="img" aria-label="The clinical system architecture">
+            <svg class="loop-desktop" viewBox="0 0 760 470" aria-hidden="true">
               <defs>
                 <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                   <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(34,26,19,0.45)" />
@@ -236,7 +237,7 @@
                 OUTCOMES RETURN TO THE RECORD: THE NEXT CONSULT STARTS BETTER
               </text>
             </svg>
-            <svg class="loop-mobile" viewBox="0 0 340 824" role="img" aria-hidden="true">
+            <svg class="loop-mobile" viewBox="0 0 340 824" aria-hidden="true">
               <defs>
                 <marker id="arm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                   <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(34,26,19,0.45)" />
@@ -297,7 +298,7 @@
               <text class="loop-return-label" x="170" y="812" text-anchor="middle">THE NEXT CONSULT STARTS BETTER</text>
             </svg>
           </div>
-          <p class="note">
+          <p class="note" data-reveal>
             Every step is gated by the clinician: nothing is filed, sent or concluded without a doctor approving it.
           </p>
         </div>
@@ -307,13 +308,13 @@
         <div class="container">
           <p class="kicker" data-reveal>Next step</p>
           <h2 data-reveal>Bring us the clinic.</h2>
-          <p>
-            If your doctors spend evenings on notes and mornings on files, this design is waiting for the operation that proves it.
+          <p data-reveal>
+            If your doctors spend evenings on notes and mornings on files, tell us.
           </p>
           <p class="cta-actions" data-reveal>
             <a class="button" href="/contact/?request=proposal&amp;interest=clinical">Bring us the problem</a>
           </p>
-          <p class="cta-fallback">
+          <p class="cta-fallback" data-reveal>
             Or email
             <a href="mailto:contact@quarkx.tech">contact@quarkx.tech</a>
             directly.

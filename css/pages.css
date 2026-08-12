@@ -273,7 +273,8 @@ p {
   padding-top: var(--space-md);
   border-top: 1px solid var(--ink-line);
   font-size: var(--text-sm);
-  color: var(--ink-faint);
+  /* Small print holds AA contrast; --ink-faint is reserved for large text. */
+  color: var(--ink-sec);
 }
 
 .hero-meta strong {
@@ -375,7 +376,18 @@ p {
 .loop-sub {
   font-family: var(--font-body);
   font-size: 9.5px;
-  fill: var(--ink-faint);
+  fill: var(--ink-sec);
+}
+
+/* The portrait diagram renders near 1:1 with its viewBox on a phone, so its
+   sub-labels need a real-world legible size; the desktop SVG scales up and
+   keeps the smaller unit. */
+svg.loop-mobile .loop-sub {
+  font-size: 11px;
+}
+
+svg.loop-mobile .loop-label {
+  font-size: 12.5px;
 }
 
 .loop-edge {
@@ -625,7 +637,7 @@ tbody th {
 
 .field-hint {
   font-size: var(--text-xs);
-  color: var(--ink-faint);
+  color: var(--ink-sec);
   margin-top: 0.3rem;
 }
 
@@ -783,7 +795,7 @@ tbody th {
 
 .note {
   font-size: var(--text-sm);
-  color: var(--ink-faint);
+  color: var(--ink-sec);
   max-width: 68ch;
   margin-top: var(--space-md);
 }
@@ -1343,9 +1355,12 @@ tbody th {
   width: fit-content;
 }
 
-/* The one photograph on the site: real proof, in the tile language. */
+/* The one photograph on the site: real proof, in the tile language. It holds
+   the prose measure rather than the full container, so the reading column
+   stays calm. */
 .talk-photo {
   margin: var(--space-lg) 0;
+  max-width: 68ch;
 }
 
 .talk-photo img {

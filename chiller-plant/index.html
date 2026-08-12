@@ -24,11 +24,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/tokens.css?v=6" />
-    <link rel="stylesheet" href="../css/pages.css?v=37" />
+    <link rel="stylesheet" href="../css/pages.css?v=38" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -83,12 +83,12 @@
           <img src="../assets/quarkx-lockup-light.svg" alt="QuarkX" width="132" height="33" />
         </a>
         <nav class="page-nav" aria-label="Primary">
-          <a href="/#products" aria-current="page">Products</a>
+          <a href="/#products">Products</a>
           <a href="/#expertise">Expertise</a>
           <a href="/#about">About</a>
           <a href="/talks/">Talks</a>
           <a href="/#faq">FAQ</a>
-          <a href="/#contact">Contact</a>
+          <a href="/contact/">Contact</a>
         </nav>
         <button
           class="menu-toggle"
@@ -163,7 +163,7 @@
           <div class="hero-meta" data-reveal>
             <span><strong>Software only.</strong> No equipment replacement</span>
             <span><strong>On-premise.</strong> Data never leaves your building</span>
-            <span><strong>Live</strong> at a Malaysian shopping mall</span>
+            <span><strong>Live.</strong> At a Malaysian shopping mall</span>
           </div>
         </div>
       </section>
@@ -187,7 +187,7 @@
               </p>
             </div>
             <div class="card" data-reveal>
-              <h3>Automation schedules are frozen at commissioning</h3>
+              <h3>Schedules frozen at commissioning</h3>
               <p>
                 Automation systems run sequences written years ago. They do not
                 adapt to load drift, ageing equipment or seasonal change.
@@ -229,8 +229,8 @@
             x = 90 + i*180 (90, 270, 450, 630). All nodes span y=18 to y=72,
             so 45 is the vertical centre used by the connecting arrows.
           -->
-          <div class="loop" data-reveal>
-            <svg class="loop-desktop" viewBox="0 0 760 470" role="img" aria-label="The plant system architecture">
+          <div class="loop" data-reveal role="img" aria-label="The plant system architecture">
+            <svg class="loop-desktop" viewBox="0 0 760 470" aria-hidden="true">
               <defs>
                 <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                   <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(34,26,19,0.45)" />
@@ -308,7 +308,7 @@
                 OUTCOMES RETURN TO THE RECORD: THE PLANT TEACHES ITS OPTIMISER
               </text>
             </svg>
-            <svg class="loop-mobile" viewBox="0 0 340 824" role="img" aria-hidden="true">
+            <svg class="loop-mobile" viewBox="0 0 340 824" aria-hidden="true">
               <defs>
                 <marker id="arm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                   <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(34,26,19,0.45)" />
@@ -376,7 +376,7 @@
         <div class="container">
           <p class="kicker" data-reveal>Next step</p>
           <h2 data-reveal>Send us a month of your plant's logs.</h2>
-          <p>
+          <p data-reveal>
             Your building system already records what we need; engineers
             call it the historian, and your maintenance contractor can export
             the file. The system then runs in shadow first: reading your
@@ -393,7 +393,7 @@
               >Send the logs</a
             >
           </p>
-          <p class="cta-fallback">
+          <p class="cta-fallback" data-reveal>
             Or
             <a href="/contact/?request=brochure&amp;interest=cre">request the brochure</a>
             first, or email

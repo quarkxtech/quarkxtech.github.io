@@ -6,7 +6,7 @@
     <title>Contact | QuarkX</title>
     <meta
       name="description"
-      content="Bring us your operational problem, or request the product brochure. Three fields, answered by a person, not a bot."
+      content="Bring us your operational problem, or request the product brochure. Three required fields, answered by a person within a day."
     />
     <link rel="canonical" href="https://www.quarkx.tech/contact/" />
     <meta property="og:type" content="website" />
@@ -14,7 +14,7 @@
     <meta property="og:title" content="Contact QuarkX" />
     <meta
       property="og:description"
-      content="Architecture, design principles, and how a pilot starts."
+      content="Tell us what hurts. A person replies within a day."
     />
     <meta property="og:image" content="https://www.quarkx.tech/assets/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,11 +24,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/tokens.css?v=6" />
-    <link rel="stylesheet" href="../css/pages.css?v=37" />
+    <link rel="stylesheet" href="../css/pages.css?v=38" />
       <script defer src="../js/pages.js?v=9"></script>
     <!-- Privacy-first analytics: cookieless, so no consent banner is needed.
          Counts the visit and nothing else; fails silently if blocked. -->
@@ -67,12 +67,12 @@
           <img src="../assets/quarkx-lockup-light.svg" alt="QuarkX" width="132" height="33" />
         </a>
         <nav class="page-nav" aria-label="Primary">
-          <a href="/#products" aria-current="page">Products</a>
+          <a href="/#products">Products</a>
           <a href="/#expertise">Expertise</a>
           <a href="/#about">About</a>
           <a href="/talks/">Talks</a>
           <a href="/#faq">FAQ</a>
-          <a href="/#contact">Contact</a>
+          <a href="/#contact" aria-current="page">Contact</a>
         </nav>
         <button
           class="menu-toggle"
@@ -128,10 +128,9 @@
           <h1 data-reveal>Ask, and a person answers.</h1>
           <p class="lede" data-reveal>
             Tell us what hurts. A person reads it and replies within a day.
-            Ask for the brochure and you get the detail this site leaves out:
-            what each system does, what it should save, and how a pilot
-            starts, in a document made to be forwarded to the person who
-            signs.
+            Ask for the brochure and you get what this site leaves out: what
+            each system does, what it should save, how a pilot starts. Made
+            to be forwarded to the person who signs.
           </p>
         </div>
       </section>
@@ -207,6 +206,7 @@
             <div class="field">
               <label for="interest">Which area is this about?</label>
               <select id="interest" name="interest">
+                <option value="" selected disabled>Choose one</option>
                 <option value="cre">Commercial real estate and hotels</option>
                 <option value="trading">Trading and distribution</option>
                 <option value="factories">Factories and heavy industry</option>
@@ -242,7 +242,7 @@
             <p>
               <strong>That did not send.</strong> Email
               <a href="mailto:contact@quarkx.tech">contact@quarkx.tech</a>
-              instead and we will send the brochure by reply.
+              instead and a person will pick it up from there.
             </p>
           </div>
 

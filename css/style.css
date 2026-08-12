@@ -302,6 +302,19 @@ html:not(.js) .loader {
   90% { transform: translate(-3%, 6%); }
 }
 
+/* Branded focus ring, matching the sub-pages; the coral survives both grounds
+   but the dark finale gets the brighter cut. */
+:focus-visible {
+  outline: 2px solid var(--coral-deep);
+  outline-offset: 3px;
+}
+
+.faq :focus-visible,
+.contact :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--coral);
+}
+
 /* ============ 06  Header ============ */
 .site-header {
   position: fixed;
@@ -328,6 +341,38 @@ html:not(.js) .loader {
 
 .site-header.is-hidden {
   transform: translateY(-100%);
+}
+
+/* Over the dark finale the material adapts: the same floating blur, cut from
+   espresso instead of paper, with cream ink and the dark-ground lockup. */
+.site-header.on-dark.is-scrolled {
+  background: rgba(18, 13, 9, 0.55);
+  box-shadow: 0 1px 0 rgba(244, 236, 227, 0.08), 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.site-header.on-dark .header-nav a {
+  color: var(--cream-dim);
+}
+
+.site-header.on-dark .header-nav a:hover,
+.site-header.on-dark .header-nav a.is-active {
+  color: var(--cream);
+}
+
+.site-header.on-dark .menu-toggle span {
+  background: var(--cream);
+}
+
+.site-logo .logo-dark {
+  display: none;
+}
+
+.site-header.on-dark .logo-light {
+  display: none;
+}
+
+.site-header.on-dark .logo-dark {
+  display: inline;
 }
 
 .header-inner {
@@ -807,6 +852,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   font-size: var(--text-2xl);
   line-height: 1.05;
   max-width: 14ch;
+  text-wrap: balance;
 }
 
 .journey-steps {
@@ -1145,6 +1191,14 @@ html.js:not(.reduced-motion) .hl-line > span {
   line-height: 1.15;
   margin-bottom: var(--space-sm);
   max-width: 16ch;
+}
+
+/* Reserve two display lines beside neighbours, so one-line headings do not
+   let their body copy float higher than the row-mates'. */
+@media (min-width: 901px) {
+  .deploy-card h3 {
+    min-height: 2.3em;
+  }
 }
 
 .deploy-card p {
@@ -1646,16 +1700,6 @@ html.js:not(.reduced-motion) .hl-line > span {
     grid-template-columns: 1fr;
   }
 
-  .deploy-card {
-    border-left: 0;
-    border-top: 1px solid var(--ink-line);
-    padding-inline: 0;
-  }
-
-  .deploy-card:last-child {
-    border-right: 0;
-  }
-
   .statement-proof {
     grid-template-columns: 1fr;
   }
@@ -1722,7 +1766,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   position: fixed;
   right: 1.3rem;
   bottom: 1.3rem;
-  z-index: 90;
+  z-index: 40;
   width: 46px;
   height: 46px;
   border: none;

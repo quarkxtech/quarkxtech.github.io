@@ -179,6 +179,7 @@ function introTimeline() {
 /* ---------- header ---------- */
 
 const header = document.getElementById("site-header");
+const darkStart = document.querySelector(".faq");
 let lastY = 0;
 
 // Hide on the way down, reveal on the way up. The thresholds are asymmetric so
@@ -188,6 +189,14 @@ function onScrollHeader() {
   header.classList.toggle("is-scrolled", y > 30);
   if (y > 500 && y > lastY + 6) header.classList.add("is-hidden");
   else if (y < lastY - 4) header.classList.remove("is-hidden");
+  // The dark finale (FAQ through footer) runs to the end of the document, so
+  // the header material follows whichever ground its band is floating over.
+  if (darkStart) {
+    header.classList.toggle(
+      "on-dark",
+      darkStart.getBoundingClientRect().top <= header.offsetHeight,
+    );
+  }
   lastY = y;
 }
 window.addEventListener("scroll", onScrollHeader, { passive: true });

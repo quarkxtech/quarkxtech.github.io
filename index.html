@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QuarkX</title>
+    <title>QuarkX — AI systems for physical operations</title>
     <meta
       name="description"
       content="Bespoke AI systems for Malaysian operations: records, machinery, clinics, farms, kitchens, stores, fleets and chiller plants. On your premises, paid on results."
@@ -45,7 +45,8 @@
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css?v=24" />
+    <link rel="stylesheet" href="css/tokens.css?v=6" />
+    <link rel="stylesheet" href="css/style.css?v=25" />
     <script type="importmap">
       {
         "imports": {
@@ -57,7 +58,7 @@
         }
       }
     </script>
-    <script type="module" src="js/app.js?v=5"></script>
+    <script type="module" src="js/app.js?v=6"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -153,8 +154,17 @@
       <div class="header-inner">
         <a href="#top" class="site-logo" aria-label="QuarkX Home">
           <img
+            class="logo-light"
             src="assets/quarkx-lockup-light.svg"
             alt="QuarkX"
+            width="132"
+            height="33"
+          />
+          <img
+            class="logo-dark"
+            src="assets/quarkx-lockup-dark.svg"
+            alt=""
+            aria-hidden="true"
             width="132"
             height="33"
           />
@@ -223,12 +233,12 @@
             </p>
             <div class="hero-actions" data-reveal>
               <a href="#contact" class="btn btn-primary" data-magnetic
-                >Start a conversation</a
+                >Start the conversation</a
               >
               <a href="#about" class="btn btn-ghost" data-magnetic>Our story</a>
             </div>
             <p class="hero-industries" data-reveal>
-              Built for malls, factories, farms, clinics, kitchens and shops.
+              Eight environments, one approach.
               <a href="#products">Find yours</a>.
             </p>
 
@@ -361,9 +371,8 @@
               Built for the places where downtime actually costs something.
             </h2>
             <p class="section-intro" data-reveal>
-              Some run in production today. The others are complete designs,
-              ready for their first kitchen, clinic or plant. And the door is
-              open for the problem that is none of these.
+              Some run in production today. The others are complete designs.
+              And the door is open for the problem that is none of these.
             </p>
 
             <div class="deploy-grid">
@@ -441,7 +450,7 @@
                 </p>
               </article>
               <article class="deploy-card" data-reveal>
-                <a class="card-cover" href="/records/" aria-label="See the records system"></a>
+                <a class="card-cover" href="/machinery/" aria-label="See the machinery design"></a>
                 <div class="deploy-icon" aria-hidden="true">
                   <svg
                     width="28"
@@ -465,7 +474,7 @@
                 <p>
                   Legacy machinery, modern AI. Production equipment watched
                   for mechanical degradation, with maintenance orchestrated
-                  before downtime turns catastrophic.
+                  before a stopped line becomes a lost week.
                 </p>
                 <p>
                   <a
@@ -708,14 +717,14 @@
                 </p>
                 <p data-reveal>
                   Then enterprise scale: DPU offloading that doubled Storage
-                  Area Network IOPS at a global telecommunications giant, and
-                  agentic LLM workflows at a world-leading fintech that removed
-                  thousands of hours of manual work and earned CTO-level
-                  deployment approval.
+                  Area Network IOPS at a global telecoms equipment maker, and
+                  agentic LLM workflows at a global payments platform that
+                  removed thousands of hours of manual work and earned
+                  CTO-level deployment approval.
                 </p>
                 <p data-reveal>
-                  QuarkX puts that profile, <strong>scientific depth</strong>
-                  and <strong>bare-metal engineering discipline</strong>, into
+                  QuarkX puts that profile — <strong>scientific depth</strong>
+                  and <strong>bare-metal engineering discipline</strong> — into
                   autonomous systems for the physical world. Not prototypes:
                   systems that run.
                 </p>
@@ -763,7 +772,7 @@
                     <span class="timeline-dot" aria-hidden="true"></span>
                     <div class="timeline-content">
                       <span class="timeline-org"
-                        >Global Telecommunications Giant</span
+                        >Global Telecoms Equipment Maker</span
                       >
                       <span class="timeline-role">DPU Offloading Architecture</span>
                     </div>
@@ -771,7 +780,7 @@
                   <div class="timeline-item" role="listitem" data-reveal>
                     <span class="timeline-dot" aria-hidden="true"></span>
                     <div class="timeline-content">
-                      <span class="timeline-org">Global Fintech Leader</span>
+                      <span class="timeline-org">Global Payments Platform</span>
                       <span class="timeline-role">Lead Engineer · Agentic Systems</span>
                     </div>
                   </div>
@@ -904,9 +913,9 @@
               </summary>
               <div class="faq-answer">
                 <p>
-                  Our systems run on-premise or inside your private cloud,
-                  never on someone else's servers. Operational data does not
-                  leave your controlled infrastructure.
+                  Our systems run on-premise or inside infrastructure you
+                  control — never on ours, and never multi-tenant. Operational
+                  data does not leave your controlled infrastructure.
                 </p>
               </div>
             </details>
@@ -919,8 +928,8 @@
                 <p>
                   A rare overlap: Cambridge computational modelling, low-level
                   engineering on global telecommunications infrastructure, and
-                  production-scale agent orchestration at a world-leading
-                  fintech platform. The person who understands the physics
+                  production-scale agent orchestration at a global payments
+                  platform. The person who understands the physics
                   also writes the code that touches your plant.
                 </p>
               </div>
