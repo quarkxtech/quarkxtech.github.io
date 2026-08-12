@@ -1345,7 +1345,7 @@ tbody th {
 
 /* The one photograph on the site: real proof, in the tile language. */
 .talk-photo {
-  margin: var(--space-lg) 0 0;
+  margin: var(--space-lg) 0;
 }
 
 .talk-photo img {

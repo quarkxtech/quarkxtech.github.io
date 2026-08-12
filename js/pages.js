@@ -109,6 +109,41 @@
 })();
 
 /**
+ * The form speaks the visitor's request.
+ *
+ * One form serves three asks. The submit button and the hint under the
+ * request field follow the selection, so the page never says brochure to
+ * someone booking a talk. Without JavaScript the generic labels stand.
+ */
+(function () {
+  "use strict";
+
+  var select = document.getElementById("request");
+  var submit = document.getElementById("request-submit");
+  var hint = document.getElementById("request-hint");
+  if (!select || !submit) return;
+
+  var LABELS = {
+    brochure: "Request the brochure",
+    proposal: "Request the proposal",
+    talk: "Request a session",
+  };
+  var HINTS = {
+    brochure: "Proposals need your volumes or plant size in the message below.",
+    proposal: "Proposals need your volumes or plant size in the message below.",
+    talk: "Tell us the audience, the date and the room in the message below.",
+  };
+
+  function apply() {
+    submit.textContent = LABELS[select.value] || LABELS.brochure;
+    if (hint) hint.textContent = HINTS[select.value] || HINTS.brochure;
+  }
+
+  select.addEventListener("change", apply);
+  apply();
+})();
+
+/**
  * Back to top.
  *
  * Injected only when the page is long enough to need it, so short pages never
