@@ -2006,3 +2006,27 @@ html.js:not(.reduced-motion) .hl-line > span {
     gap: var(--space-sm);
   }
 }
+
+/* ---------- Text protection over the 3D stage ---------- */
+/*
+ * The camera decides what sits behind the copy, so the copy cannot rely on
+ * quiet ground. A paper gradient shields the reading column and dissolves
+ * before the scenery, desktop only: mobile keeps text and stage apart.
+ */
+
+@media (min-width: 901px) {
+  .hero::before,
+  .journey-stage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      rgba(240, 231, 218, 0.94) 0%,
+      rgba(240, 231, 218, 0.8) 34%,
+      rgba(240, 231, 218, 0) 60%
+    );
+  }
+}
