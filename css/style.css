@@ -1984,3 +1984,25 @@ html.js:not(.reduced-motion) .hl-line > span {
     gap: var(--space-lg);
   }
 }
+
+/* Who this is for, one line under the hero buttons. */
+.hero-industries {
+  margin: var(--space-md) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-sec);
+}
+
+.hero-industries a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--copper-400);
+}
+
+@media (max-width: 720px) {
+  .hero-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+}

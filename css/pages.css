@@ -1409,3 +1409,11 @@ tbody th {
   color: var(--copper-500);
   flex: 0 0 auto;
 }
+
+/* Required markers match the heading's count of three. */
+.field .req {
+  font-weight: 400;
+  font-size: var(--text-xs);
+  color: var(--ink-sec);
+  letter-spacing: 0.02em;
+}

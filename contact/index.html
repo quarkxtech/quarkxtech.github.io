@@ -28,7 +28,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/tokens.css?v=6" />
-    <link rel="stylesheet" href="../css/pages.css?v=36" />
+    <link rel="stylesheet" href="../css/pages.css?v=37" />
       <script defer src="../js/pages.js?v=9"></script>
     <!-- Privacy-first analytics: cookieless, so no consent banner is needed.
          Counts the visit and nothing else; fails silently if blocked. -->
@@ -127,11 +127,11 @@
           <p class="kicker" data-reveal>Contact</p>
           <h1 data-reveal>Ask, and a person answers.</h1>
           <p class="lede" data-reveal>
-            The brochure carries what the site does not, the systems' names
-            included: projected impact, the verification method, and the pilot
-            path, in a document made to be forwarded to the person who signs.
-            Tell us your volumes and the reply includes a free first-pass
-            proposal for your operation. It lands with a person, not a queue.
+            Tell us what hurts. A person reads it and replies within a day.
+            Ask for the brochure and you get the detail this site leaves out:
+            what each system does, what it should save, and how a pilot
+            starts, in a document made to be forwarded to the person who
+            signs.
           </p>
         </div>
       </section>
@@ -163,12 +163,12 @@
               aria-hidden="true"
             />
             <div class="field">
-              <label for="name">Your name</label>
+              <label for="name">Your name <span class="req">(required)</span></label>
               <input type="text" id="name" name="name" autocomplete="name" required />
             </div>
 
             <div class="field">
-              <label for="company">Company</label>
+              <label for="company">Company <span class="req">(required)</span></label>
               <input
                 type="text"
                 id="company"
@@ -182,12 +182,12 @@
               <label for="role">Your role</label>
               <input type="text" id="role" name="role" autocomplete="organization-title" />
               <p class="field-hint">
-                Facility manager, engineering head, finance, or something else entirely.
+                Owner, facility manager, engineering head, finance, or something else entirely.
               </p>
             </div>
 
             <div class="field">
-              <label for="email">Work email</label>
+              <label for="email">Email <span class="req">(required)</span></label>
               <input type="email" id="email" name="email" autocomplete="email" required />
               <p class="field-hint">This is where the reply goes.</p>
             </div>
@@ -223,8 +223,8 @@
               <label for="context">Anything useful to know?</label>
               <textarea id="context" name="context" rows="4"></textarea>
               <p class="field-hint">
-                Optional. Plant size, document volumes, your farm, clinic or
-                factory, or the problem that made you look.
+                Optional. Plant size, document volumes, how many outlets, your
+                farm, clinic or factory, or the problem that made you look.
               </p>
             </div>
 
