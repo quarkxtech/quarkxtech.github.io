@@ -669,22 +669,7 @@ html.js:not(.reduced-motion) [data-reveal] {
   gap: var(--space-lg);
 }
 
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--ink-sec);
-}
 
-.eyebrow-dot {
-  width: 1.6rem;
-  height: 2px;
-  background: var(--coral-deep);
-}
 
 .hero-headline {
   font-family: var(--font-display);
