@@ -761,7 +761,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 .journey-title {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: var(--text-2xl);
+  font-size: var(--text-3xl);
   line-height: 1.05;
   max-width: 14ch;
   text-wrap: balance;
@@ -1549,7 +1549,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   }
 
   .journey-title {
-    font-size: var(--text-xl);
+    font-size: var(--text-2xl);
   }
 
   .hero-foot {
