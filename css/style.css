@@ -1785,23 +1785,38 @@ html.js:not(.reduced-motion) .hl-line > span {
   display: grid;
   gap: 0.3rem;
   align-content: start;
-  animation: flow-drift 9s ease-in-out infinite;
+  animation: flow-drift var(--dur) ease-in-out infinite;
+  animation-delay: var(--delay);
 }
+
+/*
+ * Seven clocks, none of them shared. Each card gets its own rise, tilt,
+ * period and phase, chosen so the cycles never come back into step: the
+ * block keeps rearranging itself, cards closing on a neighbour and easing
+ * apart again, without any of them travelling far enough to be read as a
+ * moving object.
+ */
+.flows li:nth-child(1) { --dur: 7.5s;  --delay: -0.4s; --lift: 13px; --tilt: 0.5deg; }
+.flows li:nth-child(2) { --dur: 9.2s;  --delay: -2.1s; --lift: 17px; --tilt: -0.45deg; }
+.flows li:nth-child(3) { --dur: 8.1s;  --delay: -3.4s; --lift: 11px; --tilt: 0.4deg; }
+.flows li:nth-child(4) { --dur: 10.4s; --delay: -1.2s; --lift: 15px; --tilt: -0.55deg; }
+.flows li:nth-child(5) { --dur: 8.8s;  --delay: -4.3s; --lift: 12px; --tilt: 0.45deg; }
+.flows li:nth-child(6) { --dur: 9.9s;  --delay: -2.8s; --lift: 16px; --tilt: -0.4deg; }
+.flows li:nth-child(7) { --dur: 7.9s;  --delay: -0.9s; --lift: 14px; --tilt: 0.5deg; }
 
 .flows li:nth-child(2n) {
   transform: translateY(var(--space-md));
-  animation-delay: -3s;
-  animation-duration: 11s;
-}
-
-.flows li:nth-child(3n) {
-  animation-delay: -6s;
-  animation-duration: 10s;
 }
 
 @keyframes flow-drift {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -6px; }
+  0%, 100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  50% {
+    translate: 0 calc(var(--lift) * -1);
+    rotate: var(--tilt);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
