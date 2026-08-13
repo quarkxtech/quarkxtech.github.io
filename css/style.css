@@ -1913,9 +1913,10 @@ html.js:not(.reduced-motion) .hl-line > span {
 }
 
 /* One ask for eight industries: the cards link to their designs, and a single
-   button below the grid carries the invitation they all shared. */
+   button below the grid carries the invitation they all shared. It sits on
+   the page's left column like every other element, not adrift in the middle. */
 .deploy-cta {
   display: flex;
-  justify-content: center;
   margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
 }
