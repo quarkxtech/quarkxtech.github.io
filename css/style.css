@@ -655,7 +655,7 @@ html.js:not(.reduced-motion) [data-reveal] {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-top: calc(var(--header-h) + 4vh);
+  padding-top: calc(var(--header-h) + 2vh);
 }
 
 .hero-inner {
@@ -719,7 +719,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   width: 100%;
   max-width: var(--max-width);
   margin-inline: auto;
-  padding: var(--space-lg) var(--gutter) calc(var(--space-lg) + 1vh);
+  padding: var(--space-md) var(--gutter) var(--space-md);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -747,7 +747,8 @@ html.js:not(.reduced-motion) .hl-line > span {
   height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: var(--space-2xl);
   padding: calc(var(--header-h) + 2.5vh) var(--gutter) 4.5vh;
   max-width: var(--max-width);
   margin-inline: auto;
@@ -762,7 +763,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   font-weight: 400;
   font-size: var(--text-3xl);
   line-height: 1.05;
-  max-width: 14ch;
+  max-width: 16ch;
   text-wrap: balance;
 }
 
@@ -907,6 +908,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .proof-item {
   display: grid;
+  align-content: start;
   gap: 0.6rem;
   padding-top: var(--space-md);
   border-top: 1px solid var(--ink-line);
@@ -972,7 +974,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 .deploy-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.1rem;
+  gap: var(--space-md);
   counter-reset: deploy;
 }
 
@@ -1010,9 +1012,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 }
 
 #products .deploy-card > p:last-child {
-  margin-top: auto;
   margin-bottom: 0;
-  padding-top: var(--space-sm);
 }
 
 .deploy-icon {
@@ -1073,12 +1073,12 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 /* ------------ 13b  About ------------ */
 .about {
-  padding: var(--space-2xl) 0 var(--space-xl);
+  padding: var(--space-3xl) 0 var(--space-2xl);
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+  grid-template-columns: minmax(0, 1fr) 300px;
   gap: clamp(var(--space-xl), 6vw, 7rem);
   align-items: start;
   margin-top: var(--space-xl);
@@ -1087,7 +1087,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 /* The story is shorter than the career beside it; centred, the difference
    reads as composition instead of a hole. */
 .about-text {
-  align-self: center;
+  align-self: start;
 }
 
 .about-text p {
@@ -1115,7 +1115,6 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .about-portrait-wrap {
   position: relative;
-  max-width: 300px;
 }
 
 .about-portrait {
@@ -1198,12 +1197,11 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 /* ------------ 13c  Research ------------ */
 .research {
-  padding: var(--space-xl) 0 var(--space-3xl);
+  padding: var(--space-3xl) 0 var(--space-2xl);
 }
 
 .paper-card {
   margin-top: var(--space-xl);
-  max-width: 880px;
   padding: clamp(1.6rem, 4vw, 3rem);
   background: rgba(255, 255, 255, 0.4);
   border: 1px solid var(--ink-line);
@@ -1809,14 +1807,14 @@ html.js:not(.reduced-motion) .hl-line > span {
  */
 
 .talks-promo {
-  padding: var(--space-2xl) 0 var(--space-xl);
+  padding: var(--space-3xl) 0 var(--space-2xl);
 }
 
 .talks-promo-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 1fr);
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
   gap: var(--space-xl);
-  align-items: center;
+  align-items: start;
   margin-top: var(--space-lg);
 }
 
@@ -1838,19 +1836,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   }
 }
 
-/* Who this is for, one line under the hero buttons. */
-.hero-industries {
-  margin: var(--space-md) 0 0;
-  font-size: var(--text-sm);
-  color: var(--ink-sec);
-}
 
-.hero-industries a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: var(--copper-400);
-}
 
 @media (max-width: 720px) {
   .hero-foot {
@@ -1926,8 +1912,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 .hero-guardrails {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm) var(--space-lg);
-  margin-top: var(--space-md);
+  gap: 0.35rem var(--space-lg);
   font-size: var(--text-sm);
   color: var(--ink-sec);
 }
@@ -1941,4 +1926,12 @@ html.js:not(.reduced-motion) .hl-line > span {
   margin: var(--space-md) 0 0;
   font-size: var(--text-sm);
   color: var(--ink-sec);
+}
+
+/* The sub carries the shortcut to the industry grid. */
+.hero-sub a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--copper-400);
 }

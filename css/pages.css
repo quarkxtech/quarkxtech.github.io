@@ -448,7 +448,7 @@ svg.loop-mobile .loop-label {
  */
 .cards {
   display: grid;
-  gap: 1rem;
+  gap: var(--space-md);
   margin-top: var(--space-lg);
 }
 
@@ -1382,7 +1382,6 @@ tbody th {
   border: 1px solid var(--ink-line-strong);
   border-radius: var(--radius-tile);
   padding: calc(var(--space-lg) * 0.9) var(--space-lg);
-  max-width: 46rem;
 }
 
 .agenda-label {
