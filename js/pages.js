@@ -111,7 +111,7 @@
 /**
  * The form speaks the visitor's request.
  *
- * One form serves three asks. The submit button and the hint under the
+ * One form serves four asks. The submit button and the hint under the
  * request field follow the selection, so the page never says brochure to
  * someone booking a talk. Without JavaScript the generic labels stand.
  */
@@ -127,11 +127,13 @@
     brochure: "Request the brochure",
     proposal: "Request the proposal",
     talk: "Request a session",
+    coaching: "Request coaching",
   };
   var HINTS = {
     brochure: "Proposals need your volumes or plant size in the message below.",
     proposal: "Proposals need your volumes or plant size in the message below.",
     talk: "Tell us the audience, the date and the room in the message below.",
+    coaching: "Tell us the decision or system you want to work through, in the message below.",
   };
 
   function apply() {

@@ -23,3 +23,6 @@ playwright-report/
 /*.png
 /*.jpeg
 /*.jpg
+
+# Local design-tool context, not site content
+.impeccable.md

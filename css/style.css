@@ -621,6 +621,7 @@ body.menu-open {
   font-size: var(--text-lg);
   color: var(--cream-dim);
   max-width: 56ch;
+  line-height: 1.6;
   margin-bottom: var(--space-2xl);
 }
 
@@ -704,7 +705,8 @@ html.js:not(.reduced-motion) .hl-line > span {
 .hero-sub {
   font-size: var(--text-lg);
   color: var(--ink-sec);
-  max-width: 46ch;
+  max-width: 43ch;
+  line-height: 1.58;
 }
 
 .hero-actions {

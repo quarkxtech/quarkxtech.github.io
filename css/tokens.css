@@ -15,8 +15,9 @@
   --paper: #f0e7da;
   --paper-raised: #f4ece3;
   --ink: #221a13;
-  --ink-sec: #5f5147;
-  --ink-faint: #93836f;
+  /* Supporting copy stays warm but clears AA contrast on paper. */
+  --ink-sec: #4f4238;
+  --ink-faint: #786652;
   --ink-line: rgba(34, 26, 19, 0.13);
   --ink-line-strong: rgba(34, 26, 19, 0.24);
 
@@ -26,7 +27,7 @@
   --line-strong: rgba(244, 236, 227, 0.18);
 
   --cream: #f4ece3;
-  --cream-dim: #cfc2b3;
+  --cream-dim: #d9cdbf;
   --muted: #978876;
 
   --coral: #d97757;
@@ -70,9 +71,9 @@
   --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
 
   --text-xs: clamp(0.68rem, 0.64rem + 0.16vw, 0.78rem);
-  --text-sm: clamp(0.84rem, 0.79rem + 0.2vw, 0.92rem);
-  --text-base: clamp(1rem, 0.95rem + 0.18vw, 1.08rem);
-  --text-lg: clamp(1.08rem, 1rem + 0.55vw, 1.3rem);
+  --text-sm: clamp(0.9rem, 0.85rem + 0.2vw, 0.98rem);
+  --text-base: clamp(1.0625rem, 1rem + 0.2vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.04rem + 0.55vw, 1.34rem);
   --text-xl: clamp(1.35rem, 1.12rem + 0.95vw, 1.8rem);
   --text-2xl: clamp(1.8rem, 1.35rem + 1.9vw, 2.9rem);
   --text-3xl: clamp(2.4rem, 1.7rem + 3.2vw, 4.4rem);
