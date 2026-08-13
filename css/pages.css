@@ -1,7 +1,7 @@
 /* Copyright (c) 2026 QuarkX Sdn. Bhd. (202501056786 / 1658192-K). All rights reserved. */
 
 /*
- * Stylesheet for the static sub-pages (the plant system, the paperwork system, Speaking, Brochure).
+ * Stylesheet for the static sub-pages (the plant system, the records system, Speaking, Brochure).
  *
  * Deliberately self-contained. The homepage stylesheet is coupled to the WebGL
  * scroll experience (fixed canvas, scroll track, pinned sections) and applying it
@@ -987,7 +987,7 @@ tbody th {
   background-attachment: local, local, scroll, scroll;
 }
 
-/* The record hub is the heart of the paperwork system diagram: the one surface in the
+/* The record hub is the heart of the records system diagram: the one surface in the
    drawing that is not just another box. */
 .loop-hub {
   fill: var(--copper-50);

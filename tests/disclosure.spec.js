@@ -163,6 +163,34 @@ test("no em dashes in published files", () => {
 });
 
 /**
+ * House vocabulary. Words and phrases the founder has retired from the public
+ * site: banned either because they fingerprint a client's documents or
+ * because a standing style decision replaced them. Concurrent editors have
+ * resurrected them once; this keeps the retirement permanent.
+ */
+const BANNED_PHRASES = [
+  "paperwork",
+  "bills of lading",
+  "in scoping",
+  "founding client",
+  "founding partner",
+  "founding clinic",
+];
+
+test("no published file uses retired vocabulary", () => {
+  const offenders = [];
+  for (const file of publishedFiles) {
+    if (file.endsWith("disclosure.spec.js")) continue;
+    const text = fs.readFileSync(file, "utf8").toLowerCase();
+    const hits = BANNED_PHRASES.filter((p) => text.includes(p));
+    if (hits.length) {
+      offenders.push(`${path.relative(REPO_ROOT, file)} [${hits.join(", ")}]`);
+    }
+  }
+  expect(offenders, "retired vocabulary is back on the public site").toEqual([]);
+});
+
+/**
  * Page-shape contract. Every product page is a hero, a problem, a design and
  * a next step: nothing else. Sections have been resurrected once by
  * concurrent edits; this makes the shape a build failure instead of a
