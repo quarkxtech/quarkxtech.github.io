@@ -1920,3 +1920,25 @@ html.js:not(.reduced-motion) .hl-line > span {
   margin-top: var(--space-xl);
   margin-bottom: var(--space-md);
 }
+
+/* The guardrails answer the headline's boldest word where the eye already is,
+   in the same chip grammar the industry pages use. */
+.hero-guardrails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-lg);
+  margin-top: var(--space-md);
+  font-size: var(--text-sm);
+  color: var(--ink-sec);
+}
+
+.hero-guardrails strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.timeline-note {
+  margin: var(--space-md) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-sec);
+}
