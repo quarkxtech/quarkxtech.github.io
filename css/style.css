@@ -1144,24 +1144,42 @@ html.js:not(.reduced-motion) .hl-line > span {
   color: var(--maroon);
 }
 
+/*
+ * The career runs along the page, not down a column. A vertical list of five
+ * beside a fixed block of prose can only ever leave a hole; as a horizontal
+ * rail it spans the full measure and the reading order matches the years.
+ */
 .career-timeline {
   display: grid;
-  gap: 0;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto auto;
+  gap: var(--space-lg);
   position: relative;
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--ink-line);
 }
 
+/* Each item hands its two lines to the parent's tracks, so the roles sit on
+   one baseline however long the organisation's name runs. */
 .timeline-item {
   position: relative;
-  display: flex;
-  gap: 1rem;
-  padding: 0.7rem 0 0.7rem 1.4rem;
-  border-left: 1px solid var(--ink-line);
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  align-content: start;
+  gap: 0.15rem;
+  padding-top: var(--space-md);
+}
+
+.timeline-content {
+  display: contents;
 }
 
 .timeline-dot {
   position: absolute;
-  left: -3.5px;
-  top: 1.35rem;
+  left: 0;
+  top: calc(-1 * var(--space-md) - 3.5px);
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -1171,11 +1189,6 @@ html.js:not(.reduced-motion) .hl-line > span {
 .timeline-current .timeline-dot {
   background: var(--maroon);
   box-shadow: 0 0 0 4px rgba(122, 47, 45, 0.18);
-}
-
-.timeline-content {
-  display: grid;
-  gap: 0.1rem;
 }
 
 .timeline-org {
@@ -1193,6 +1206,20 @@ html.js:not(.reduced-motion) .hl-line > span {
   font-family: var(--font-body);
   letter-spacing: 0.06em;
   color: var(--ink-sec);
+}
+
+@media (max-width: 900px) {
+  /* Five across will not fit a phone; two rows of the same rail will. */
+  .career-timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg) var(--space-md);
+  }
+}
+
+@media (max-width: 520px) {
+  .career-timeline {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ------------ 13c  Research ------------ */
