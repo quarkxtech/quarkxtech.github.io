@@ -512,7 +512,10 @@ ScrollTrigger.refresh();
   button.className = "to-top";
   button.type = "button";
   button.setAttribute("aria-label", "Back to top");
-  button.textContent = "\u2191";
+  // A rocket, drawn rather than borrowed: the glyph is inline so it takes
+  // the button's own colour and needs no font or icon set.
+  button.innerHTML =
+    '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.6c2.4 2.3 3.7 5.4 3.7 8.7v3.9H8.3v-3.9c0-3.3 1.3-6.4 3.7-8.7z"/><path d="M8.3 11.6 5.4 14.4v3.4l2.9-1.7"/><path d="M15.7 11.6l2.9 2.8v3.4l-2.9-1.7"/><circle cx="12" cy="9.2" r="1.5"/><path d="M12 17.6v3.2"/></svg>';
   document.body.appendChild(button);
 
   button.addEventListener("click", () => scrollToTarget(0));

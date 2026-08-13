@@ -1641,6 +1641,8 @@ html.js:not(.reduced-motion) .hl-line > span {
     opacity 220ms var(--ease),
     transform 220ms var(--ease),
     background 180ms ease;
+  display: grid;
+  place-items: center;
 }
 
 .to-top.is-visible {
@@ -1988,61 +1990,153 @@ html.js:not(.reduced-motion) .hl-line > span {
   max-width: 62ch;
 }
 
-/* Two talks, named. The section had an invitation and nothing to look at. */
+/*
+ * The bill.
+ *
+ * Two talks are not two links: they are the two items on a programme, and a
+ * programme is set, not boxed. So the tiles come off. What is left is the
+ * furniture of a printed bill: one stage edge ruled across the page, cut open
+ * where each talk stands, an oversized copper numeral standing in the cut, and
+ * the room the talk is pitched at printed at the foot as the closing datum,
+ * the way a bill prints a running time.
+ *
+ * Subgrid holds numeral, title, note and room on shared baselines across both
+ * columns, so the pair reads as one ruled object rather than two.
+ */
 .talk-teasers {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto auto auto;
-  gap: var(--space-lg);
-  margin-top: var(--space-xl);
+  grid-template-rows: auto auto auto auto;
+  column-gap: var(--space-2xl);
+  row-gap: 0;
+  margin-top: var(--space-2xl);
 }
 
 .talk-teaser {
   display: grid;
+  grid-template-columns: auto 1fr;
   grid-template-rows: subgrid;
-  grid-row: span 3;
-  gap: 0.5rem;
+  grid-row: span 4;
+  column-gap: var(--space-md);
   align-content: start;
-  padding: var(--space-lg);
-  background: rgba(255, 255, 255, 0.45);
-  border-radius: var(--radius-tile);
-  box-shadow: 0 1px 0 rgba(34, 26, 19, 0.05), 0 10px 30px rgba(83, 54, 37, 0.06);
-  text-decoration: none;
-  transition: transform 400ms var(--ease), box-shadow 400ms ease;
 }
 
-.talk-teaser:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 1px 0 rgba(34, 26, 19, 0.05), 0 18px 40px rgba(83, 54, 37, 0.1);
+/*
+ * The stage edge. It starts where the numeral ends and runs out to the margin,
+ * so the two segments read as one line the numerals have opened.
+ */
+.talk-teaser::before {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  border-top: 1px solid var(--ink-line-strong);
 }
 
-.talk-teaser-audience {
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--coral-deep);
+.talk-teaser-index {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 2rem + 5vw, 6rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--copper-500);
 }
 
 .talk-teaser-title {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: var(--space-md) 0 0;
   font-family: var(--font-display);
-  font-size: var(--text-lg);
-  line-height: 1.2;
+  font-weight: 400;
+  /* Between --text-lg and --text-xl: large enough to be a statement, small
+     enough that a half-column never runs the title into the page margin. */
+  font-size: clamp(1.22rem, 1.02rem + 0.78vw, 1.7rem);
+  line-height: 1.16;
+  letter-spacing: -0.005em;
   color: var(--ink);
 }
 
 .talk-teaser-note {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  margin: var(--space-sm) 0 0;
+  max-width: 52ch;
   font-size: var(--text-sm);
+  line-height: 1.65;
   color: var(--ink-sec);
 }
 
-@media (max-width: 760px) {
+/* The room, set at the foot, tied back to the copper by its own short rule. */
+.talk-teaser-audience {
+  grid-column: 1 / -1;
+  grid-row: 4;
+  align-self: end;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: var(--space-lg) 0 0;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+}
+
+.talk-teaser-audience::before {
+  content: "";
+  flex: none;
+  width: 1.75rem;
+  height: 1px;
+  background: var(--copper-400);
+}
+
+/*
+ * The lights come up: each stage edge draws out from its numeral as the bill
+ * enters the viewport, the second a beat behind the first. Scroll-driven, so
+ * no script owns it, and the keyframes carry the collapsed state rather than
+ * the base rule, so a browser without view timelines simply shows the rule
+ * already drawn.
+ */
+@keyframes talk-rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .talk-teaser::before {
+      transform-origin: left center;
+      animation: talk-rule-draw linear both;
+      animation-timeline: view();
+      animation-range: cover 12% cover 34%;
+    }
+
+    .talk-teaser:nth-child(2)::before {
+      animation-range: cover 18% cover 44%;
+    }
+  }
+}
+
+/* Two columns need room for a serif title; below that the bill stacks. */
+@media (max-width: 1000px) {
   .talk-teasers {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
   }
 
   .talk-teaser {
     grid-row: auto;
     grid-template-rows: none;
+  }
+
+  .talk-teaser + .talk-teaser {
+    margin-top: var(--space-xl);
   }
 }

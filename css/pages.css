@@ -1085,6 +1085,8 @@ tbody th {
     opacity var(--ease) 220ms,
     transform var(--ease) 220ms,
     background var(--ease) 180ms;
+  display: grid;
+  place-items: center;
 }
 
 .to-top.is-visible {
