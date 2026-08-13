@@ -165,11 +165,18 @@ test("no em dashes in published files", () => {
 /**
  * House vocabulary. Words and phrases the founder has retired from the public
  * site: banned either because they fingerprint a client's documents or
- * because a standing style decision replaced them. Concurrent editors have
- * resurrected them once; this keeps the retirement permanent.
+ * because a standing style decision replaced them, or because they promise
+ * commercial terms the company will not publish. The savings-linked pricing
+ * language survived one deletion by hiding in metadata, where only search
+ * engines and link previews read it; this keeps every retirement permanent.
  */
 const BANNED_PHRASES = [
   "paperwork",
+  "paid on results",
+  "paid from verified",
+  "verified savings",
+  "pay only from",
+  "you pay nothing",
   "bills of lading",
   "in scoping",
   "founding client",
