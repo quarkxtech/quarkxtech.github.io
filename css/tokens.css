@@ -31,7 +31,9 @@
 
   --coral: #d97757;
   --coral-bright: #ff8a5c;
-  --coral-deep: #b8512e;
+  /* Nudged from #b8512e so letterspaced small caps (kickers) clear AA
+     contrast on the bright paper ground; visually indistinguishable. */
+  --coral-deep: #b04d2a;
   --coral-soft: rgba(217, 119, 87, 0.12);
   --coral-bdr: rgba(217, 119, 87, 0.35);
   --copper: #b26c3d;
