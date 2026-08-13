@@ -456,8 +456,6 @@ html:not(.js) .loader {
   font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
@@ -472,13 +470,10 @@ html:not(.js) .loader {
 .btn-primary {
   background: var(--ink);
   color: var(--paper);
-  box-shadow: 0 0 0 rgba(184, 81, 46, 0);
 }
 
 .btn-primary:hover {
-  background: var(--coral-deep);
-  color: #fff6ec;
-  box-shadow: 0 10px 30px rgba(184, 81, 46, 0.35);
+  background: var(--maroon);
 }
 
 .btn-ghost {
@@ -491,65 +486,54 @@ html:not(.js) .loader {
   color: var(--coral-deep);
 }
 
-/* dark sections re-skin the buttons */
-.faq .btn-ghost,
-.contact .btn-ghost {
-  border-color: var(--line-strong);
-  color: var(--cream);
-}
-
+/* Dark ground re-skins the pill exactly as the sub-page bands do: a cream
+   pill, coral under the pointer. */
 .contact .btn-primary {
-  background: var(--coral);
-  color: #1a0f08;
+  background: var(--cream);
+  color: var(--ink);
 }
 
 .contact .btn-primary:hover {
-  background: var(--coral-bright);
-  box-shadow: 0 6px 32px rgba(217, 119, 87, 0.45);
-}
-
-.btn-sm {
-  padding: 0.62rem 1.3rem;
-  font-size: var(--text-xs);
+  background: var(--coral);
 }
 
 .btn-lg {
   padding: 1.2rem 2.6rem;
   font-size: var(--text-base);
-  text-transform: none;
-  letter-spacing: 0.02em;
-  font-family: var(--font-mono);
 }
 
 /* ============ 08  Menu toggle and mobile menu ============ */
+/* One toggle, one menu, sitewide: this recipe mirrors the sub-pages
+   (pages.css section 20) so navigation is the most stable control on the
+   site. Change both together or neither. */
 .menu-toggle {
   display: none;
   flex-direction: column;
   justify-content: center;
-  gap: 7px;
+  align-items: center;
+  gap: 6px;
   width: 44px;
   height: 44px;
-  padding: 10px;
-  background: none;
-  border: 1px solid var(--ink-line-strong);
-  border-radius: 50%;
+  border: none;
+  background: transparent;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .menu-toggle span {
   display: block;
+  width: 22px;
   height: 1.5px;
-  width: 100%;
   background: var(--ink);
   transition: transform 350ms var(--ease), opacity 250ms ease;
 }
 
 .menu-toggle[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(4.25px) rotate(45deg);
+  transform: translateY(3.75px) rotate(45deg);
 }
 
 .menu-toggle[aria-expanded="true"] span:nth-child(2) {
-  transform: translateY(-4.25px) rotate(-45deg);
+  transform: translateY(-3.75px) rotate(-45deg);
 }
 
 .mobile-menu {
@@ -558,9 +542,9 @@ html:not(.js) .loader {
   z-index: 90;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: var(--space-xl);
-  padding: var(--gutter);
+  justify-content: flex-start;
+  gap: var(--space-lg);
+  padding: calc(var(--header-h) + 1.25rem) var(--gutter) var(--space-lg);
   background: rgba(240, 231, 218, 0.94);
   -webkit-backdrop-filter: blur(22px);
   backdrop-filter: blur(22px);
@@ -577,6 +561,34 @@ html:not(.js) .loader {
 .mobile-menu-nav {
   display: grid;
   gap: 0.4rem;
+}
+
+.mobile-menu.is-open .mobile-link:nth-child(2) { transition-delay: 40ms; }
+.mobile-menu.is-open .mobile-link:nth-child(3) { transition-delay: 80ms; }
+.mobile-menu.is-open .mobile-link:nth-child(4) { transition-delay: 120ms; }
+.mobile-menu.is-open .mobile-link:nth-child(5) { transition-delay: 160ms; }
+.mobile-menu.is-open .mobile-link:nth-child(6) { transition-delay: 200ms; }
+
+.mobile-menu-systems .mobile-menu-label {
+  display: block;
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.6rem;
+}
+
+.mobile-menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem 1.2rem;
+}
+
+.mobile-menu-grid a {
+  font-size: var(--text-base);
+  color: var(--ink-sec);
+  text-decoration: none;
+  padding-block: 0.15rem;
 }
 
 .mobile-link {
@@ -604,7 +616,6 @@ html:not(.js) .loader {
 .mobile-menu-meta {
   display: grid;
   gap: 0.3rem;
-  font-family: var(--font-mono);
   font-size: var(--text-sm);
   color: var(--ink-faint);
 }

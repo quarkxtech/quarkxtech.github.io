@@ -146,11 +146,16 @@ test("no published file contains a mobile number", () => {
 
 test("no em dashes in published files", () => {
   // House style, matching the LaTeX document kit. The JSON escape form counts
-  // too: it once hid inside the homepage JSON-LD.
+  // too: it once hid inside the homepage JSON-LD. So do the HTML entity
+  // forms, which once slipped past this guard inside the records page.
   const offenders = publishedFiles
     .filter((file) => {
       const text = fs.readFileSync(file, "utf8");
-      return text.includes("—") || text.includes("\\u2014");
+      return (
+        text.includes("—") ||
+        text.includes("\\u2014") ||
+        /&mdash;|&#8212;|&#x2014;/i.test(text)
+      );
     })
     .map((file) => path.relative(REPO_ROOT, file));
 
