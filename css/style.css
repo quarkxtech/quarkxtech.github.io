@@ -1216,9 +1216,37 @@ html.js:not(.reduced-motion) .hl-line > span {
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 620px) {
+  /*
+   * Below two columns the rail has nothing to run along, so the career
+   * returns to the form it takes when it is read downwards: one spine on
+   * the left, the dots sitting on it, each entry hanging off it.
+   */
   .career-timeline {
-    grid-template-columns: 1fr;
+    display: block;
+    margin-top: var(--space-xl);
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .timeline-item {
+    display: block;
+    padding: 0 0 var(--space-lg) var(--space-lg);
+    border-left: 1px solid var(--ink-line);
+  }
+
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline-dot {
+    left: -3.5px;
+    top: 0.45rem;
+  }
+
+  .timeline-role {
+    display: block;
+    margin-top: 0.15rem;
   }
 }
 
@@ -2186,4 +2214,13 @@ html.js:not(.reduced-motion) .hl-line > span {
 .section-heading,
 .contact-headline {
   font-variation-settings: "opsz" 72;
+}
+
+/* Drawn, not typed: the north-east arrow character is replaced by a colour
+   emoji on iOS and Android, which is not what a footnote link should look
+   like. */
+svg.ext {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-left: 0.28em;
 }
