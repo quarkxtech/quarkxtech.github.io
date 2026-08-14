@@ -72,8 +72,8 @@
    * one for reading, and a grotesque for the furniture, the labels, buttons
    * and captions that are not prose.
    */
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Newsreader", Georgia, "Times New Roman", serif;
   --font-ui: "Libre Franklin", "Segoe UI", system-ui, sans-serif;
 
   --text-xs: clamp(0.68rem, 0.64rem + 0.16vw, 0.78rem);

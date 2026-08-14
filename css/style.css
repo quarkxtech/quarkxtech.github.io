@@ -537,7 +537,6 @@ html:not(.js) .loader {
 
 .mobile-link {
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-weight: 600;
   font-size: var(--text-menu);
   line-height: 1.25;
@@ -609,7 +608,6 @@ body.menu-open {
 
 .section-heading {
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-weight: 600;
   font-size: var(--text-3xl);
   line-height: 1.06;
@@ -676,7 +674,6 @@ html.js:not(.reduced-motion) [data-reveal] {
 
 .hero-headline {
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-weight: 600;
   font-size: var(--text-4xl);
   line-height: 1.02;
@@ -763,7 +760,6 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .journey-title {
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-weight: 600;
   font-size: var(--text-3xl);
   line-height: 1.05;
@@ -829,7 +825,6 @@ html.js:not(.reduced-motion) .hl-line > span {
 .journey-step.is-active .step-title {
   font-size: var(--text-xl);
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-weight: 600;
 }
 
@@ -897,7 +892,6 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .statement-text {
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-weight: 600;
   font-size: var(--text-2xl);
   line-height: 1.22;
@@ -989,7 +983,6 @@ html.js:not(.reduced-motion) .hl-line > span {
   content: "0" counter(deploy);
   display: block;
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-size: var(--text-2xl);
   line-height: 1;
   color: var(--maroon);
@@ -1057,7 +1050,6 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .deploy-card h3 {
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-weight: 600;
   font-size: var(--text-xl);
   line-height: 1.15;
@@ -1277,7 +1269,6 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .paper-title {
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-weight: 600;
   font-size: var(--text-xl);
   line-height: 1.2;
@@ -1454,7 +1445,6 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .contact-headline {
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-weight: 600;
   font-size: var(--text-3xl);
   line-height: 1.05;
@@ -1839,7 +1829,6 @@ html.js:not(.reduced-motion) .hl-line > span {
   counter-increment: flow;
   content: counter(flow);
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-size: var(--text-xl);
   line-height: 1;
   color: var(--maroon);
@@ -2064,7 +2053,6 @@ html.js:not(.reduced-motion) .hl-line > span {
   grid-row: 1;
   align-self: center;
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-size: clamp(3.2rem, 2rem + 5vw, 6rem);
   line-height: 1;
   letter-spacing: 0.02em;
@@ -2076,7 +2064,6 @@ html.js:not(.reduced-motion) .hl-line > span {
   grid-row: 2;
   margin: var(--space-md) 0 0;
   font-family: var(--font-display);
-  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-weight: 600;
   /* Between --text-lg and --text-xl: large enough to be a statement, small
      enough that a half-column never runs the title into the page margin. */
@@ -2188,4 +2175,15 @@ html.js:not(.reduced-motion) .hl-line > span {
 .contact-social,
 .to-top {
   font-family: var(--font-ui);
+}
+
+/* Newsreader carries an optical-size axis: display cuts tighten and sharpen,
+   text cuts open up. Letting it track the actual size is the whole point of
+   a variable text face. */
+.hero-headline,
+.journey-title,
+.statement-text,
+.section-heading,
+.contact-headline {
+  font-variation-settings: "opsz" 72;
 }
