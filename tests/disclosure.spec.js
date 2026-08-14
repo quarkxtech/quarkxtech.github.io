@@ -166,12 +166,20 @@ test("no em dashes in published files", () => {
  * House vocabulary. Words and phrases the founder has retired from the public
  * site: banned either because they fingerprint a client's documents or
  * because a standing style decision replaced them, or because they promise
- * commercial terms the company will not publish. The savings-linked pricing
- * language survived one deletion by hiding in metadata, where only search
- * engines and link previews read it; this keeps every retirement permanent.
+ * commercial terms the company will not publish, or because they count the
+ * engagements. Twice now a retired phrase has survived deletion by hiding in
+ * metadata, where no visual review can see it and only search engines and
+ * link previews read it; the scan covers every published byte for that
+ * reason, markup and metadata alike.
  */
 const BANNED_PHRASES = [
   "paperwork",
+  "live in a malaysian",
+  "live at a malaysian",
+  "running in malaysia",
+  "our first client",
+  "first deployment",
+  "one client",
   "paid on results",
   "paid from verified",
   "verified savings",
