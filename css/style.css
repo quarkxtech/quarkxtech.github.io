@@ -171,7 +171,7 @@ a {
 }
 
 .loader-status {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--text-xs);
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -397,7 +397,7 @@ html:not(.js) .loader {
   gap: 0.5rem;
   padding: 0.95rem 1.9rem;
   border-radius: 999px;
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--text-sm);
   font-weight: 600;
   text-decoration: none;
@@ -537,7 +537,8 @@ html:not(.js) .loader {
 
 .mobile-link {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+  font-weight: 600;
   font-size: var(--text-menu);
   line-height: 1.25;
   text-decoration: none;
@@ -579,7 +580,7 @@ body.menu-open {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.26em;
@@ -608,7 +609,8 @@ body.menu-open {
 
 .section-heading {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+  font-weight: 600;
   font-size: var(--text-3xl);
   line-height: 1.06;
   letter-spacing: -0.01em;
@@ -674,7 +676,8 @@ html.js:not(.reduced-motion) [data-reveal] {
 
 .hero-headline {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+  font-weight: 600;
   font-size: var(--text-4xl);
   line-height: 1.02;
   letter-spacing: -0.015em;
@@ -760,7 +763,8 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .journey-title {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+  font-weight: 600;
   font-size: var(--text-3xl);
   line-height: 1.05;
   max-width: 16ch;
@@ -799,7 +803,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 }
 
 .step-index {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--text-xs);
   letter-spacing: 0.14em;
   color: inherit;
@@ -807,7 +811,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 }
 
 .step-title {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--text-base);
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -825,7 +829,8 @@ html.js:not(.reduced-motion) .hl-line > span {
 .journey-step.is-active .step-title {
   font-size: var(--text-xl);
   font-family: var(--font-display);
-  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+  font-weight: 600;
 }
 
 .step-body {
@@ -892,7 +897,8 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .statement-text {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+  font-weight: 600;
   font-size: var(--text-2xl);
   line-height: 1.22;
   max-width: 30ch;
@@ -915,7 +921,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 }
 
 .proof-value {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--text-sm);
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -983,6 +989,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   content: "0" counter(deploy);
   display: block;
   font-family: var(--font-display);
+  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-size: var(--text-2xl);
   line-height: 1;
   color: var(--maroon);
@@ -1050,7 +1057,8 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .deploy-card h3 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+  font-weight: 600;
   font-size: var(--text-xl);
   line-height: 1.15;
   margin-bottom: var(--space-sm);
@@ -1137,7 +1145,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 }
 
 .portrait-role {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--text-xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1203,7 +1211,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .timeline-role {
   font-size: var(--text-xs);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   letter-spacing: 0.06em;
   color: var(--ink-sec);
 }
@@ -1255,21 +1263,22 @@ html.js:not(.reduced-motion) .hl-line > span {
   border-radius: 999px;
   background: var(--maroon);
   color: var(--paper);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--text-xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .paper-year {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--text-sm);
   color: var(--ink-sec);
 }
 
 .paper-title {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+  font-weight: 600;
   font-size: var(--text-xl);
   line-height: 1.2;
   max-width: 30ch;
@@ -1288,7 +1297,7 @@ html.js:not(.reduced-motion) .hl-line > span {
 }
 
 .paper-journal {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--text-xs);
   letter-spacing: 0.08em;
   color: var(--ink-sec);
@@ -1358,7 +1367,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   padding: 1.4rem 0;
   cursor: pointer;
   list-style: none;
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--text-lg);
   font-weight: 600;
   color: var(--cream-dim);
@@ -1445,7 +1454,8 @@ html.js:not(.reduced-motion) .hl-line > span {
 
 .contact-headline {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+  font-weight: 600;
   font-size: var(--text-3xl);
   line-height: 1.05;
   margin-inline: auto;
@@ -1472,7 +1482,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   background: none;
   border: none;
   padding: 0.3rem 0.6rem;
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--text-xs);
   letter-spacing: 0.04em;
   color: var(--cream-dim);
@@ -1515,7 +1525,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   gap: var(--space-md);
   padding-block: var(--space-lg);
   font-size: var(--text-xs);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   letter-spacing: 0.08em;
   color: var(--muted);
 }
@@ -1829,6 +1839,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   counter-increment: flow;
   content: counter(flow);
   font-family: var(--font-display);
+  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-size: var(--text-xl);
   line-height: 1;
   color: var(--maroon);
@@ -2053,6 +2064,7 @@ html.js:not(.reduced-motion) .hl-line > span {
   grid-row: 1;
   align-self: center;
   font-family: var(--font-display);
+  font-variation-settings: "SOFT" 30, "WONK" 1;
   font-size: clamp(3.2rem, 2rem + 5vw, 6rem);
   line-height: 1;
   letter-spacing: 0.02em;
@@ -2064,7 +2076,8 @@ html.js:not(.reduced-motion) .hl-line > span {
   grid-row: 2;
   margin: var(--space-md) 0 0;
   font-family: var(--font-display);
-  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+  font-weight: 600;
   /* Between --text-lg and --text-xl: large enough to be a statement, small
      enough that a half-column never runs the title into the page margin. */
   font-size: clamp(1.22rem, 1.02rem + 0.78vw, 1.7rem);
@@ -2154,4 +2167,25 @@ html.js:not(.reduced-motion) .hl-line > span {
   .talk-teaser + .talk-teaser {
     margin-top: var(--space-xl);
   }
+}
+
+/* ---------- Furniture ---------- */
+/*
+ * Prose reads in the serif; everything that is not prose, the navigation,
+ * the buttons, the form controls and the small print, takes the grotesque,
+ * the way a newspaper sets everything that is not the article.
+ */
+.nav-link,
+.btn,
+.mobile-menu-label,
+.mobile-menu-grid a,
+.hero-guardrails,
+.hero-reassurance,
+.faq-question,
+.flow-sub,
+.deploy-card .paper-link,
+.footer-copy,
+.contact-social,
+.to-top {
+  font-family: var(--font-ui);
 }

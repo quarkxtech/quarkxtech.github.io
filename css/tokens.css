@@ -67,12 +67,18 @@
   --copper-600: #99562d;
   --copper-700: #7c4324;
 
-  --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
-  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  /*
+   * A newspaper's three voices: a characterful face for headlines, a quiet
+   * one for reading, and a grotesque for the furniture, the labels, buttons
+   * and captions that are not prose.
+   */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-ui: "Libre Franklin", "Segoe UI", system-ui, sans-serif;
 
   --text-xs: clamp(0.68rem, 0.64rem + 0.16vw, 0.78rem);
-  --text-sm: clamp(0.9rem, 0.85rem + 0.2vw, 0.98rem);
-  --text-base: clamp(1.0625rem, 1rem + 0.2vw, 1.125rem);
+  --text-sm: clamp(0.92rem, 0.87rem + 0.2vw, 1rem);
+  --text-base: clamp(1.09rem, 1.02rem + 0.2vw, 1.16rem);
   --text-lg: clamp(1.125rem, 1.04rem + 0.55vw, 1.34rem);
   --text-xl: clamp(1.35rem, 1.12rem + 0.95vw, 1.8rem);
   --text-2xl: clamp(1.8rem, 1.35rem + 1.9vw, 2.9rem);
