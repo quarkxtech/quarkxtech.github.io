@@ -1492,3 +1492,46 @@ tbody th {
     gap: var(--space-xl);
   }
 }
+
+/* ---------- Reach ---------- */
+/*
+ * Eight doorways to the industry pages, set as a plain ruled index rather
+ * than another set of tiles: this page is a way in, not a display case.
+ */
+
+.reach {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 var(--space-2xl);
+  margin-top: var(--space-lg);
+}
+
+.reach-item {
+  display: grid;
+  gap: 0.2rem;
+  padding-block: var(--space-md);
+  border-bottom: 1px solid var(--ink-line);
+  text-decoration: none;
+  transition: border-color 300ms ease;
+}
+
+.reach-item:hover {
+  border-bottom-color: var(--coral-deep);
+}
+
+.reach-place {
+  font-weight: 600;
+  font-size: var(--text-base);
+  color: var(--ink);
+}
+
+.reach-what {
+  font-size: var(--text-sm);
+  color: var(--ink-sec);
+}
+
+@media (max-width: 720px) {
+  .reach {
+    grid-template-columns: 1fr;
+  }
+}
